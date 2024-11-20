@@ -12,8 +12,11 @@ jobs:
               with:
                   node-version: '16.x'
             - run: |
+                  cd frontend
                   npm install
-            - run: npm run format
+            - run: |
+                  cd frontend
+                  npm run format
             - name: Commit changes
               uses: stefanzweifel/git-auto-commit-action@v4
               with:
