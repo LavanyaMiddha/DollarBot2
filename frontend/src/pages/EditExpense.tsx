@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState } from 'react';
 import {
   Center,
   Container,
@@ -8,7 +8,7 @@ import {
   Icon,
   Input,
   Text,
-} from "@chakra-ui/react";
+} from '@chakra-ui/react';
 import {
   SelectContent,
   SelectItem,
@@ -16,20 +16,20 @@ import {
   SelectRoot,
   SelectTrigger,
   SelectValueText,
-} from "../components/ui/select";
-import { Button } from "../components/ui/button";
-import { useForm } from "react-hook-form";
-import { FaDollarSign } from "react-icons/fa";
-import { FaEuroSign } from "react-icons/fa";
-import { FaIndianRupeeSign } from "react-icons/fa6";
+} from '../components/ui/select';
+import { Button } from '../components/ui/button';
+import { useForm } from 'react-hook-form';
+import { FaDollarSign } from 'react-icons/fa';
+import { FaEuroSign } from 'react-icons/fa';
+import { FaIndianRupeeSign } from 'react-icons/fa6';
 import {
   NumberInputField,
   NumberInputRoot,
-} from "../components/ui/number-input";
-import type { DatePickerProps } from "antd";
-import { DatePicker, Space } from "antd";
-import axios from "axios";
-import dayjs from "dayjs";
+} from '../components/ui/number-input';
+import type { DatePickerProps } from 'antd';
+import { DatePicker, Space } from 'antd';
+import axios from 'axios';
+import dayjs from 'dayjs';
 
 type Props = {
   onEditExpense?: (value: boolean) => void;
@@ -56,71 +56,71 @@ const EditExpense = ({ onEditExpense, selectedExpense }: Props) => {
   var date = new Date();
   const offset = date.getTimezoneOffset();
   date = new Date(date.getTime() - offset * 60 * 1000);
-  var MyDateString: string = date.toISOString().split("T")[0];
+  var MyDateString: string = date.toISOString().split('T')[0];
 
   const [expDate, setExpDate] = useState(MyDateString);
-  const [expenseValue, setExpenseValue] = useState("0");
-  const [expenseCategory, setExpenseCategory] = useState("");
+  const [expenseValue, setExpenseValue] = useState('0');
+  const [expenseCategory, setExpenseCategory] = useState('');
   const [oldData, setOldData] = useState<expenseProps>({
-    expense_amount: "0",
-    expense_category: "",
+    expense_amount: '0',
+    expense_category: '',
     expense_date: MyDateString,
-    expense_currency: "dollar",
+    expense_currency: 'dollar',
   });
 
   async function onSubmit(data: any) {
     if (selectedExpense.length == 1) {
       await axios.post(
-        "http://127.0.0.1:5000/edit_cost",
+        'http://127.0.0.1:5000/edit_cost',
         {
-          user_id: localStorage.getItem("globalUserId"),
+          user_id: localStorage.getItem('globalUserId'),
           new_cost: expenseValue,
           selected_data: [
-            "Date=" + oldData.expense_date,
-            "Category=" + oldData.expense_category,
-            "Amount=" + oldData.expense_amount,
+            'Date=' + oldData.expense_date,
+            'Category=' + oldData.expense_category,
+            'Amount=' + oldData.expense_amount,
           ],
         },
         {
           headers: {
-            "Content-Type": "application/json",
+            'Content-Type': 'application/json',
           },
-        }
+        },
       );
       // Since we allow the user to change any part of the transaction we make the calls for date, value and category.
       await axios.post(
-        "http://127.0.0.1:5000/edit_date",
+        'http://127.0.0.1:5000/edit_date',
         {
-          user_id: localStorage.getItem("globalUserId"),
+          user_id: localStorage.getItem('globalUserId'),
           new_date: expDate,
           selected_data: [
-            "Date=" + oldData.expense_date,
-            "Category=" + oldData.expense_category,
-            "Amount=" + oldData.expense_amount,
+            'Date=' + oldData.expense_date,
+            'Category=' + oldData.expense_category,
+            'Amount=' + oldData.expense_amount,
           ],
         },
         {
           headers: {
-            "Content-Type": "application/json",
+            'Content-Type': 'application/json',
           },
-        }
+        },
       );
       await axios.post(
-        "http://127.0.0.1:5000/edit_category",
+        'http://127.0.0.1:5000/edit_category',
         {
-          user_id: localStorage.getItem("globalUserId"),
+          user_id: localStorage.getItem('globalUserId'),
           new_category: expenseCategory,
           selected_data: [
-            "Date=" + oldData.expense_date,
-            "Category=" + oldData.expense_category,
-            "Amount=" + oldData.expense_amount,
+            'Date=' + oldData.expense_date,
+            'Category=' + oldData.expense_category,
+            'Amount=' + oldData.expense_amount,
           ],
         },
         {
           headers: {
-            "Content-Type": "application/json",
+            'Content-Type': 'application/json',
           },
-        }
+        },
       );
     }
     setOldData({
@@ -139,23 +139,23 @@ const EditExpense = ({ onEditExpense, selectedExpense }: Props) => {
       axios
         .get(
           `http://127.0.0.1:5000/display/${localStorage.getItem(
-            "globalUserId"
-          )}`
+            'globalUserId',
+          )}`,
         )
         .then(function (resp) {
           for (let i = 0; i < resp.data.length; i++) {
             var expenseData: expenseProps = {
-              expense_amount: "0",
-              expense_category: "",
+              expense_amount: '0',
+              expense_category: '',
               expense_date: MyDateString,
-              expense_currency: "dollar",
+              expense_currency: 'dollar',
             };
             if (i == parseInt(selectedExpense[0])) {
               expenseData = {
-                expense_amount: resp.data[i]["expense_amount"],
-                expense_category: resp.data[i]["expense_category"],
-                expense_date: resp.data[i]["expense_date"],
-                expense_currency: resp.data[i]["expense_currency"],
+                expense_amount: resp.data[i]['expense_amount'],
+                expense_category: resp.data[i]['expense_category'],
+                expense_date: resp.data[i]['expense_date'],
+                expense_currency: resp.data[i]['expense_currency'],
               };
               if (selectedExpense.length == 1) {
                 setOldData(expenseData);
@@ -168,8 +168,8 @@ const EditExpense = ({ onEditExpense, selectedExpense }: Props) => {
         });
     } else {
       setExpDate(MyDateString);
-      setExpenseCategory("");
-      setExpenseValue("0");
+      setExpenseCategory('');
+      setExpenseValue('0');
     }
   }, [selectedExpense]);
 
@@ -189,11 +189,11 @@ const EditExpense = ({ onEditExpense, selectedExpense }: Props) => {
         </Text>
         <DatePicker
           size="large"
-          value={dayjs(expDate, "YYYY-MM-DD")}
-          style={{ width: "100%", marginBottom: "10px" }}
+          value={dayjs(expDate, 'YYYY-MM-DD')}
+          style={{ width: '100%', marginBottom: '10px' }}
           onChange={(dateStrings) => {
             if (dateStrings != null) {
-              setExpDate(String(dateStrings.format("YYYY-MM-DD")));
+              setExpDate(String(dateStrings.format('YYYY-MM-DD')));
             }
           }}
         />
@@ -262,7 +262,7 @@ const currencies = createListCollection({
           <FaDollarSign />
         </Icon>
       ),
-      value: "dollar",
+      value: 'dollar',
     },
     {
       label: (
@@ -270,7 +270,7 @@ const currencies = createListCollection({
           <FaEuroSign />
         </Icon>
       ),
-      value: "euro",
+      value: 'euro',
     },
     {
       label: (
@@ -278,7 +278,7 @@ const currencies = createListCollection({
           <FaIndianRupeeSign />
         </Icon>
       ),
-      value: "rupee",
+      value: 'rupee',
     },
   ],
 });

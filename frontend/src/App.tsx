@@ -1,12 +1,12 @@
-import React from "react";
-import { Route, Routes } from "react-router-dom";
-import Signup from "./pages/Signup";
-import { BrowserRouter as Router } from "react-router-dom";
-import { createMemoryHistory } from "history";
+import React from 'react';
+import { Route, Routes } from 'react-router-dom';
+import Signup from './pages/Signup';
+import { BrowserRouter as Router } from 'react-router-dom';
+import { createMemoryHistory } from 'history';
 // import history from './history';
-import { Provider } from "./components/ui/provider";
-import Signin from "./pages/Signin";
-import Home from "./pages/Home";
+import { Provider } from './components/ui/provider';
+import Signin from './pages/Signin';
+import Home from './pages/Home';
 
 const history = createMemoryHistory();
 function App() {
