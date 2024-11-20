@@ -77,7 +77,12 @@ const AddExpense = ({ onAddExpense }: Props) => {
         </Heading>
       </Center>
       <form onSubmit={handleSubmit(onSubmit)}>
-        <Text fontSize="sm" fontWeight="medium" marginBottom="2px" color="White">
+        <Text
+          fontSize="sm"
+          fontWeight="medium"
+          marginBottom="2px"
+          color="White"
+        >
           Date
         </Text>
         <DatePicker
@@ -87,12 +92,17 @@ const AddExpense = ({ onAddExpense }: Props) => {
             setExpDate(String(dateStrings.format('YYYY-MM-DD')));
           }}
         />
-        <Text fontSize="sm" fontWeight="medium" marginBottom="15px" color="White">
+        <Text
+          fontSize="sm"
+          fontWeight="medium"
+          marginBottom="15px"
+          color="White"
+        >
           Category
         </Text>
         <Input
           id="category"
-          background={"white"}
+          background={'white'}
           colorPalette="Black"
           marginBottom="10px"
           placeholder="Enter Category"
@@ -101,7 +111,12 @@ const AddExpense = ({ onAddExpense }: Props) => {
             minLength: { value: 3, message: 'Minimum length should be 3' },
           })}
         />
-        <Text fontSize="sm" fontWeight="medium" marginBottom="15px" color="White">
+        <Text
+          fontSize="sm"
+          fontWeight="medium"
+          marginBottom="15px"
+          color="White"
+        >
           Expense Value
         </Text>
         <Flex flexDir="row">

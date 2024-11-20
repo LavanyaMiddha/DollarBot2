@@ -1,9 +1,5 @@
-const goals =()=>{
-    return(
-    <div>
-        Hello!
-    </div>
-    )
-}
+const goals = () => {
+  return <div>Hello!</div>;
+};
 
-export default goals
+export default goals;
