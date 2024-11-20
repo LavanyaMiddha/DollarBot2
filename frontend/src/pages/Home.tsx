@@ -9,9 +9,9 @@ import {
   Kbd,
   Box,
   ListCollection,
-} from "@chakra-ui/react";
-import { Checkbox } from "../components/ui/checkbox";
-import { useState } from "react";
+} from '@chakra-ui/react';
+import { Checkbox } from '../components/ui/checkbox';
+import { useState } from 'react';
 import {
   SelectContent,
   SelectItem,
@@ -19,41 +19,41 @@ import {
   SelectRoot,
   SelectTrigger,
   SelectValueText,
-} from "../components/ui/select";
-import React from "react";
-import AddExpense from "./AddExpense";
-import EditExpense from "./EditExpense";
-import DeleteExpense from "./DeleteExpense";
-import axios from "axios";
-import { useEffect } from "react";
-import { useNavigate } from "react-router-dom";
+} from '../components/ui/select';
+import React from 'react';
+import AddExpense from './AddExpense';
+import EditExpense from './EditExpense';
+import DeleteExpense from './DeleteExpense';
+import axios from 'axios';
+import { useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
 
 function retCurrencySymbol(currency: string) {
-  var result = "";
+  var result = '';
   switch (currency) {
-    case "dollar":
-      result = "$";
+    case 'dollar':
+      result = '$';
       break;
-    case "euro":
-      result = "€";
+    case 'euro':
+      result = '€';
       break;
-    case "rupee":
-      result = "₹";
+    case 'rupee':
+      result = '₹';
       break;
     default:
-      return "$";
+      return '$';
   }
   return result;
 }
 
 const Home = () => {
   const [selection, setSelection] = useState<string[]>([]);
-  const [action, setAction] = useState<string>("add");
+  const [action, setAction] = useState<string>('add');
   const [expenses, setExpenses] = useState([{}]);
   let navigate = useNavigate();
 
-  if (localStorage.getItem("globalUserId") === null) {
-    navigate("/signin");
+  if (localStorage.getItem('globalUserId') === null) {
+    navigate('/signin');
   }
 
   const handleExpense = (value: boolean) => {
@@ -62,17 +62,17 @@ const Home = () => {
       axios
         .get(
           `http://127.0.0.1:5000/display/${localStorage.getItem(
-            "globalUserId"
-          )}`
+            'globalUserId',
+          )}`,
         )
         .then(function (resp) {
           for (let i = 0; i < resp.data.length; i++) {
             var expenseData = {
               expense_amount:
-                retCurrencySymbol(resp.data[i]["expense_currency"].trim()) +
-                resp.data[i]["expense_amount"],
-              expense_category: resp.data[i]["expense_category"],
-              expense_date: resp.data[i]["expense_date"],
+                retCurrencySymbol(resp.data[i]['expense_currency'].trim()) +
+                resp.data[i]['expense_amount'],
+              expense_category: resp.data[i]['expense_category'],
+              expense_date: resp.data[i]['expense_date'],
             };
             newData.push(expenseData);
           }
@@ -85,17 +85,17 @@ const Home = () => {
     var newData: any[] = [];
     axios
       .get(
-        `http://127.0.0.1:5000/display/${localStorage.getItem("globalUserId")}`
+        `http://127.0.0.1:5000/display/${localStorage.getItem('globalUserId')}`,
       )
       .then(function (resp) {
         for (let i = 0; i < resp.data.length; i++) {
           var expenseData = {
             id: i,
             expense_amount:
-              retCurrencySymbol(resp.data[i]["expense_currency"].trim()) +
-              resp.data[i]["expense_amount"],
-            expense_category: resp.data[i]["expense_category"],
-            expense_date: resp.data[i]["expense_date"],
+              retCurrencySymbol(resp.data[i]['expense_currency'].trim()) +
+              resp.data[i]['expense_amount'],
+            expense_category: resp.data[i]['expense_category'],
+            expense_date: resp.data[i]['expense_date'],
           };
           newData.push(expenseData);
         }
@@ -108,16 +108,16 @@ const Home = () => {
 
   const renderSwitch = (action: string) => {
     switch (action) {
-      case "add":
+      case 'add':
         return <AddExpense onAddExpense={handleExpense} />;
-      case "edit":
+      case 'edit':
         return (
           <EditExpense
             onEditExpense={handleExpense}
             selectedExpense={selection}
           />
         );
-      case "delete":
+      case 'delete':
         return (
           <DeleteExpense
             onDeleteExpense={handleExpense}
@@ -128,24 +128,24 @@ const Home = () => {
   };
 
   const rows = expenses.map((item: any) => (
-    <Table.Row key={item["id"]}>
+    <Table.Row key={item['id']}>
       <Table.Cell>
         <Checkbox
           top="1"
           aria-label="Select row"
-          checked={selection.includes(item["id"])}
+          checked={selection.includes(item['id'])}
           onCheckedChange={(changes) => {
             setSelection((prev) =>
               changes.checked
-                ? [...prev, item["id"]]
-                : selection.filter((date) => date !== item["id"])
+                ? [...prev, item['id']]
+                : selection.filter((date) => date !== item['id']),
             );
           }}
         />
       </Table.Cell>
-      <Table.Cell>{item["expense_date"]}</Table.Cell>
-      <Table.Cell>{item["expense_category"]}</Table.Cell>
-      <Table.Cell>{item["expense_amount"]}</Table.Cell>
+      <Table.Cell>{item['expense_date']}</Table.Cell>
+      <Table.Cell>{item['expense_category']}</Table.Cell>
+      <Table.Cell>{item['expense_amount']}</Table.Cell>
     </Table.Row>
   ));
 
@@ -214,7 +214,7 @@ const Home = () => {
                 collection={actions}
                 size="sm"
                 width="320px"
-                defaultValue={["add"]}
+                defaultValue={['add']}
                 variant="subtle"
                 margin="0 0 15px 0"
                 onValueChange={({ value }) => setAction(value[0])}
@@ -251,13 +251,13 @@ const Home = () => {
                     top="1"
                     aria-label="Select all rows"
                     checked={
-                      indeterminate ? "indeterminate" : selection.length > 0
+                      indeterminate ? 'indeterminate' : selection.length > 0
                     }
                     onCheckedChange={(changes) => {
                       setSelection(
                         changes.checked
-                          ? expenses.map((item: any) => item["id"])
-                          : []
+                          ? expenses.map((item: any) => item['id'])
+                          : [],
                       );
                     }}
                   />
@@ -283,9 +283,9 @@ const Home = () => {
 
 const actions = createListCollection({
   items: [
-    { label: "Add", value: "add" },
-    { label: "Edit", value: "edit" },
-    { label: "Delete", value: "delete" },
+    { label: 'Add', value: 'add' },
+    { label: 'Edit', value: 'edit' },
+    { label: 'Delete', value: 'delete' },
   ],
 });
 

@@ -1,4 +1,4 @@
-import { Button } from "../components/ui/button";
+import { Button } from '../components/ui/button';
 import {
   Card,
   Container,
@@ -12,15 +12,15 @@ import {
   Link,
   Icon,
   Heading,
-} from "@chakra-ui/react";
-import { Field } from "../components/ui/field";
-import { PasswordInput } from "../components/ui/password-input";
-import { useState } from "react";
-import axios from "axios";
-import { useForm } from "react-hook-form";
-import { useNavigate } from "react-router-dom";
-import { Tooltip } from "../components/ui/tooltip";
-import { FaInfoCircle } from "react-icons/fa";
+} from '@chakra-ui/react';
+import { Field } from '../components/ui/field';
+import { PasswordInput } from '../components/ui/password-input';
+import { useState } from 'react';
+import axios from 'axios';
+import { useForm } from 'react-hook-form';
+import { useNavigate } from 'react-router-dom';
+import { Tooltip } from '../components/ui/tooltip';
+import { FaInfoCircle } from 'react-icons/fa';
 
 const Signup = () => {
   const {
@@ -38,7 +38,7 @@ const Signup = () => {
   async function onSubmit(data: any) {
     axios
       .post(
-        "http://127.0.0.1:5000/register",
+        'http://127.0.0.1:5000/register',
         {
           username: data.username,
           password: data.password,
@@ -46,17 +46,17 @@ const Signup = () => {
         },
         {
           headers: {
-            "Content-Type": "application/json",
+            'Content-Type': 'application/json',
           },
-        }
+        },
       )
       .then((resp) => {
         // globalUserID is set by fetching it from the response after login
-        localStorage.setItem("globalUserId", resp.data.user_id);
-        navigate("/home");
+        localStorage.setItem('globalUserId', resp.data.user_id);
+        navigate('/home');
       })
       .catch((error) => {
-        alert("Login Failed. Username/Password is wrong!");
+        alert('Login Failed. Username/Password is wrong!');
         console.log(error.message);
       });
   }
@@ -113,8 +113,8 @@ const Signup = () => {
               <Stack gap="4" w="full">
                 <Field label="Email">
                   <Input
-                    {...register("username", {
-                      required: "This is required",
+                    {...register('username', {
+                      required: 'This is required',
                     })}
                   />
                 </Field>
@@ -122,8 +122,8 @@ const Signup = () => {
                   <PasswordInput
                     visible={visible}
                     onVisibleChange={setVisible}
-                    {...register("password", {
-                      required: "This is required",
+                    {...register('password', {
+                      required: 'This is required',
                     })}
                   />
                 </Field>
@@ -159,9 +159,9 @@ const Signup = () => {
                         </Text>
                         <br />
                         1. To find your UserID go to the telegram chat with
-                        Dollar Bot. <br /> 2. Type the command{" "}
+                        Dollar Bot. <br /> 2. Type the command{' '}
                         <strong>/reqUserID</strong> and copy-paste the contents
-                        of the reply in the userID field to import your data!{" "}
+                        of the reply in the userID field to import your data!{' '}
                       </>
                     }
                     interactive
@@ -172,7 +172,7 @@ const Signup = () => {
                   </Tooltip>
                 </Flex>
                 <Field label="Enter userID" hidden={importing}>
-                  <Input hidden={importing} {...register("user_id")} />
+                  <Input hidden={importing} {...register('user_id')} />
                 </Field>
               </Stack>
             </Card.Body>

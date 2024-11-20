@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect } from 'react';
 import {
   Center,
   Container,
@@ -8,7 +8,7 @@ import {
   Icon,
   Input,
   Text,
-} from "@chakra-ui/react";
+} from '@chakra-ui/react';
 import {
   SelectContent,
   SelectItem,
@@ -16,17 +16,17 @@ import {
   SelectRoot,
   SelectTrigger,
   SelectValueText,
-} from "../components/ui/select";
-import { Button } from "../components/ui/button";
-import { useForm } from "react-hook-form";
-import { FaDollarSign } from "react-icons/fa";
-import { FaEuroSign } from "react-icons/fa";
-import { FaIndianRupeeSign } from "react-icons/fa6";
+} from '../components/ui/select';
+import { Button } from '../components/ui/button';
+import { useForm } from 'react-hook-form';
+import { FaDollarSign } from 'react-icons/fa';
+import { FaEuroSign } from 'react-icons/fa';
+import { FaIndianRupeeSign } from 'react-icons/fa6';
 import {
   NumberInputField,
   NumberInputRoot,
-} from "../components/ui/number-input";
-import axios from "axios";
+} from '../components/ui/number-input';
+import axios from 'axios';
 
 type Props = {
   onDeleteExpense?: (value: boolean) => void;
@@ -44,9 +44,9 @@ const DeleteExpense = ({ onDeleteExpense, selectedExpense }: Props) => {
 
   async function onSubmit(values: any) {
     if (selectedExpense.length >= 1) {
-      await axios.delete("http://127.0.0.1:5000/deletebyids", {
+      await axios.delete('http://127.0.0.1:5000/deletebyids', {
         data: {
-          user_id: localStorage.getItem("globalUserId"),
+          user_id: localStorage.getItem('globalUserId'),
           ids_to_delete: selectedExpense,
         },
       });
@@ -57,7 +57,7 @@ const DeleteExpense = ({ onDeleteExpense, selectedExpense }: Props) => {
   }
 
   useEffect(() => {
-    console.log("Updated List");
+    console.log('Updated List');
   }, [selectedExpense]);
 
   return (

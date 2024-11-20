@@ -1,4 +1,4 @@
-import { Button } from "../components/ui/button";
+import { Button } from '../components/ui/button';
 import {
   Card,
   Container,
@@ -10,13 +10,13 @@ import {
   Flex,
   Text,
   Link,
-} from "@chakra-ui/react";
-import { Field } from "../components/ui/field";
-import { PasswordInput } from "../components/ui/password-input";
-import { useState } from "react";
-import axios from "axios";
-import { useForm } from "react-hook-form";
-import { useNavigate } from "react-router-dom";
+} from '@chakra-ui/react';
+import { Field } from '../components/ui/field';
+import { PasswordInput } from '../components/ui/password-input';
+import { useState } from 'react';
+import axios from 'axios';
+import { useForm } from 'react-hook-form';
+import { useNavigate } from 'react-router-dom';
 
 const Signin = () => {
   const {
@@ -30,23 +30,23 @@ const Signin = () => {
   async function onSubmit(data: any) {
     axios
       .post(
-        "http://127.0.0.1:5000/login",
+        'http://127.0.0.1:5000/login',
         {
           username: data.username,
           password: data.password,
         },
         {
           headers: {
-            "Content-Type": "application/json",
+            'Content-Type': 'application/json',
           },
-        }
+        },
       )
       .then((resp) => {
-        localStorage.setItem("globalUserId", resp.data.user_id);
-        navigate("/home");
+        localStorage.setItem('globalUserId', resp.data.user_id);
+        navigate('/home');
       })
       .catch((error) => {
-        alert("Login Failed. Username/Password is wrong!");
+        alert('Login Failed. Username/Password is wrong!');
         console.log(error.message);
       });
   }
@@ -103,8 +103,8 @@ const Signin = () => {
               <Stack gap="4" w="full">
                 <Field label="Email">
                   <Input
-                    {...register("username", {
-                      required: "This is required",
+                    {...register('username', {
+                      required: 'This is required',
                     })}
                   />
                 </Field>
@@ -112,8 +112,8 @@ const Signin = () => {
                   <PasswordInput
                     visible={visible}
                     onVisibleChange={setVisible}
-                    {...register("password", {
-                      required: "This is required",
+                    {...register('password', {
+                      required: 'This is required',
                     })}
                   />
                 </Field>

@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState } from 'react';
 import {
   Center,
   Container,
@@ -8,7 +8,7 @@ import {
   Icon,
   Input,
   Text,
-} from "@chakra-ui/react";
+} from '@chakra-ui/react';
 import {
   SelectContent,
   SelectItem,
@@ -16,19 +16,19 @@ import {
   SelectRoot,
   SelectTrigger,
   SelectValueText,
-} from "../components/ui/select";
-import { Button } from "../components/ui/button";
-import { useForm } from "react-hook-form";
-import { FaDollarSign } from "react-icons/fa";
-import { FaEuroSign } from "react-icons/fa";
-import { FaIndianRupeeSign } from "react-icons/fa6";
-import type { DatePickerProps } from "antd";
-import { DatePicker, Space } from "antd";
+} from '../components/ui/select';
+import { Button } from '../components/ui/button';
+import { useForm } from 'react-hook-form';
+import { FaDollarSign } from 'react-icons/fa';
+import { FaEuroSign } from 'react-icons/fa';
+import { FaIndianRupeeSign } from 'react-icons/fa6';
+import type { DatePickerProps } from 'antd';
+import { DatePicker, Space } from 'antd';
 import {
   NumberInputField,
   NumberInputRoot,
-} from "../components/ui/number-input";
-import axios from "axios";
+} from '../components/ui/number-input';
+import axios from 'axios';
 
 type Props = {
   onAddExpense?: (value: boolean) => void;
@@ -42,16 +42,16 @@ const AddExpense = ({ onAddExpense }: Props) => {
     register,
     formState: { errors, isSubmitting },
   } = useForm();
-  const [expDate, setExpDate] = useState("");
-  const [selectedCurrency, setSelectedCurrency] = useState("dollar");
+  const [expDate, setExpDate] = useState('');
+  const [selectedCurrency, setSelectedCurrency] = useState('dollar');
 
   async function onSubmit(data: any) {
-    if (expDate != "") {
+    if (expDate != '') {
       axios.post(
-        "http://127.0.0.1:5000/add/add_single",
+        'http://127.0.0.1:5000/add/add_single',
         {
           // Global User ID is set during SignUp/SignIn
-          user_id: localStorage.getItem("globalUserId"),
+          user_id: localStorage.getItem('globalUserId'),
           amount: data.expenseValue,
           date: expDate,
           category: data.expense_category,
@@ -59,9 +59,9 @@ const AddExpense = ({ onAddExpense }: Props) => {
         },
         {
           headers: {
-            "Content-Type": "application/json",
+            'Content-Type': 'application/json',
           },
-        }
+        },
       );
     }
     await new Promise((r) => setTimeout(r, 2000));
@@ -82,9 +82,9 @@ const AddExpense = ({ onAddExpense }: Props) => {
         </Text>
         <DatePicker
           size="large"
-          style={{ width: "100%", marginBottom: "10px" }}
+          style={{ width: '100%', marginBottom: '10px' }}
           onChange={(dateStrings) => {
-            setExpDate(String(dateStrings.format("YYYY-MM-DD")));
+            setExpDate(String(dateStrings.format('YYYY-MM-DD')));
           }}
         />
         <Text fontSize="sm" fontWeight="medium" marginBottom="2px">
@@ -95,9 +95,9 @@ const AddExpense = ({ onAddExpense }: Props) => {
           colorPalette="whiteAlpha"
           marginBottom="10px"
           placeholder="Enter Category"
-          {...register("expense_category", {
-            required: "This is required",
-            minLength: { value: 3, message: "Minimum length should be 3" },
+          {...register('expense_category', {
+            required: 'This is required',
+            minLength: { value: 3, message: 'Minimum length should be 3' },
           })}
         />
         <Text fontSize="sm" fontWeight="medium" marginBottom="2px">
@@ -110,7 +110,7 @@ const AddExpense = ({ onAddExpense }: Props) => {
             width="65px"
             variant="subtle"
             margin="0 5px 0px 0"
-            defaultValue={["dollar"]}
+            defaultValue={['dollar']}
             onValueChange={(value) => {
               setSelectedCurrency(value.value[0]);
             }}
@@ -134,8 +134,8 @@ const AddExpense = ({ onAddExpense }: Props) => {
             height="100%"
           >
             <NumberInputField
-              {...register("expenseValue", {
-                required: "This is required",
+              {...register('expenseValue', {
+                required: 'This is required',
               })}
             />
           </NumberInputRoot>
@@ -156,7 +156,7 @@ const currencies = createListCollection({
           <FaDollarSign />
         </Icon>
       ),
-      value: "dollar",
+      value: 'dollar',
     },
     {
       label: (
@@ -164,7 +164,7 @@ const currencies = createListCollection({
           <FaEuroSign />
         </Icon>
       ),
-      value: "euro",
+      value: 'euro',
     },
     {
       label: (
@@ -172,7 +172,7 @@ const currencies = createListCollection({
           <FaIndianRupeeSign />
         </Icon>
       ),
-      value: "rupee",
+      value: 'rupee',
     },
   ],
 });
