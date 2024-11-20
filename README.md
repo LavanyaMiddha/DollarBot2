@@ -1,18 +1,23 @@
 
-![MIT license](https://img.shields.io/badge/License-MIT-green.svg)
-![GitHub](https://img.shields.io/github/languages/top/tpanati/DollarBot?color=red&label=Python&logo=Python&logoColor=yellow)
-![GitHub](https://img.shields.io/badge/Language-Python-blue.svg)
-[![DOI](https://zenodo.org/badge/715323572.svg)](https://zenodo.org/doi/10.5281/zenodo.10146708)
-![GitHub contributors](https://img.shields.io/github/contributors/tpanati/DollarBot)
-[![Platform](https://img.shields.io/badge/Platform-Telegram-blue)](https://desktop.telegram.org/)
-[![pylint](https://img.shields.io/badge/PyLint-6.61-orange?logo=python&logoColor=white)]([https://github.com/SoftwareEngNoobs/DollarBot/blob/release-1.0/.github/workflows/python-app.yml]) [![PEP8](https://img.shields.io/badge/autopep8%20-checked-green.svg)] 
-[![PEP8](https://img.shields.io/badge/autopep8%20-checked-green.svg)]
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://github.com/LavanyaMiddha/DollarBot2/blob/main/LICENSE)
+[![Python application](https://github.com/LavanyaMiddha/DollarBot2/actions/workflows/python-app.yml/badge.svg)](https://github.com/LavanyaMiddha/DollarBot2/actions/workflows/python-app.yml)
+[![Format code](https://github.com/LavanyaMiddha/DollarBot2/actions/workflows/black.yml/badge.svg)](https://github.com/LavanyaMiddha/DollarBot2/actions/workflows/black.yml)
+[![pylint](https://img.shields.io/badge/PyLint-6.61-orange?logo=python&logoColor=white)]([https://github.com/SoftwareEngNoobs/DollarBot/blob/release-1.0/.github/workflows/python-app.yml])
 [![codecov](https://codecov.io/gh/LavanyaMiddha/DollarBot2/graph/badge.svg?token=EE8RIQLV3Y)](https://codecov.io/gh/LavanyaMiddha/DollarBot2)
-![Lines of code](https://tokei.rs/b1/github/tpanati/DollarBot)
-![Version](https://img.shields.io/github/v/release/tpanati/DollarBot?color=ff69b4&label=Version)
-![GitHub issues](https://img.shields.io/github/issues-raw/tpanati/DollarBot)
-![GitHub closed issues](https://img.shields.io/github/issues-closed-raw/tpanati/DollarBot)
-[![Build](https://github.com/SoftwareEngNoobs/DollarBot/actions/workflows/python-app.yml/badge.svg)](https://github.com/SoftwareEngNoobs/DollarBot/actions/workflows/python-app.yml)
+
+![GitHub language count](https://img.shields.io/github/languages/count/LavanyaMiddha/Auction-Sphere-2)
+![GitHub](https://img.shields.io/github/languages/top/LavanyaMiddha/DollarBot2?color=red&label=Python&logo=Python&logoColor=yellow)
+![GitHub](https://img.shields.io/badge/Language-Python-blue.svg)
+[![Platform](https://img.shields.io/badge/Platform-Telegram-blue)](https://desktop.telegram.org/)
+[![DOI](https://zenodo.org/badge/715323572.svg)](https://zenodo.org/doi/10.5281/zenodo.10146708)
+
+![GitHub contributors](https://img.shields.io/github/contributors/LavanyaMiddha/DollarBot2)
+![GitHub forks](https://img.shields.io/github/forks/LavanyaMiddha/DollarBot2?style=social)
+![Lines of code](https://tokei.rs/b1/github/LavanyaMiddha/DollarBot2)
+![GitHub issues](https://img.shields.io/github/issues-raw/LavanyaMiddha/DollarBot2)
+![GitHub closed issues](https://img.shields.io/github/issues-closed-raw/LavanyaMiddha/DollarBot2)
+
+
 
 # 💰 Dollar Bot 💰
 
