@@ -7,7 +7,7 @@
 [![Platform](https://img.shields.io/badge/Platform-Telegram-blue)](https://desktop.telegram.org/)
 [![pylint](https://img.shields.io/badge/PyLint-6.61-orange?logo=python&logoColor=white)]([https://github.com/SoftwareEngNoobs/DollarBot/blob/release-1.0/.github/workflows/python-app.yml]) [![PEP8](https://img.shields.io/badge/autopep8%20-checked-green.svg)] 
 [![PEP8](https://img.shields.io/badge/autopep8%20-checked-green.svg)]
-[![codecov](https://codecov.io/gh/tpanati/DollarBot/graph/badge.svg?token=23RW1XPB3P)](https://codecov.io/gh/tpanati/DollarBot)
+[![codecov](https://codecov.io/gh/LavanyaMiddha/DollarBot2/graph/badge.svg?token=EE8RIQLV3Y)](https://codecov.io/gh/LavanyaMiddha/DollarBot2)
 ![Lines of code](https://tokei.rs/b1/github/tpanati/DollarBot)
 ![Version](https://img.shields.io/github/v/release/tpanati/DollarBot?color=ff69b4&label=Version)
 ![GitHub issues](https://img.shields.io/github/issues-raw/tpanati/DollarBot)

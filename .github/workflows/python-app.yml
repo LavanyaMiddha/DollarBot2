@@ -4,10 +4,7 @@
 name: Python application
 
 on:
-  push:
-    branches: ["release-1.0" ]
-  pull_request:
-    branches: ["release-1.0" ]
+  [push, pull_request]
 
 permissions:
   contents: write
