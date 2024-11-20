@@ -39,7 +39,7 @@ type Props = {
 const AddExpense = ({ onAddExpense }: Props) => {
   const {
     handleSubmit,
-    register,
+                register,
     formState: { errors, isSubmitting },
   } = useForm();
   const [expDate, setExpDate] = useState('');

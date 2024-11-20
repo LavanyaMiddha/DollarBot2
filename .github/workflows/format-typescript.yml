@@ -1,4 +1,4 @@
-name: Javascript Format Checker
+name: Typescript Format Checker
 on: [push, pull_request]
 
 jobs:
