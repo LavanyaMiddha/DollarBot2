@@ -67,14 +67,14 @@ const Goals =( {onAddBudgetGoal }: Props)=>{
         window.location.reload();
       }
     return(
-        <Container background={"black"}>
+        <Container background={"#c2d4dd"}>
         <Center>
-          <Heading fontWeight="bold" marginBottom="8px" color="White">
+          <Heading fontWeight="bold" marginBottom="8px" color="Black">
             Set Your Financial Goals!
           </Heading>
         </Center>
         <form onSubmit={handleSubmit(onSubmit)}>
-          <Text fontSize="sm" fontWeight="medium" marginBottom="2px" color="White">
+          <Text fontSize="15px" fontWeight="bold" marginBottom="2px" color="Black">
             Date
           </Text>
           <DatePicker
@@ -84,7 +84,7 @@ const Goals =( {onAddBudgetGoal }: Props)=>{
               setExpDate(String(dateStrings.format('YYYY-MM-DD')));
             }}
           />
-          <Text fontSize="sm" fontWeight="medium" marginBottom="5px" color="White" marginTop="20px">
+          <Text fontSize="15px" fontWeight="bold" marginBottom="5px" color="Black" marginTop="20px">
             Goal Type
           </Text>
           <select id="goalType" value={goalType} onChange={(e) => setGoalType(e.target.value)}style={{marginTop:"5px", marginBottom:"5px", height:"40px", width: "120px"}}>
@@ -92,10 +92,10 @@ const Goals =( {onAddBudgetGoal }: Props)=>{
             <option value="Long-Term">Long-Term</option>
           </select>
           <Text
-          fontSize="sm"
-          fontWeight="medium"
+          fontSize="15px"
+          fontWeight="bold"
           marginBottom="5px"
-          color="White"
+          color="Black"
           marginTop="20px"
         >
           Category
@@ -112,7 +112,7 @@ const Goals =( {onAddBudgetGoal }: Props)=>{
             minLength: { value: 3, message: 'Minimum length should be 3' },
           })}
         />
-          <Text fontSize="sm" fontWeight="medium"  marginTop = "10px"marginBottom="15px" color="White">
+          <Text fontSize="15px" fontWeight="bold"  marginTop = "10px"marginBottom="15px" color="Black">
             Budget Value
           </Text>
           <Flex flexDir="row">

@@ -134,20 +134,22 @@ const BudgetGoal = () => {
                 borderCollapse: 'collapse',
                 textAlign: 'left',
                 marginTop: '10px',
+                background:"#36486b",
+                color: "White"
               }}
             >
               <thead>
                 <tr>
-                  <th style={{ borderBottom: '1px solid #ccc', padding: '8px' }}>
+                  <th style={{ borderBottom: '1px solid #ccc', padding: '8px', fontSize:"20px", fontWeight:"bold"}}>
                     Amount
                   </th>
-                  <th style={{ borderBottom: '1px solid #ccc', padding: '8px' }}>
+                  <th style={{ borderBottom: '1px solid #ccc', padding: '8px', fontSize:"20px", fontWeight:"bold"}}>
                     Category
                   </th>
-                  <th style={{ borderBottom: '1px solid #ccc', padding: '8px' }}>
+                  <th style={{ borderBottom: '1px solid #ccc', padding: '8px', fontSize:"20px", fontWeight:"bold"}}>
                     Goal Type
                   </th>
-                  <th style={{ borderBottom: '1px solid #ccc', padding: '8px' }}>
+                  <th style={{ borderBottom: '1px solid #ccc', padding: '8px', fontSize:"20px", fontWeight:"bold"}}>
                     Date
                   </th>
                 </tr>
