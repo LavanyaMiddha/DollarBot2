@@ -13,7 +13,6 @@ import {
 import {
   SelectContent,
   SelectItem,
-  SelectLabel,
   SelectRoot,
   SelectTrigger,
   SelectValueText,
@@ -23,19 +22,18 @@ import { useForm } from 'react-hook-form';
 import { FaDollarSign } from 'react-icons/fa';
 import { FaEuroSign } from 'react-icons/fa';
 import { FaIndianRupeeSign } from 'react-icons/fa6';
-import type { DatePickerProps } from 'antd';
-import { DatePicker, Space } from 'antd';
+import { DatePicker } from 'antd';
 import {
   NumberInputField,
   NumberInputRoot,
 } from '../components/ui/number-input';
 
 type Props = {
-    onAddExpense?: (value: boolean) => void;
+    onAddBudgetGoal?: (value: boolean) => void;
   };
 
 
-const Goals =( {onAddExpense }: Props)=>{
+const Goals =( {onAddBudgetGoal }: Props)=>{
     const {
         handleSubmit,
         register,
@@ -65,7 +63,7 @@ const Goals =( {onAddExpense }: Props)=>{
           );
         }
         await new Promise((r) => setTimeout(r, 2000));
-        onAddExpense?.(true);
+        onAddBudgetGoal?.(true);
         window.location.reload();
       }
     return(
