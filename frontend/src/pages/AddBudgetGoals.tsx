@@ -29,69 +29,89 @@ import {
 } from '../components/ui/number-input';
 
 type Props = {
-    onAddBudgetGoal?: (value: boolean) => void;
-  };
+  onAddBudgetGoal?: (value: boolean) => void;
+};
 
-
-const Goals =( {onAddBudgetGoal }: Props)=>{
-    const {
-        handleSubmit,
-        register,
-        formState: { errors, isSubmitting },
-      } = useForm();
-    const [goalType, setGoalType] = useState<string>('Short-Term');
-      const [expDate, setExpDate] = useState('');
-      const [selectedCurrency, setSelectedCurrency] = useState('dollar');
-      async function onSubmit(data: any) {
-        if (expDate != '') {
-          axios.post(
-            'http://127.0.0.1:5000/add_budget/add_single',
-            {
-              // Global User ID is set during SignUp/SignIn
-              user_id: localStorage.getItem('globalUserId'),
-              amount: data.budgetValue,
-              date: expDate,
-              goal_type: goalType,
-              category: data.expense_category,
-              currency: selectedCurrency,
-            },
-            {
-              headers: {
-                'Content-Type': 'application/json',
-              },
-            },
-          );
-        }
-        await new Promise((r) => setTimeout(r, 2000));
-        onAddBudgetGoal?.(true);
-        window.location.reload();
-      }
-    return(
-        <Container background={"#c2d4dd"}>
-        <Center>
-          <Heading fontWeight="bold" marginBottom="8px" color="Black">
-            Set Your Financial Goals!
-          </Heading>
-        </Center>
-        <form onSubmit={handleSubmit(onSubmit)}>
-          <Text fontSize="15px" fontWeight="bold" marginBottom="2px" color="Black">
-            Date
-          </Text>
-          <DatePicker
-            size="large"
-            style={{ width: '100%', marginBottom: '15px' }}
-            onChange={(dateStrings) => {
-              setExpDate(String(dateStrings.format('YYYY-MM-DD')));
-            }}
-          />
-          <Text fontSize="15px" fontWeight="bold" marginBottom="5px" color="Black" marginTop="20px">
-            Goal Type
-          </Text>
-          <select id="goalType" value={goalType} onChange={(e) => setGoalType(e.target.value)}style={{marginTop:"5px", marginBottom:"5px", height:"40px", width: "120px"}}>
-            <option value="Short-Term">Short-Term</option>
-            <option value="Long-Term">Long-Term</option>
-          </select>
-          <Text
+const Goals = ({ onAddBudgetGoal }: Props) => {
+  const {
+    handleSubmit,
+    register,
+    formState: { errors, isSubmitting },
+  } = useForm();
+  const [goalType, setGoalType] = useState<string>('Short-Term');
+  const [expDate, setExpDate] = useState('');
+  const [selectedCurrency, setSelectedCurrency] = useState('dollar');
+  async function onSubmit(data: any) {
+    if (expDate != '') {
+      axios.post(
+        'http://127.0.0.1:5000/add_budget/add_single',
+        {
+          // Global User ID is set during SignUp/SignIn
+          user_id: localStorage.getItem('globalUserId'),
+          amount: data.budgetValue,
+          date: expDate,
+          goal_type: goalType,
+          category: data.expense_category,
+          currency: selectedCurrency,
+        },
+        {
+          headers: {
+            'Content-Type': 'application/json',
+          },
+        },
+      );
+    }
+    await new Promise((r) => setTimeout(r, 2000));
+    onAddBudgetGoal?.(true);
+    window.location.reload();
+  }
+  return (
+    <Container background={'#c2d4dd'}>
+      <Center>
+        <Heading fontWeight="bold" marginBottom="8px" color="Black">
+          Set Your Financial Goals!
+        </Heading>
+      </Center>
+      <form onSubmit={handleSubmit(onSubmit)}>
+        <Text
+          fontSize="15px"
+          fontWeight="bold"
+          marginBottom="2px"
+          color="Black"
+        >
+          Date
+        </Text>
+        <DatePicker
+          size="large"
+          style={{ width: '100%', marginBottom: '15px' }}
+          onChange={(dateStrings) => {
+            setExpDate(String(dateStrings.format('YYYY-MM-DD')));
+          }}
+        />
+        <Text
+          fontSize="15px"
+          fontWeight="bold"
+          marginBottom="5px"
+          color="Black"
+          marginTop="20px"
+        >
+          Goal Type
+        </Text>
+        <select
+          id="goalType"
+          value={goalType}
+          onChange={(e) => setGoalType(e.target.value)}
+          style={{
+            marginTop: '5px',
+            marginBottom: '5px',
+            height: '40px',
+            width: '120px',
+          }}
+        >
+          <option value="Short-Term">Short-Term</option>
+          <option value="Long-Term">Long-Term</option>
+        </select>
+        <Text
           fontSize="15px"
           fontWeight="bold"
           marginBottom="5px"
@@ -112,83 +132,89 @@ const Goals =( {onAddBudgetGoal }: Props)=>{
             minLength: { value: 3, message: 'Minimum length should be 3' },
           })}
         />
-          <Text fontSize="15px" fontWeight="bold"  marginTop = "10px"marginBottom="15px" color="Black">
-            Budget Value
-          </Text>
-          <Flex flexDir="row">
-            <SelectRoot
-              collection={currencies}
-              size="md"
-              width="65px"
-              variant="subtle"
-              margin="0 5px 0px 0"
-              background={"white"}
-              defaultValue={['dollar']}
-              onValueChange={(value) => {
-                setSelectedCurrency(value.value[0]);
-              }}
-            >
-              <SelectTrigger>
-                <SelectValueText color="teal" placeholder="Select Action" />
-              </SelectTrigger>
-              <SelectContent>
-                {currencies.items.map((currency) => (
-                  <SelectItem color="teal" item={currency} key={currency.value}>
-                    {currency.label}
-                  </SelectItem>
-                ))}
-              </SelectContent>
-            </SelectRoot>
-            <NumberInputRoot
-              size="md"
-              defaultValue="0"
-              marginBottom="10px"
-              min={0}
-              height="100%"
-              background={"white"}
-            >
-              <NumberInputField
-                {...register('budgetValue', {
-                  required: 'This is required',
-                })}
-              />
-            </NumberInputRoot>
-          </Flex>
-          <Button mt={4} colorScheme="teal" loading={isSubmitting} type="submit">
-            Add
-          </Button>
-        </form>
-      </Container>
-    );
-  };
-  
-  const currencies = createListCollection({
-    items: [
-      {
-        label: (
-          <Icon>
-            <FaDollarSign />
-          </Icon>
-        ),
-        value: 'dollar',
-      },
-      {
-        label: (
-          <Icon>
-            <FaEuroSign />
-          </Icon>
-        ),
-        value: 'euro',
-      },
-      {
-        label: (
-          <Icon>
-            <FaIndianRupeeSign />
-          </Icon>
-        ),
-        value: 'rupee',
-      },
-    ],
-  });
+        <Text
+          fontSize="15px"
+          fontWeight="bold"
+          marginTop="10px"
+          marginBottom="15px"
+          color="Black"
+        >
+          Budget Value
+        </Text>
+        <Flex flexDir="row">
+          <SelectRoot
+            collection={currencies}
+            size="md"
+            width="65px"
+            variant="subtle"
+            margin="0 5px 0px 0"
+            background={'white'}
+            defaultValue={['dollar']}
+            onValueChange={(value) => {
+              setSelectedCurrency(value.value[0]);
+            }}
+          >
+            <SelectTrigger>
+              <SelectValueText color="teal" placeholder="Select Action" />
+            </SelectTrigger>
+            <SelectContent>
+              {currencies.items.map((currency) => (
+                <SelectItem color="teal" item={currency} key={currency.value}>
+                  {currency.label}
+                </SelectItem>
+              ))}
+            </SelectContent>
+          </SelectRoot>
+          <NumberInputRoot
+            size="md"
+            defaultValue="0"
+            marginBottom="10px"
+            min={0}
+            height="100%"
+            background={'white'}
+          >
+            <NumberInputField
+              {...register('budgetValue', {
+                required: 'This is required',
+              })}
+            />
+          </NumberInputRoot>
+        </Flex>
+        <Button mt={4} colorScheme="teal" loading={isSubmitting} type="submit">
+          Add
+        </Button>
+      </form>
+    </Container>
+  );
+};
 
-export default Goals
+const currencies = createListCollection({
+  items: [
+    {
+      label: (
+        <Icon>
+          <FaDollarSign />
+        </Icon>
+      ),
+      value: 'dollar',
+    },
+    {
+      label: (
+        <Icon>
+          <FaEuroSign />
+        </Icon>
+      ),
+      value: 'euro',
+    },
+    {
+      label: (
+        <Icon>
+          <FaIndianRupeeSign />
+        </Icon>
+      ),
+      value: 'rupee',
+    },
+  ],
+});
+
+export default Goals;
