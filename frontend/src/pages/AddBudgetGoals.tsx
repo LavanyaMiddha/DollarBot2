@@ -34,25 +34,6 @@ type Props = {
     onAddExpense?: (value: boolean) => void;
   };
 
-function retCurrencySymbol(currency: string) {
-    var result = '';
-    switch (currency) {
-      case 'dollar':
-        result = '$';
-        break;
-      case 'euro':
-        result = '€';
-        break;
-      case 'rupee':
-        result = '₹';
-        break;
-      default:
-        return '$';
-    }
-    return result;
-  }
-
-
 
 const Goals =( {onAddExpense }: Props)=>{
     const {
@@ -60,32 +41,7 @@ const Goals =( {onAddExpense }: Props)=>{
         register,
         formState: { errors, isSubmitting },
       } = useForm();
-    const [expenses, setExpenses] = useState([{}]);
     const [goalType, setGoalType] = useState<string>('Short-Term');
-    const handleExpense = (value: boolean) => {
-        if (value) {
-          var newData: any[] = [];
-          axios
-            .get(
-              `http://127.0.0.1:5000/display/${localStorage.getItem(
-                'globalUserId',
-              )}`,
-            )
-            .then(function (resp) {
-              for (let i = 0; i < resp.data.length; i++) {
-                var expenseData = {
-                  expense_amount:
-                    retCurrencySymbol(resp.data[i]['expense_currency'].trim()) +
-                    resp.data[i]['expense_amount'],
-                  expense_category: resp.data[i]['expense_category'],
-                  expense_date: resp.data[i]['expense_date'],
-                };
-                newData.push(expenseData);
-              }
-              setExpenses(newData);
-            });
-        }
-      };
       const [expDate, setExpDate] = useState('');
       const [selectedCurrency, setSelectedCurrency] = useState('dollar');
       async function onSubmit(data: any) {
@@ -98,6 +54,7 @@ const Goals =( {onAddExpense }: Props)=>{
               amount: data.budgetValue,
               date: expDate,
               goal_type: goalType,
+              category: data.expense_category,
               currency: selectedCurrency,
             },
             {
