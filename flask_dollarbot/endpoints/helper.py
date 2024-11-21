@@ -178,6 +178,8 @@ def getUserData(chat_id):
         
         return None
     if str(chat_id) in user_list:
+        print("Returning from User Data")
+        print(user_list[str(chat_id)])
         return user_list[str(chat_id)]
     
     return None
