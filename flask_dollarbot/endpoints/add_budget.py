@@ -32,7 +32,7 @@ def add_single():
     expense_currency = str(data['currency'])
     print("Hello")
     user_list = helper.read_json()
-    data_edit = helper.getUserHistory(chat_id)
+    data_edit = helper.getUserBudgetHistory(chat_id)
     print(data_edit)
     return jsonify({'message': 'Expense record created successfully'}), 200
     

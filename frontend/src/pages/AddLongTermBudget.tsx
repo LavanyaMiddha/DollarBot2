@@ -129,34 +129,13 @@ const Goals =( {onAddExpense }: Props)=>{
               setExpDate(String(dateStrings.format('YYYY-MM-DD')));
             }}
           />
-          <Text fontSize="sm" fontWeight="medium" marginBottom="5px" color="White" marginTop="20px">
+          <Text fontSize="sm" fontWeight="medium" marginBottom="15px" color="White">
             Goal Type
           </Text>
-          <select id="goalType" value={goalType} onChange={(e) => setGoalType(e.target.value)}style={{marginTop:"5px", marginBottom:"5px", height:"40px", width: "120px"}}>
+          <select id="goalType" value={goalType} onChange={(e) => setGoalType(e.target.value)}style={{marginTop:"10px", marginBottom:"5px"}}>
             <option value="Short-Term">Short-Term</option>
             <option value="Long-Term">Long-Term</option>
           </select>
-          <Text
-          fontSize="sm"
-          fontWeight="medium"
-          marginBottom="5px"
-          color="White"
-          marginTop="20px"
-        >
-          Category
-        </Text>
-        <Input
-          id="category"
-          background={'white'}
-          colorPalette="Black"
-          marginBottom="5px"
-          placeholder="Enter Category"
-          marginTop="5px"
-          {...register('expense_category', {
-            required: 'This is required',
-            minLength: { value: 3, message: 'Minimum length should be 3' },
-          })}
-        />
           <Text fontSize="sm" fontWeight="medium"  marginTop = "10px"marginBottom="15px" color="White">
             Budget Value
           </Text>
