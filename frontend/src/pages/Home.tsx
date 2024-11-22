@@ -11,7 +11,7 @@ import {
   ListCollection,
 } from '@chakra-ui/react';
 import { Checkbox } from '../components/ui/checkbox';
-import { useState } from 'react';
+import { useState, useRef } from 'react';
 import {
   SelectContent,
   SelectItem,
@@ -27,6 +27,10 @@ import DeleteExpense from './DeleteExpense';
 import axios from 'axios';
 import { useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
+import { Pie } from 'react-chartjs-2';
+
+import {Chart, ArcElement} from 'chart.js';
+Chart.register(ArcElement);
 
 function retCurrencySymbol(currency: string) {
   var result = '';
@@ -50,6 +54,26 @@ const Home = () => {
   const [selection, setSelection] = useState<string[]>([]);
   const [action, setAction] = useState<string>('add');
   const [expenses, setExpenses] = useState([{}]);
+  const [chartData, setChartData] = useState<any>({labels: [],
+    datasets: [
+      {
+        label: 'User Expenses',
+        data: [],
+        backgroundColor: [
+          'rgba(255, 99, 132, 0.2)',
+          'rgba(54, 162, 235, 0.2)',
+          'rgba(255, 206, 86, 0.2)',
+        ],
+        borderColor: [
+          'rgba(255, 99, 132, 1)',
+          'rgba(54, 162, 235, 1)',
+          'rgba(255, 206, 86, 1)',
+        ],
+        borderWidth: 1,
+      },
+    ],
+  });
+
   let navigate = useNavigate();
 
   if (localStorage.getItem('globalUserId') === null) {
@@ -59,6 +83,7 @@ const Home = () => {
   const handleExpense = (value: boolean) => {
     if (value) {
       var newData: any[] = [];
+      console.log();
       axios
         .get(
           `http://127.0.0.1:5000/display/${localStorage.getItem(
@@ -77,12 +102,14 @@ const Home = () => {
             newData.push(expenseData);
           }
           setExpenses(newData);
-        });
+        });   
     }
   };
-
+  
   useEffect(() => {
     var newData: any[] = [];
+    var labels: any[] = [];
+    var expenses_1: any[] = [];
     axios
       .get(
         `http://127.0.0.1:5000/display/${localStorage.getItem('globalUserId')}`,
@@ -100,9 +127,43 @@ const Home = () => {
           newData.push(expenseData);
         }
         setExpenses(newData);
-      });
+      }); 
   }, [selection]);
 
+  useEffect(() => {
+    const labels: string[] = [];
+    const expenses: number[] = [];
+    axios
+        .get(
+          `http://127.0.0.1:5000/analytics/${localStorage.getItem('globalUserId',)}`,
+        )
+        .then(function (resp) {
+          for (let i = 0; i < resp.data.length; i++) {
+            labels.push(resp.data[i]['expense_category']);
+            expenses.push(resp.data[i]['expense_amount']);
+          }
+    setChartData({
+      labels: labels,
+      datasets: [
+        {
+          label: 'User Expenses',
+          data: expenses,
+          backgroundColor: [
+            'rgb(255, 99, 132)',
+            'rgb(54, 162, 235)',
+            'rgb(255, 205, 86)'
+          ],
+          borderColor: [ 'rgb(255, 99, 132)',
+            'rgb(54, 162, 235)',
+            'rgb(255, 205, 86)'],
+          borderWidth: 1,
+        },
+      ],
+    });
+    console.log("Chart data in new func:", chartData)
+  });
+}, []);
+  
   const hasSelection = selection.length > 0;
   const indeterminate = hasSelection && selection.length < expenses.length;
 
@@ -276,8 +337,18 @@ const Home = () => {
             <Table.Body>{rows}</Table.Body>
           </Table.Root>
         </Flex>
+        {chartData.labels.length > 0 && chartData.datasets.length > 0 && (
+        <div>
+          <h1>Pie Chart</h1>
+          <Pie data={chartData} />
+          </div>
+      )}
+      {!chartData.labels.length && !chartData.datasets.length && (
+  <p>Loading Pie Chart Data...</p>
+)}
       </AbsoluteCenter>
     </div>
+    
   );
 };
 

@@ -8,6 +8,7 @@ from endpoints.add import add_bp
 from endpoints.edit import edit_bp
 from endpoints.delete import delete_bp
 from endpoints.display import display_bp
+from endpoints.analytics import analytics_bp
 from endpoints.category import category_bp
 from sqlalchemy import inspect
 from flask_cors import CORS
@@ -46,6 +47,7 @@ app.register_blueprint(delete_bp)
 app.register_blueprint(display_bp, url_prefix='/display')
 app.register_blueprint(category_bp, url_prefix='/category')
 app.register_blueprint(auth_bp)
+app.register_blueprint(analytics_bp, url_prefix='/analytics')
 
        
 if __name__ == '__main__':
