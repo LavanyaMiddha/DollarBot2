@@ -29,8 +29,10 @@ import { useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { Pie } from 'react-chartjs-2';
 
-import {Chart, ArcElement} from 'chart.js';
-Chart.register(ArcElement);
+import {Chart, ArcElement, Legend} from 'chart.js';
+import ChartDataLabels from 'chartjs-plugin-datalabels';
+Chart.register(ArcElement, Legend);
+Chart.register(ChartDataLabels);
 
 function retCurrencySymbol(currency: string) {
   var result = '';
@@ -159,7 +161,7 @@ const Home = () => {
           borderWidth: 1,
         },
       ],
-    });
+      });
     console.log("Chart data in new func:", chartData)
   });
 }, []);
