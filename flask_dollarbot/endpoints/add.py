@@ -59,7 +59,7 @@ def add_single():
         user_list.append("864914211") #Placeholder value
     # add new json for new user
     if str(chat_id) not in user_list:
-        user_list[str(chat_id)] = {"data": [], "budget": {"long-term": [],"short-term": []   }}
+        user_list[str(chat_id)] = {"data": [], "budget": {"long-term": [],"short-term": []  }}
     record = "{},{},{}, {}".format(date_str, category_str, amount_str, expense_currency)
     # write data 
     user_list[str(chat_id)]["data"].append(record)

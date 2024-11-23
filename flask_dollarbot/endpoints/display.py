@@ -21,8 +21,6 @@ def build_dictionary(expense_record):
     }
 
 def build_budget_dictionary(budget_data):
-    print("Hi")
-    print(budget_data)
     budget_details = budget_data.split(',')
     return {
         "budget_date" : budget_details[0],
