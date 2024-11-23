@@ -201,9 +201,9 @@ const options = {
     legend: {
       labels: {
         font: {
-          family: 'Times New Roman',
-          fontSize: 20,
-          weight: 'bold'
+          family: 'Times New Roman' as const,
+          fontSize: 20 as const,
+          weight: "bolder" as const,
         }
       }
     },
