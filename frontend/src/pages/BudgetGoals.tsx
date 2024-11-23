@@ -146,7 +146,7 @@ const BudgetGoal = () => {
                       padding: '8px',
                       fontSize: '20px',
                       fontWeight: 'bold',
-                      color: '#fefbd8'
+                      color: '#fefbd8',
                     }}
                   >
                     Amount
@@ -157,7 +157,7 @@ const BudgetGoal = () => {
                       padding: '8px',
                       fontSize: '20px',
                       fontWeight: 'bold',
-                      color: '#fefbd8'
+                      color: '#fefbd8',
                     }}
                   >
                     Category
@@ -168,7 +168,7 @@ const BudgetGoal = () => {
                       padding: '8px',
                       fontSize: '20px',
                       fontWeight: 'bold',
-                      color: '#fefbd8'
+                      color: '#fefbd8',
                     }}
                   >
                     Goal Type
@@ -179,7 +179,7 @@ const BudgetGoal = () => {
                       padding: '8px',
                       fontSize: '20px',
                       fontWeight: 'bold',
-                      color: '#fefbd8'
+                      color: '#fefbd8',
                     }}
                   >
                     Date
@@ -190,7 +190,7 @@ const BudgetGoal = () => {
                       padding: '8px',
                       fontSize: '20px',
                       fontWeight: 'bold',
-                      color: '#fefbd8'
+                      color: '#fefbd8',
                     }}
                   >
                     Budget Analytics
@@ -206,7 +206,9 @@ const BudgetGoal = () => {
                     </td>
                     <td style={{ padding: '8px' }}>{expense.budget_type}</td>
                     <td style={{ padding: '8px' }}>{expense.budget_date}</td>
-                    <td style={{ padding: '8px' }}><a href="/BudgetAnalytics">View Budget Analytics</a></td>
+                    <td style={{ padding: '8px' }}>
+                      <a href="/BudgetAnalytics">View Budget Analytics</a>
+                    </td>
                   </tr>
                 ))}
               </tbody>

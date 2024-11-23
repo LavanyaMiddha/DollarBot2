@@ -8,7 +8,7 @@ import { Provider } from './components/ui/provider';
 import Signin from './pages/Signin';
 import Home from './pages/Home';
 import BudgetGoals from './pages/BudgetGoals';
-import BudgetAnalytics from './pages/BudgetAnalytics'
+import BudgetAnalytics from './pages/BudgetAnalytics';
 
 const history = createMemoryHistory();
 function App() {

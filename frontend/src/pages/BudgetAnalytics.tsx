@@ -1,9 +1,7 @@
 import { Container, Flex, Text, Link } from '@chakra-ui/react';
 import AddBudgetAnalytics from './AddBudgetAnalytics';
 
-
 const BudgetAnalytics = () => {
-
   return (
     <div>
       <Container>
@@ -70,7 +68,6 @@ const BudgetAnalytics = () => {
         <br />
         {/* AddBudgetGoal triggers handleBudget on goal addition */}
         <AddBudgetAnalytics />
-        
       </Container>
     </div>
   );
