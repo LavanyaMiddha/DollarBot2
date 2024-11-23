@@ -195,6 +195,18 @@ const Home = () => {
       });
   });
 }, []);
+
+const options = {
+  plugins: {
+    datalabels: {
+      formatter: (value: number, context: { dataset: { data: any[]; }; }) => {
+        const total = context.dataset.data.reduce((sum: any, val: any) => sum + val, 0);
+        const percentage = ((value / total) * 100).toFixed(0);
+        return `${value}\n${percentage}%`;
+      },
+    },
+  },
+};
   
   const hasSelection = selection.length > 0;
   const indeterminate = hasSelection && selection.length < expenses.length;
@@ -374,7 +386,7 @@ const Home = () => {
           <Heading fontWeight="bold" marginBottom="8px" marginLeft="10px">
             Expense Distribution
           </Heading>
-          <Pie data={chartData} />
+          <Pie data={chartData} options={options}/>
         </div>
        )}
       {!chartData.labels.length && !chartData.datasets.length && (
