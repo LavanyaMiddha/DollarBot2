@@ -9,7 +9,8 @@ import {
   Kbd,
   Box,
   ListCollection,
-  Heading
+  Heading,
+  AspectRatio
 } from '@chakra-ui/react';
 import { Checkbox } from '../components/ui/checkbox';
 import { useState, useRef } from 'react';
@@ -199,6 +200,7 @@ const Home = () => {
 }, []);
 
 const options = {
+  aspectRatio: 0.95,
   plugins: {
     legend: {
       labels: {
@@ -391,9 +393,8 @@ const options = {
             </Table.Header>
             <Table.Body>{rows}</Table.Body>
           </Table.Root>
-        </Flex>
-        {chartData.labels.length > 0 && chartData.datasets.length > 0 && (
-        <div>
+          {chartData.labels.length > 0 && chartData.datasets.length > 0 && (
+        <div style={{ padding: '10px', paddingTop: '100px' }}>
           <Heading fontWeight="bold" marginBottom="8px" marginLeft="10px">
             Expense Distribution Pie Chart
           </Heading>
@@ -401,26 +402,26 @@ const options = {
         </div>
        )}
       {!chartData.labels.length && !chartData.datasets.length && (
-  <p>Loading Pie Chart Data...</p>
-)}      
+  <p>Loading Pie Chart Data...</p>)}      
     {chartData.labels.length > 0 && chartData.datasets.length > 0 && (
-    <div>
+    <div style={{ padding: '10px', paddingTop: '100px' }}>
       <Heading fontWeight="bold" marginBottom="8px" marginLeft="10px">
         Expense Distribution Bar Chart
       </Heading>
       <Bar data={chartData} options={{
+    aspectRatio: 1,
     plugins: {
       legend: {
         display: false,
       },
     },
   }}></Bar>
-    </div>
-  )}
+    </div>)}
     {!chartData.labels.length && !chartData.datasets.length && (
-  <p>Loading Bar Chart Data...</p>
-  )}    
-    </AbsoluteCenter>
+  <p>Loading Bar Chart Data...</p>)}    
+
+        </Flex>
+            </AbsoluteCenter>
     </div>
     
   );
