@@ -22,7 +22,6 @@ import { useForm } from 'react-hook-form';
 import { FaDollarSign } from 'react-icons/fa';
 import { FaEuroSign } from 'react-icons/fa';
 import { FaIndianRupeeSign } from 'react-icons/fa6';
-import { DatePicker } from 'antd';
 import {
   NumberInputField,
   NumberInputRoot,
@@ -39,20 +38,23 @@ const Goals = ({ onAddBudgetGoal }: Props) => {
     formState: { errors, isSubmitting },
   } = useForm();
   const [goalType, setGoalType] = useState<string>('Short-Term');
-  const [expDate, setExpDate] = useState('');
+  const [category, setCategory] = useState<string>('Food');
+  const [year, setYear] = useState<string>('2024');
+  const [month, setMonth] = useState<string>('1');
   const [selectedCurrency, setSelectedCurrency] = useState('dollar');
   async function onSubmit(data: any) {
-    if (expDate != '') {
+    if (goalType != '') {
       axios.post(
         'http://127.0.0.1:5000/add_budget/add_single',
         {
           // Global User ID is set during SignUp/SignIn
           user_id: localStorage.getItem('globalUserId'),
           amount: data.budgetValue,
-          date: expDate,
           goal_type: goalType,
-          category: data.expense_category,
+          category: category,
           currency: selectedCurrency,
+          year: year,
+          month: month,
         },
         {
           headers: {
@@ -65,6 +67,105 @@ const Goals = ({ onAddBudgetGoal }: Props) => {
     onAddBudgetGoal?.(true);
     window.location.reload();
   }
+
+  const renderSwitch = (goalType: string) => {
+    switch (goalType) {
+      case 'Long-Term':
+        return (
+          <div>
+            <Text
+              fontSize="15px"
+              fontWeight="bold"
+              marginBottom="5px"
+              color="Black"
+              marginTop="20px"
+              marginLeft="0px"
+            >
+              Year
+            </Text>
+            <select
+              id="year"
+              value={year}
+              onChange={(e) => setYear(e.target.value)}
+              style={{
+                marginTop: '5px',
+                marginBottom: '5px',
+                height: '40px',
+                width: '130px',
+              }}
+            >
+              <option value="2024">2024</option>
+              <option value="2025">2025</option>
+              <option value="2026">2026</option>
+            </select>
+          </div>
+        );
+      case 'Short-Term':
+        return (
+          <div>
+            <Text
+              fontSize="15px"
+              fontWeight="bold"
+              marginBottom="5px"
+              color="Black"
+              marginTop="20px"
+              marginLeft="0px"
+            >
+              Year
+            </Text>
+            <select
+              id="year"
+              value={year}
+              onChange={(e) => setYear(e.target.value)}
+              style={{
+                marginTop: '5px',
+                marginBottom: '5px',
+                height: '40px',
+                width: '130px',
+              }}
+            >
+              <option value="2024">2024</option>
+              <option value="2025">2025</option>
+              <option value="2026">2026</option>
+            </select>
+            <Text
+              fontSize="15px"
+              fontWeight="bold"
+              marginBottom="5px"
+              color="Black"
+              marginTop="20px"
+              marginLeft="0px"
+            >
+              Month
+            </Text>
+            <select
+              id="month"
+              value={month}
+              onChange={(e) => setMonth(e.target.value)}
+              style={{
+                marginTop: '5px',
+                marginBottom: '5px',
+                height: '40px',
+                width: '130px',
+              }}
+            >
+              <option value="1">Jan</option>
+              <option value="2">Feb</option>
+              <option value="3">Mar</option>
+              <option value="4">Apr</option>
+              <option value="5">May</option>
+              <option value="6">Jun</option>
+              <option value="7">Jul</option>
+              <option value="8">Aug</option>
+              <option value="9">Sep</option>
+              <option value="10">Oct</option>
+              <option value="11">Nov</option>
+              <option value="12">Dec</option>
+            </select>
+          </div>
+        );
+    }
+  };
   return (
     <Container background={'#c2d4dd'}>
       <Center>
@@ -73,21 +174,6 @@ const Goals = ({ onAddBudgetGoal }: Props) => {
         </Heading>
       </Center>
       <form onSubmit={handleSubmit(onSubmit)}>
-        <Text
-          fontSize="15px"
-          fontWeight="bold"
-          marginBottom="2px"
-          color="Black"
-        >
-          Date
-        </Text>
-        <DatePicker
-          size="large"
-          style={{ width: '100%', marginBottom: '15px' }}
-          onChange={(dateStrings) => {
-            setExpDate(String(dateStrings.format('YYYY-MM-DD')));
-          }}
-        />
         <Text
           fontSize="15px"
           fontWeight="bold"
@@ -105,12 +191,13 @@ const Goals = ({ onAddBudgetGoal }: Props) => {
             marginTop: '5px',
             marginBottom: '5px',
             height: '40px',
-            width: '120px',
+            width: '130px',
           }}
         >
           <option value="Short-Term">Short-Term</option>
           <option value="Long-Term">Long-Term</option>
         </select>
+        {renderSwitch(goalType)}
         <Text
           fontSize="15px"
           fontWeight="bold"
@@ -120,18 +207,25 @@ const Goals = ({ onAddBudgetGoal }: Props) => {
         >
           Category
         </Text>
-        <Input
+        <select
           id="category"
-          background={'white'}
-          colorPalette="Black"
-          marginBottom="5px"
-          placeholder="Enter Category"
-          marginTop="5px"
-          {...register('expense_category', {
-            required: 'This is required',
-            minLength: { value: 3, message: 'Minimum length should be 3' },
-          })}
-        />
+          value={category}
+          onChange={(e) => setCategory(e.target.value)}
+          style={{
+            marginTop: '5px',
+            marginBottom: '5px',
+            height: '40px',
+            width: '130px',
+          }}
+        >
+          <option value="Food">Food</option>
+          <option value="Groceries">Groceries</option>
+          <option value="Utilities">Utilities</option>
+          <option value="Transport">Transport</option>
+          <option value="Shopping">Shopping</option>
+          <option value="Miscellaneous">Miscellaneous</option>
+          <option value="Entertainment">Entertainment</option>
+        </select>
         <Text
           fontSize="15px"
           fontWeight="bold"
