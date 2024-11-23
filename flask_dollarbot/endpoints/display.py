@@ -58,7 +58,7 @@ def display_user_expense_history(user_id=None):
 @display_bp.route('/budget/<user_id>', methods=['GET'])
 def display_user_budget_history(user_id=None):
     """
-        Display all expenses of a given user.
+        Display all budget goals of a given user.
 
 
     """

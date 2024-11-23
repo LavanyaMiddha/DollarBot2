@@ -8,6 +8,7 @@ import { Provider } from './components/ui/provider';
 import Signin from './pages/Signin';
 import Home from './pages/Home';
 import BudgetGoals from './pages/BudgetGoals';
+import BudgetAnalytics from './pages/BudgetAnalytics'
 
 const history = createMemoryHistory();
 function App() {
@@ -20,6 +21,7 @@ function App() {
           <Route path="/signin" element={<Signin />} />
           <Route path="/home" element={<Home />} />
           <Route path="/BudgetGoals" element={<BudgetGoals />} />
+          <Route path="/BudgetAnalytics" element={<BudgetAnalytics />} />
         </Routes>
       </Router>
     </Provider>

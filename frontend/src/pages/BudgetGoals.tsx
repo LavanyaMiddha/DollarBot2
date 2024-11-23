@@ -42,8 +42,8 @@ const BudgetGoal = () => {
         }));
         setExpenses(newData);
       })
-      .catch((error) => {
-        console.error('Error fetching budget goals:', error);
+      .catch((erdr) => {
+        console.error('Error fetching budget goals:', Error);
       });
   };
 
