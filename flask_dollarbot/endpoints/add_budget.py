@@ -8,13 +8,15 @@ add_budget_bp = Blueprint('add_budget', __name__)
 @add_budget_bp.route('/add_single', methods=['POST'])
 def add_single():
     """
-    Add a single expense record. 
+    Add a single budget record. 
     
     Request JSON format:
     {
         "user_id" : "864914211",
         "amount" : "25.0",
-        "date" : "2023-05-17",
+        "year:   :  "2024"
+        "month"  :  "1"
+        "goal_type" : "Long-Term"
         "category" : "Groceries",
         "currency" : "$"
     }
