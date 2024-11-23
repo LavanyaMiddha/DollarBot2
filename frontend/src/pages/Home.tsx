@@ -9,6 +9,7 @@ import {
   Kbd,
   Box,
   ListCollection,
+  Heading
 } from '@chakra-ui/react';
 import { Checkbox } from '../components/ui/checkbox';
 import { useState, useRef } from 'react';
@@ -65,14 +66,22 @@ const Home = () => {
         label: 'User Expenses',
         data: [],
         backgroundColor: [
-          'rgba(255, 99, 132, 0.2)',
-          'rgba(54, 162, 235, 0.2)',
-          'rgba(255, 206, 86, 0.2)',
+          'rgb(229, 16, 16)',
+          'rgb(255, 102, 0)',
+          'rgb(252, 69, 137)',
+          'rgb(255, 252, 93)',
+          'rgb(74, 222, 175)',
+          'rgb(74, 222, 175)',
+          'rgb(74, 222, 175)'
         ],
-        borderColor: [
-          'rgba(255, 99, 132, 1)',
-          'rgba(54, 162, 235, 1)',
-          'rgba(255, 206, 86, 1)',
+        borderColor: [ 
+          'rgb(229, 16, 16)',
+          'rgb(255, 102, 0)',
+          'rgb(252, 69, 137)',
+          'rgb(255, 252, 93)',
+          'rgb(74, 222, 175)',
+          'rgb(74, 222, 175)',
+          'rgb(74, 222, 175)'
         ],
         borderWidth: 1,
       },
@@ -168,8 +177,8 @@ const Home = () => {
             'rgb(252, 69, 137)',
             'rgb(255, 252, 93)',
             'rgb(74, 222, 175)',
-            'rgb(74, 222, 175)',
-            'rgb(74, 222, 175)'
+            'rgb(0, 178, 255)',
+            'rgb(66, 14, 135)'
           ],
           borderColor: [ 
             'rgb(229, 16, 16)',
@@ -177,11 +186,10 @@ const Home = () => {
             'rgb(252, 69, 137)',
             'rgb(255, 252, 93)',
             'rgb(74, 222, 175)',
-            'rgb(74, 222, 175)',
-            'rgb(74, 222, 175)'
+            'rgb(0, 178, 255)',
+            'rgb(66, 14, 135)'
           ],
           borderWidth: 1,
-          fontColor: 'rgb(255, 255, 255)',
         },
       ],
       });
@@ -363,10 +371,12 @@ const Home = () => {
         </Flex>
         {chartData.labels.length > 0 && chartData.datasets.length > 0 && (
         <div>
-          <h1>Pie Chart</h1>
+          <Heading fontWeight="bold" marginBottom="8px" marginLeft="10px">
+            Expense Distribution
+          </Heading>
           <Pie data={chartData} />
-          </div>
-      )}
+        </div>
+       )}
       {!chartData.labels.length && !chartData.datasets.length && (
   <p>Loading Pie Chart Data...</p>
 )}
