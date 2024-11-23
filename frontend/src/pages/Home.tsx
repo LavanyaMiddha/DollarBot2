@@ -31,8 +31,10 @@ import { Pie } from 'react-chartjs-2';
 
 import {Chart, ArcElement, Legend} from 'chart.js';
 import ChartDataLabels from 'chartjs-plugin-datalabels';
+
 Chart.register(ArcElement, Legend);
 Chart.register(ChartDataLabels);
+Chart.defaults.set('plugins.datalabels', { color: '#000000'});
 
 function retCurrencySymbol(currency: string) {
   var result = '';
@@ -160,18 +162,28 @@ const Home = () => {
           label: 'User Expenses',
           data: expenses_1,
           backgroundColor: [
-            'rgb(255, 99, 132)',
-            'rgb(54, 162, 235)',
-            'rgb(255, 205, 86)'
+            'rgb(229, 16, 16)',
+            'rgb(255, 102, 0)',
+            'rgb(252, 69, 137)',
+            'rgb(255, 252, 93)',
+            'rgb(74, 222, 175)',
+            'rgb(74, 222, 175)',
+            'rgb(74, 222, 175)'
           ],
-          borderColor: [ 'rgb(255, 99, 132)',
-            'rgb(54, 162, 235)',
-            'rgb(255, 205, 86)'],
+          borderColor: [ 
+            'rgb(229, 16, 16)',
+            'rgb(255, 102, 0)',
+            'rgb(252, 69, 137)',
+            'rgb(255, 252, 93)',
+            'rgb(74, 222, 175)',
+            'rgb(74, 222, 175)',
+            'rgb(74, 222, 175)'
+          ],
           borderWidth: 1,
+          fontColor: 'rgb(255, 255, 255)',
         },
       ],
       });
-    console.log("Chart data in new func:", chartData)
   });
 }, []);
   
