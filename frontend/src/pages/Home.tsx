@@ -35,6 +35,7 @@ import ChartDataLabels from 'chartjs-plugin-datalabels';
 Chart.register(ArcElement, Legend);
 Chart.register(ChartDataLabels);
 Chart.defaults.set('plugins.datalabels', { color: '#000000'});
+Chart.defaults.plugins.legend.labels.color = 'white';
 
 function retCurrencySymbol(currency: string) {
   var result = '';
