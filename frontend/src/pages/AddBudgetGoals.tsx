@@ -54,7 +54,7 @@ const Goals = ({ onAddBudgetGoal }: Props) => {
           category: category,
           currency: selectedCurrency,
           year: year,
-          month: month
+          month: month,
         },
         {
           headers: {
@@ -73,96 +73,96 @@ const Goals = ({ onAddBudgetGoal }: Props) => {
       case 'Long-Term':
         return (
           <div>
-          <Text
-          fontSize="15px"
-          fontWeight="bold"
-          marginBottom="5px"
-          color="Black"
-          marginTop="20px"
-          marginLeft="0px"
-        >
-          Year
-          </Text>
-         <select
-         id="year"
-         value={year}
-         onChange={(e) => setYear(e.target.value)}
-         style={{
-           marginTop: '5px',
-           marginBottom: '5px',
-           height: '40px',
-           width: '130px',
-         }}
-       >
-         <option value="2024">2024</option>
-         <option value="2025">2025</option>
-         <option value="2026">2026</option>
-       </select>
-       </div>
+            <Text
+              fontSize="15px"
+              fontWeight="bold"
+              marginBottom="5px"
+              color="Black"
+              marginTop="20px"
+              marginLeft="0px"
+            >
+              Year
+            </Text>
+            <select
+              id="year"
+              value={year}
+              onChange={(e) => setYear(e.target.value)}
+              style={{
+                marginTop: '5px',
+                marginBottom: '5px',
+                height: '40px',
+                width: '130px',
+              }}
+            >
+              <option value="2024">2024</option>
+              <option value="2025">2025</option>
+              <option value="2026">2026</option>
+            </select>
+          </div>
         );
       case 'Short-Term':
         return (
           <div>
-          <Text
-          fontSize="15px"
-          fontWeight="bold"
-          marginBottom="5px"
-          color="Black"
-          marginTop="20px"
-          marginLeft="0px"
-        >
-          Year
-          </Text>
-         <select
-         id="year"
-         value={year}
-         onChange={(e) => setYear(e.target.value)}
-         style={{
-           marginTop: '5px',
-           marginBottom: '5px',
-           height: '40px',
-           width: '130px',
-         }}
-       >
-         <option value="2024">2024</option>
-         <option value="2025">2025</option>
-         <option value="2026">2026</option>
-       </select>
-       <Text
-          fontSize="15px"
-          fontWeight="bold"
-          marginBottom="5px"
-          color="Black"
-          marginTop="20px"
-          marginLeft="0px"
-        >
-          Month
-          </Text>
-         <select
-         id="month"
-         value={month}
-         onChange={(e) => setMonth(e.target.value)}
-         style={{
-           marginTop: '5px',
-           marginBottom: '5px',
-           height: '40px',
-           width: '130px',
-         }}
-       >
-         <option value="1">Jan</option>
-         <option value="2">Feb</option>
-         <option value="3">Mar</option>
-         <option value="4">Apr</option>
-         <option value="5">May</option>
-         <option value="6">Jun</option>
-         <option value="7">Jul</option>
-         <option value="8">Aug</option>
-         <option value="9">Sep</option>
-         <option value="10">Oct</option>
-         <option value="11">Nov</option>
-         <option value="12">Dec</option>
-       </select>
-       </div>
+            <Text
+              fontSize="15px"
+              fontWeight="bold"
+              marginBottom="5px"
+              color="Black"
+              marginTop="20px"
+              marginLeft="0px"
+            >
+              Year
+            </Text>
+            <select
+              id="year"
+              value={year}
+              onChange={(e) => setYear(e.target.value)}
+              style={{
+                marginTop: '5px',
+                marginBottom: '5px',
+                height: '40px',
+                width: '130px',
+              }}
+            >
+              <option value="2024">2024</option>
+              <option value="2025">2025</option>
+              <option value="2026">2026</option>
+            </select>
+            <Text
+              fontSize="15px"
+              fontWeight="bold"
+              marginBottom="5px"
+              color="Black"
+              marginTop="20px"
+              marginLeft="0px"
+            >
+              Month
+            </Text>
+            <select
+              id="month"
+              value={month}
+              onChange={(e) => setMonth(e.target.value)}
+              style={{
+                marginTop: '5px',
+                marginBottom: '5px',
+                height: '40px',
+                width: '130px',
+              }}
+            >
+              <option value="1">Jan</option>
+              <option value="2">Feb</option>
+              <option value="3">Mar</option>
+              <option value="4">Apr</option>
+              <option value="5">May</option>
+              <option value="6">Jun</option>
+              <option value="7">Jul</option>
+              <option value="8">Aug</option>
+              <option value="9">Sep</option>
+              <option value="10">Oct</option>
+              <option value="11">Nov</option>
+              <option value="12">Dec</option>
+            </select>
+          </div>
         );
     }
   };
@@ -197,7 +197,7 @@ const Goals = ({ onAddBudgetGoal }: Props) => {
           <option value="Short-Term">Short-Term</option>
           <option value="Long-Term">Long-Term</option>
         </select>
-         {renderSwitch(goalType)}
+        {renderSwitch(goalType)}
         <Text
           fontSize="15px"
           fontWeight="bold"
