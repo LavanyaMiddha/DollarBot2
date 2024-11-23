@@ -28,13 +28,15 @@ import DeleteExpense from './DeleteExpense';
 import axios from 'axios';
 import { useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { Pie } from 'react-chartjs-2';
+import { Pie, Bar } from 'react-chartjs-2';
 
 import {Chart, ArcElement, Legend} from 'chart.js';
+import {CategoryScale, LinearScale, BarElement} from 'chart.js';
 import ChartDataLabels from 'chartjs-plugin-datalabels';
 
 Chart.register(ArcElement, Legend);
 Chart.register(ChartDataLabels);
+Chart.register(CategoryScale, LinearScale, BarElement);
 Chart.defaults.set('plugins.datalabels', { color: '#000000'});
 Chart.defaults.plugins.legend.labels.color = 'white';
 
@@ -393,15 +395,32 @@ const options = {
         {chartData.labels.length > 0 && chartData.datasets.length > 0 && (
         <div>
           <Heading fontWeight="bold" marginBottom="8px" marginLeft="10px">
-            Expense Distribution
+            Expense Distribution Pie Chart
           </Heading>
           <Pie data={chartData} options={options}/>
         </div>
        )}
       {!chartData.labels.length && !chartData.datasets.length && (
   <p>Loading Pie Chart Data...</p>
-)}
-      </AbsoluteCenter>
+)}      
+    {chartData.labels.length > 0 && chartData.datasets.length > 0 && (
+    <div>
+      <Heading fontWeight="bold" marginBottom="8px" marginLeft="10px">
+        Expense Distribution Bar Chart
+      </Heading>
+      <Bar data={chartData} options={{
+    plugins: {
+      legend: {
+        display: false,
+      },
+    },
+  }}></Bar>
+    </div>
+  )}
+    {!chartData.labels.length && !chartData.datasets.length && (
+  <p>Loading Bar Chart Data...</p>
+  )}    
+    </AbsoluteCenter>
     </div>
     
   );
