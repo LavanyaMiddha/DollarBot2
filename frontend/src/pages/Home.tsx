@@ -198,6 +198,15 @@ const Home = () => {
 
 const options = {
   plugins: {
+    legend: {
+      labels: {
+        font: {
+          family: 'Times New Roman',
+          fontSize: 20,
+          weight: 'bold'
+        }
+      }
+    },
     datalabels: {
       formatter: (value: number, context: { dataset: { data: any[]; }; }) => {
         const total = context.dataset.data.reduce((sum: any, val: any) => sum + val, 0);
