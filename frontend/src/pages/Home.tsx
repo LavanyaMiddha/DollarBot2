@@ -134,22 +134,31 @@ const Home = () => {
 
   useEffect(() => {
     const labels: string[] = [];
-    const expenses: number[] = [];
+    const expenses_1: number[] = [];
     axios
         .get(
           `http://127.0.0.1:5000/analytics/${localStorage.getItem('globalUserId',)}`,
         )
         .then(function (resp) {
           for (let i = 0; i < resp.data.length; i++) {
-            labels.push(resp.data[i]['expense_category']);
-            expenses.push(resp.data[i]['expense_amount']);
+            if (labels.includes(resp.data[i]['expense_category'])){
+              let index = labels.indexOf(resp.data[i]['expense_category']);
+              expenses_1[index] += parseInt(resp.data[i]['expense_amount'], 10);
+            }
+
+            else{
+              labels.push(resp.data[i]['expense_category']);
+              expenses_1.push(parseInt(resp.data[i]['expense_amount'], 10));
+            }
           }
+          console.log("Labels:", labels);
+          console.log("Expenses:", expenses_1)
     setChartData({
       labels: labels,
       datasets: [
         {
           label: 'User Expenses',
-          data: expenses,
+          data: expenses_1,
           backgroundColor: [
             'rgb(255, 99, 132)',
             'rgb(54, 162, 235)',
