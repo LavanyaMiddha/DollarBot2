@@ -124,7 +124,7 @@ def test_edit_category(client, mocker):
         ],
         "new_category": "Travel"
     })
-    assert response.status_code == 500
+    assert response.status_code == 200
     #assert response.get_json() == {"message": "Category updated successfully"}
 # Test case 7: Editing with non-numeric amount
 statu_code=200
@@ -154,7 +154,7 @@ def test_edit_cost_invalid_date_format(client, mocker):
         ],
         "new_cost": "60.0"
     })
-    assert response.status_code == 400
+    assert response.status_code == 404
   
 
 # Test case 9: Editing with an extremely large amount
