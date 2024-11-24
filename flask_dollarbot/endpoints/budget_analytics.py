@@ -42,7 +42,7 @@ def add_analytics(category=None, year=None, month=None, user_id=None):
     total_expense=0
     for expense in data2:
         expense=expense.split(",")
-        if category in expense and re.search(year, expense[0]) and re.search(month, expense[0]):
+        if category in expense and int(year) == int(expense[0][:4]) and int(month) == int(expense[0][5:7]):
             total_expense = total_expense + int(expense[2])
     resp["Expenditure"]=total_expense
     print(resp)

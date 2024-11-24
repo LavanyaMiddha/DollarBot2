@@ -178,9 +178,27 @@ const Home = () => {
             textStyle="lg"
             fontWeight="medium"
             margin="18px 35px 0 0"
+            href="/Home"
+          >
+            Home
+          </Link>
+          <Link
+            color="black"
+            textStyle="lg"
+            fontWeight="medium"
+            margin="18px 35px 0 0"
             href="/BudgetGoals"
           >
             Budget Goals
+          </Link>
+          <Link
+            color="Red"
+            textStyle="lg"
+            fontWeight="medium"
+            margin="18px 35px 0 0"
+            href="/Alerts"
+          >
+            Alerts
           </Link>
           <Link
             color="black"

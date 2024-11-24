@@ -167,6 +167,15 @@ def getUserBudgetHistoryByGoal(chat_id, goal_type):
     
     return None
 
+def getUserBudgetHistoryByCategory(chat_id, category):
+    data = getUserBudgetHistory(chat_id)
+    previous_expenses = []
+    for goals in data:
+        for record in data[goals]:
+            if f"{category}" in record:
+                previous_expenses.append(record)
+    return previous_expenses
+
 def getUserHistoryByCategory(chat_id, category):
     data = getUserHistory(chat_id)
     previous_expenses = []
