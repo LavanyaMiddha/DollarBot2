@@ -9,9 +9,17 @@ app.register_blueprint(add_budget_bp)
 
 MOCK_USER_DATA = {
     "864914211": {
-        "data": [
-            "17-May-2023,Transport,50.0"
-        ]
+       "data": [
+            "2024-11-19,Utilities,7, dollar"
+        ],
+        "budget": {
+            "long-term": [
+                "2025-12-31,Long-Term,Food,10000,dollar"
+            ],
+            "short-term": [
+                "2024-11-30,Short-Term,Food,50,dollar"
+            ]
+        }
     }
 }
 
@@ -97,12 +105,11 @@ def test_add_single_missing_field(client, mocker):
         }
     )
     assert response.status_code == 500
-    #assert response.get_json() == {'error': 'Bad Request'}
+    
 
-#def test_validate_add_request_invalid_category():
-#    assert validate_add_request("21837", str(datetime.today().date()), "120", "Random") == False
+def test_validate_add_request_invalid_category():
+    assert validate_add_request("21837", 23, "Random", "Long-Term", "dollar", "2024", "12") == False
 
-#def test_validate_add_request_invalid_amount():
-#    assert validate_add_request("21837", str(datetime.today().date()), "0", "Random") == False
-##    assert validate_add_request("21837", str(datetime.today().date()), "random", "Random") == False
- #   assert validate_add_request("21837", str(datetime.today().date()), "-20", "Random") == False
+def test_validate_add_request_invalid_amount():
+    assert validate_add_request("21837", -23, "Random", "Long-Term", "dollar", "2024", "12") == False
+    assert validate_add_request("21837", "abc", "Random", "Long-Term", "dollar", "2024", "12") == False
