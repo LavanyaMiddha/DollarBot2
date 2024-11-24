@@ -31,7 +31,7 @@ def find_data(user_id = None):
     data = helper.getUserHistory(chat_id)
 
     if data is None:
-        return jsonify({}, 200)
+        return jsonify({}), 200
 
     else:
         result = [build_dictionary(expense_record) for expense_record in data]
