@@ -1,79 +1,66 @@
-import unittest
+import pytest 
 import sys
 import os
+
 cwd = os.getcwd()
 sys.path.append(cwd)
-from flask import Flask
-from endpoints.add_budget import add_budget_bp  
-import json
+from flask import Flask 
+from datetime import datetime, timedelta
+from endpoints.add_budget import add_budget_bp, validate_add_request
 
-class TestAddBudget(unittest.TestCase):
-    def setUp(self):
-        """Set up the Flask app and test client."""
-        self.app = Flask(__name__)
-        self.app.register_blueprint(add_budget_bp)
-        self.client = self.app.test_client()
+# Set up Flask app and register blueprint 
+app = Flask(__name__)
+app.register_blueprint(add_budget_bp)
 
-    def test_add_single_success(self):
-        """Test adding a valid budget record."""
-        payload = {
+MOCK_USER_DATA = {
+    "864914211": {
+        "data": [
+            "17-May-2023,Transport,50.0"
+        ]
+    }
+}
+
+class MockHelper:
+    @staticmethod
+    def read_json():
+        return MOCK_USER_DATA
+
+    @staticmethod
+    def write_json(data):
+        pass
+
+    @staticmethod
+    def validate_entered_amount(amount):
+        return 1 if amount.isdigit() and float(amount) > 0 else 0
+
+@pytest.fixture
+def client():
+    with app.test_client() as client:
+        yield client
+
+# Test request validation method
+def test_validate_add_request_empty_request():
+    assert validate_add_request(None, None, None, None, None, None, None) == False
+
+
+def test_add_single_budget(client, mocker):
+    mocker.patch('endpoints.helper', MockHelper)
+    response = client.post('/add_single', json={
             "user_id": "864914211",
-            "amount": "25.0",
+            "amount": "50.0",
             "year": "2024",
-            "month": "1",
-            "goal_type": "Long-Term",
-            "category": "Groceries",
+            "month": "2",
+            "goal_type": "Short-Term",
+            "category": "Vaccation",
             "currency": "$"
         }
-        response = self.client.post('/add_single', json=payload)
-        self.assertEqual(response.status_code, 200)
-        self.assertEqual(response.json['message'], 'Budget record created successfully')
+    )
+    assert response.status_code == 400
+    assert response.get_json() == {'error': 'Bad Request'}
 
-    def test_add_single_missing_fields(self):
-        """Test adding a budget record with missing fields."""
-        payload = {
-            "user_id": "864914211",
-            "amount": "25.0",
-            "year": "2024",
-            "month": "1",
-            "goal_type": "Long-Term",
-            "category": "Groceries"
-        }  # Missing 'currency'
-        response = self.client.post('/add_single', json=payload)
-        self.assertEqual(response.status_code, 500) 
-
-    def test_add_single_invalid_amount(self):
-        """Test adding a budget record with an invalid amount."""
-        payload = {
-            "user_id": "864914211",
-            "amount": "invalid_amount",  # Invalid amount format
-            "year": "2024",
-            "month": "1",
-            "goal_type": "Long-Term",
-            "category": "Groceries",
-            "currency": "$"
-        }
-        response = self.client.post('/add_single', json=payload)
-        self.assertEqual(response.status_code, 400)  
-
-    def test_add_single_long_term_goal(self):
-        """Test adding a long-term goal budget record."""
-        payload = {
-            "user_id": "864914211",
-            "amount": "100.0",
-            "year": "2024",
-            "month": "1",
-            "goal_type": "Long-Term",
-            "category": "Vacation",
-            "currency": "$"
-        }
-        response = self.client.post('/add_single', json=payload)
-        self.assertEqual(response.status_code, 400)
-        self.assertEqual(response.json['error'], 'Bad Request')
-    
-    def test_add_single_short_term_goal(self):
-        """Test adding a short-term goal budget record."""
-        payload = {
+def test_add_single_budget(client, mocker):
+    mocker.patch('endpoints.helper', MockHelper)
+    response = client.post('/add_single', json={
             "user_id": "864914211",
             "amount": "50.0",
             "year": "2024",
@@ -82,9 +69,45 @@ class TestAddBudget(unittest.TestCase):
             "category": "Groceries",
             "currency": "$"
         }
-        response = self.client.post('/add_single', json=payload)
-        self.assertEqual(response.status_code, 200)
-        self.assertEqual(response.json['message'], 'Budget record created successfully')
+    )
+    assert response.status_code == 200
+    assert response.get_json() == {'message': 'Budget record created successfully'}
 
-if __name__ == '__main__':
-    unittest.main()
+def test_add_single_invalid_amount(client, mocker):
+    mocker.patch('endpoints.helper', MockHelper)
+    response = client.post('/add_single', json={
+            "user_id": "864914211",
+            "amount": "abcd",
+            "year": "2024",
+            "month": "2",
+            "goal_type": "Short-Term",
+            "category": "Groceries",
+            "currency": "$"
+        }
+    )
+    assert response.status_code == 400
+    assert response.get_json() == {'error': 'Bad Request'}
+
+
+def test_add_single_missing_field(client, mocker):
+    mocker.patch('endpoints.helper', MockHelper)
+    request_date = datetime.today() + timedelta(days=1)
+    response = client.post('/add_single', json={
+            "user_id": "864914211",
+            "amount": "50.0",
+            "year": "2024",
+            "month": "2",
+            "category": "Groceries",
+            "currency": "$"
+        }
+    )
+    assert response.status_code == 500
+    #assert response.get_json() == {'error': 'Bad Request'}
+
+#def test_validate_add_request_invalid_category():
+#    assert validate_add_request("21837", str(datetime.today().date()), "120", "Random") == False
+
+#def test_validate_add_request_invalid_amount():
+#    assert validate_add_request("21837", str(datetime.today().date()), "0", "Random") == False
+##    assert validate_add_request("21837", str(datetime.today().date()), "random", "Random") == False
+ #   assert validate_add_request("21837", str(datetime.today().date()), "-20", "Random") == False
