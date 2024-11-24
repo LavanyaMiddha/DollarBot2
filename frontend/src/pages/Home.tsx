@@ -27,7 +27,7 @@ import DeleteExpense from './DeleteExpense';
 import axios from 'axios';
 import { useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
-import SplitExpense from './SplitExpense';
+import AddFriends from './AddFriends';
 
 function retCurrencySymbol(currency: string) {
   var result = '';
@@ -125,10 +125,6 @@ const Home = () => {
             selectedExpense={selection}
           />
         );
-        case 'split':
-      return <SplitExpense onSplitExpense={handleExpense} />;
-      default:
-      return null;
     }
   };
 
@@ -169,14 +165,14 @@ const Home = () => {
           <Link
             color="black"
             textStyle="lg"
-            href="/split"
+            href="/addFriends"
             fontWeight="medium"
             margin="18px 35px 0 0"
             onClick={() => {
               localStorage.clear();
             }}
           >
-            Split
+            Add Friends
           </Link>
           <Link
             color="black"

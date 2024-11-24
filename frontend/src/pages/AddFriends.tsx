@@ -14,7 +14,7 @@ type Props = {
   onAddFriend?: (value: boolean) => void;
 };
 
-const SplitExpense = ({ onAddFriend }: Props) => {
+const AddFriends = ({ onAddFriend }: Props) => {
   const {
     handleSubmit,
     register,
@@ -82,4 +82,4 @@ const SplitExpense = ({ onAddFriend }: Props) => {
   );
 };
 
-export default SplitExpense;
+export default AddFriends;
