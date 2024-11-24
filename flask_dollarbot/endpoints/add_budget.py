@@ -35,15 +35,6 @@ def add_single():
     goal_year = int(data["year"])
     goal_month = int(data["month"])
 
-    print("User ID", chat_id)
-    print("Goal Type", goal_type)
-    print("Expense Amount", expense_amount)
-    print("Expense Currency", expense_currency)
-    print("Expense Category", expense_category)
-    print("Goal Year", goal_year)
-    print("Goal Month", goal_month)
-
-    print("Hello")
     if goal_type.strip() == "Long-Term":
         goal_month=12
     last_day = monthrange(goal_year, goal_month)[1]

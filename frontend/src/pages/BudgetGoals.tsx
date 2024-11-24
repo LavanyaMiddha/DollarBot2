@@ -42,8 +42,8 @@ const BudgetGoal = () => {
         }));
         setExpenses(newData);
       })
-      .catch((error) => {
-        console.error('Error fetching budget goals:', error);
+      .catch((erdr) => {
+        console.error('Error fetching budget goals:', Error);
       });
   };
 
@@ -146,6 +146,7 @@ const BudgetGoal = () => {
                       padding: '8px',
                       fontSize: '20px',
                       fontWeight: 'bold',
+                      color: '#fefbd8',
                     }}
                   >
                     Amount
@@ -156,6 +157,7 @@ const BudgetGoal = () => {
                       padding: '8px',
                       fontSize: '20px',
                       fontWeight: 'bold',
+                      color: '#fefbd8',
                     }}
                   >
                     Category
@@ -166,6 +168,7 @@ const BudgetGoal = () => {
                       padding: '8px',
                       fontSize: '20px',
                       fontWeight: 'bold',
+                      color: '#fefbd8',
                     }}
                   >
                     Goal Type
@@ -176,9 +179,21 @@ const BudgetGoal = () => {
                       padding: '8px',
                       fontSize: '20px',
                       fontWeight: 'bold',
+                      color: '#fefbd8',
                     }}
                   >
                     Date
+                  </th>
+                  <th
+                    style={{
+                      borderBottom: '1px solid #ccc',
+                      padding: '8px',
+                      fontSize: '20px',
+                      fontWeight: 'bold',
+                      color: '#fefbd8',
+                    }}
+                  >
+                    Budget Analytics
                   </th>
                 </tr>
               </thead>
@@ -191,6 +206,9 @@ const BudgetGoal = () => {
                     </td>
                     <td style={{ padding: '8px' }}>{expense.budget_type}</td>
                     <td style={{ padding: '8px' }}>{expense.budget_date}</td>
+                    <td style={{ padding: '8px' }}>
+                      <a href="/BudgetAnalytics">View Budget Analytics</a>
+                    </td>
                   </tr>
                 ))}
               </tbody>

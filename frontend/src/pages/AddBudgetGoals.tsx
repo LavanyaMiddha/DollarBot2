@@ -7,7 +7,6 @@ import {
   Flex,
   Heading,
   Icon,
-  Input,
   Text,
 } from '@chakra-ui/react';
 import {

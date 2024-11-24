@@ -10,6 +10,7 @@ from endpoints.edit import edit_bp
 from endpoints.delete import delete_bp
 from endpoints.display import display_bp
 from endpoints.category import category_bp
+from endpoints.budget_analytics import budget_analytics_bp
 from sqlalchemy import inspect
 from flask_cors import CORS
 from auth import auth_bp, login_manager 
@@ -47,6 +48,7 @@ app.register_blueprint(edit_bp)
 app.register_blueprint(delete_bp)
 app.register_blueprint(display_bp, url_prefix='/display')
 app.register_blueprint(category_bp, url_prefix='/category')
+app.register_blueprint(budget_analytics_bp, url_prefix='/budget_analytics')
 app.register_blueprint(auth_bp)
 
        

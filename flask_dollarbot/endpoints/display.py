@@ -21,8 +21,6 @@ def build_dictionary(expense_record):
     }
 
 def build_budget_dictionary(budget_data):
-    print("Hi")
-    print(budget_data)
     budget_details = budget_data.split(',')
     return {
         "budget_date" : budget_details[0],
@@ -58,7 +56,7 @@ def display_user_expense_history(user_id=None):
 @display_bp.route('/budget/<user_id>', methods=['GET'])
 def display_user_budget_history(user_id=None):
     """
-        Display all expenses of a given user.
+        Display all budget goals of a given user.
 
 
     """
