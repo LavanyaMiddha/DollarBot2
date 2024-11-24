@@ -1,13 +1,13 @@
-import React, { useState, useEffect } from "react";
-import axios from "axios";
+import React, { useState, useEffect } from 'react';
+import axios from 'axios';
 
 type NotificationsData = {
   Category: string;
-  "Monthly Expense": number;
-  "Monthly Budget": number;
+  'Monthly Expense': number;
+  'Monthly Budget': number;
   color1: string;
-  "Yearly Expense": number;
-  "Yearly Budget": number;
+  'Yearly Expense': number;
+  'Yearly Budget': number;
   color2: string;
 };
 
@@ -19,11 +19,11 @@ const Alerts = () => {
   const fetchNotifications = async () => {
     try {
       const response = await axios.get(
-        `http://127.0.0.1:5000/add_alerts/alerts/${localStorage.getItem("globalUserId")}`
+        `http://127.0.0.1:5000/add_alerts/alerts/${localStorage.getItem('globalUserId')}`,
       );
       setNotifications(response.data); // Assume response.data is an array of `NotificationsData`
     } catch (error) {
-      console.error("Error fetching notifications:", error);
+      console.error('Error fetching notifications:', error);
     }
   };
 
@@ -35,26 +35,81 @@ const Alerts = () => {
 
   return (
     <div>
-      <h2 style={{fontSize: "30px", fontWeight:"bold", marginBottom:"20px"}}>Notifications</h2>
-      <p style={{fontSize: "20px", fontWeight:"bold", marginBottom:"20px"}}> Displaying Statistics for current Month and Year</p>
-      <table style={{ background: "White", border: "1px solid black", width: "100%", fontSize: "20px", fontWeight:"bold", borderBlockColor:"black", borderBlockStyle:"dotted", padding: "10px", alignContent:"center"}}>
+      <h2
+        style={{ fontSize: '30px', fontWeight: 'bold', marginBottom: '20px' }}
+      >
+        Notifications
+      </h2>
+      <p style={{ fontSize: '20px', fontWeight: 'bold', marginBottom: '20px' }}>
+        {' '}
+        Displaying Statistics for current Month and Year
+      </p>
+      <table
+        style={{
+          background: 'White',
+          border: '1px solid black',
+          width: '100%',
+          fontSize: '20px',
+          fontWeight: 'bold',
+          borderBlockColor: 'black',
+          borderBlockStyle: 'dotted',
+          padding: '10px',
+          alignContent: 'center',
+        }}
+      >
         <thead>
           <tr>
-            <th style={{border: "1px solid black"}}>Category</th>
-            <th style={{border: "1px solid black"}}>Monthly Expense</th>
-            <th style={{border: "1px solid black"}}>Monthly Budget</th>
-            <th style={{border: "1px solid black"}}>Yearly Expense</th>
-            <th style={{border: "1px solid black"}}>Yearly Budget</th>
+            <th style={{ border: '1px solid black' }}>Category</th>
+            <th style={{ border: '1px solid black' }}>Monthly Expense</th>
+            <th style={{ border: '1px solid black' }}>Monthly Budget</th>
+            <th style={{ border: '1px solid black' }}>Yearly Expense</th>
+            <th style={{ border: '1px solid black' }}>Yearly Budget</th>
           </tr>
         </thead>
         <tbody>
           {notifications.map((notification, index) => (
             <tr key={index}>
-              <td style={{borderLeft: "1px solid black", textAlign:"center"}}>{notification.Category}</td>
-              <td style={{borderLeft: "1px solid black", color: notification.color1, textAlign:"center"}}>${notification["Monthly Expense"]}</td>
-              <td style={{borderLeft: "1px solid black", color: notification.color1, textAlign:"center"}}>${notification["Monthly Budget"]}</td>
-              <td style={{borderLeft: "1px solid black", color: notification.color2, textAlign:"center"}}>${notification["Yearly Expense"]}</td>
-              <td style={{borderLeft: "1px solid black", color: notification.color2, textAlign:"center"}}>${notification["Yearly Budget"]}</td>
+              <td
+                style={{ borderLeft: '1px solid black', textAlign: 'center' }}
+              >
+                {notification.Category}
+              </td>
+              <td
+                style={{
+                  borderLeft: '1px solid black',
+                  color: notification.color1,
+                  textAlign: 'center',
+                }}
+              >
+                ${notification['Monthly Expense']}
+              </td>
+              <td
+                style={{
+                  borderLeft: '1px solid black',
+                  color: notification.color1,
+                  textAlign: 'center',
+                }}
+              >
+                ${notification['Monthly Budget']}
+              </td>
+              <td
+                style={{
+                  borderLeft: '1px solid black',
+                  color: notification.color2,
+                  textAlign: 'center',
+                }}
+              >
+                ${notification['Yearly Expense']}
+              </td>
+              <td
+                style={{
+                  borderLeft: '1px solid black',
+                  color: notification.color2,
+                  textAlign: 'center',
+                }}
+              >
+                ${notification['Yearly Budget']}
+              </td>
             </tr>
           ))}
         </tbody>

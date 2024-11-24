@@ -9,7 +9,7 @@ import Signin from './pages/Signin';
 import Home from './pages/Home';
 import BudgetGoals from './pages/BudgetGoals';
 import BudgetAnalytics from './pages/BudgetAnalytics';
-import Alerts from './pages/Alerts'
+import Alerts from './pages/Alerts';
 
 const history = createMemoryHistory();
 function App() {
@@ -23,7 +23,7 @@ function App() {
           <Route path="/home" element={<Home />} />
           <Route path="/BudgetGoals" element={<BudgetGoals />} />
           <Route path="/BudgetAnalytics" element={<BudgetAnalytics />} />
-          <Route path="/Alerts" element={<Alerts/>}/>
+          <Route path="/Alerts" element={<Alerts />} />
         </Routes>
       </Router>
     </Provider>
