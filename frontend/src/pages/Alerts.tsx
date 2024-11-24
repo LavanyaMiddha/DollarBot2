@@ -34,6 +34,13 @@ const Alerts = () => {
     return () => clearInterval(interval); // Cleanup the interval on unmount
   }, []);
 
+  const colorData = [
+    { category: "Over Budget", color: "red" },
+    { category: "High Expense", color: "orange" },
+    { category: "Moderate Expense", color: "purple" },
+    { category: "Low Expense", color: "green" },
+  ];
+
   return (
     <div>
       <Container>
@@ -96,8 +103,8 @@ const Alerts = () => {
           </Link>
         </Flex>
       </Container>
-      <h2 style={{fontSize: "30px", fontWeight:"bold", marginBottom:"20px"}}>Notifications</h2>
-      <p style={{fontSize: "20px", fontWeight:"bold", marginBottom:"20px"}}> Displaying Statistics for current Month and Year</p>
+      <h2 style={{fontSize: "25px", fontWeight:"bold", marginBottom:"20px", color:"red"}}>Alerts</h2>
+      <p style={{fontSize: "20px", fontWeight:"Medium", marginBottom:"18px", fontStyle: "italic"}}> Displaying Statistics for current Month and Year</p>
       <table style={{ background: "White", border: "1px solid black", width: "100%", fontSize: "20px", fontWeight:"bold", borderBlockColor:"black", borderBlockStyle:"dotted", padding: "10px", alignContent:"center"}}>
         <thead>
           <tr>
@@ -151,6 +158,51 @@ const Alerts = () => {
                 }}
               >
                 ${notification['Yearly Budget']}
+              </td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
+
+      <table
+        style={{
+          borderCollapse: "collapse",
+          width: "40%",
+          margin: "10px 0",
+          border: "1px solid black",
+          background: "White",
+          position: "absolute",
+          bottom: "10px",
+          right: "10px",
+          fontSize: "18px"
+        }}
+      >
+        <thead>
+          <tr>
+            <th style={{ border: "1px solid black", padding: "8px" }}>Category</th>
+            <th style={{ border: "1px solid black", padding: "8px" }}>Color</th>
+          </tr>
+        </thead>
+        <tbody>
+          {colorData.map((item, index) => (
+            <tr key={index}>
+              <td style={{ border: "1px solid black", padding: "8px" }}>{item.category}</td>
+              <td
+                style={{
+                  border: "1px solid black",
+                  padding: "8px",
+                  textAlign: "center",
+                }}
+              >
+                <div
+                  style={{
+                    width: "20px",
+                    height: "20px",
+                    backgroundColor: item.color,
+                    display: "inline-block",
+                    border: "1px solid #000",
+                  }}
+                ></div>
               </td>
             </tr>
           ))}

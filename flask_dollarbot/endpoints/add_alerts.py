@@ -47,21 +47,21 @@ def add_alerts(category=None, year=None, month=None, user_id=None):
         notes=[]
         notes.append(monthly_expense)
         notes.append(short_term_budget)
-        if (monthly_expense >= short_term_budget):
+        if (monthly_expense!=0 and monthly_expense >= short_term_budget):
             notes.append("Red")
-        elif (monthly_expense >= (0.9*short_term_budget)):
+        elif (monthly_expense!=0 and monthly_expense >= (0.8*short_term_budget)):
             notes.append("Orange")
-        elif(monthly_expense !=0 and monthly_expense >= (0.8*short_term_budget)):
+        elif(monthly_expense !=0 and monthly_expense >= (0.65*short_term_budget)):
             notes.append("Purple")
         else:
             notes.append("Green")
         notes.append(yearly_expense)
         notes.append(long_term_budget)
-        if (yearly_expense >= long_term_budget):
+        if (yearly_expense!=0 and yearly_expense >= long_term_budget):
             notes.append("Red")
-        elif (yearly_expense >= (0.9*long_term_budget)):
+        elif (yearly_expense!=0 and yearly_expense >= (0.8*long_term_budget)):
             notes.append("Orange")
-        elif(yearly_expense!=0 and yearly_expense >= (0.65*long_term_budget)):
+        elif(yearly_expense!=0 and yearly_expense!=0 and yearly_expense >= (0.65*long_term_budget)):
             notes.append("Purple")
         else:
             notes.append("Green")  
