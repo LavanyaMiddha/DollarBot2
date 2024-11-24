@@ -1,4 +1,8 @@
 import unittest
+import sys
+import os
+cwd = os.getcwd()
+sys.path.append(cwd)
 from flask import Flask
 from endpoints.add_budget import add_budget_bp  
 import json
