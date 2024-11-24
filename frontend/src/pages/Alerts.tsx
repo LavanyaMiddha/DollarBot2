@@ -1,6 +1,6 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect } from 'react';
 import { Container, Flex, Text, Link } from '@chakra-ui/react';
-import axios from "axios";
+import axios from 'axios';
 
 type NotificationsData = {
   Category: string;
