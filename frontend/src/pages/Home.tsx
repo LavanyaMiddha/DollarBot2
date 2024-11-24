@@ -27,6 +27,7 @@ import DeleteExpense from './DeleteExpense';
 import axios from 'axios';
 import { useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
+import SplitExpense from './SplitExpense';
 
 function retCurrencySymbol(currency: string) {
   var result = '';
@@ -124,6 +125,10 @@ const Home = () => {
             selectedExpense={selection}
           />
         );
+        case 'split':
+      return <SplitExpense onSplitExpense={handleExpense} />;
+      default:
+      return null;
     }
   };
 
@@ -161,6 +166,18 @@ const Home = () => {
           >
             Dollar Bot
           </Text>
+          <Link
+            color="black"
+            textStyle="lg"
+            href="/split"
+            fontWeight="medium"
+            margin="18px 35px 0 0"
+            onClick={() => {
+              localStorage.clear();
+            }}
+          >
+            Split
+          </Link>
           <Link
             color="black"
             textStyle="lg"
@@ -286,6 +303,7 @@ const actions = createListCollection({
     { label: 'Add', value: 'add' },
     { label: 'Edit', value: 'edit' },
     { label: 'Delete', value: 'delete' },
+    { label: 'Split', value: 'split' },
   ],
 });
 

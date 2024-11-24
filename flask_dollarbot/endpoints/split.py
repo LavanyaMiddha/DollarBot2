@@ -3,7 +3,7 @@ import  endpoints.helper as helper
 from datetime import datetime
 
 
-add_bp = Blueprint('add', __name__)
+add_split_bp = Blueprint('split', __name__)
 
 
 def validate_add_request(chat_id, expense_date, expense_amount, expense_category):
@@ -18,8 +18,8 @@ def validate_add_request(chat_id, expense_date, expense_amount, expense_category
         return False 
     return True 
 
-@add_bp.route('/add_single', methods=['POST'])
-def add_single():
+@add_split_bp.route('/add_single', methods=['POST'])
+def add_single(user_id=None, friends = None):
     """
     Add a single expense record. 
     
@@ -40,36 +40,20 @@ def add_single():
     """
     data = request.get_json()
     chat_id = data['user_id']
-    expense_date = data['date']
-    expense_category = data['category']
-    expense_amount = data['amount']
-    expense_currency = str(data['currency'])
-    friends = data.get('friends', [])
-
-    if not validate_add_request(chat_id, expense_date, expense_amount, expense_category):
-        return jsonify({'error': 'Bad Request'}), 400
+    friends = data['friends']
     
-
-    date_str, category_str, amount_str = (
-        expense_date,
-        str(expense_category),
-        str(expense_amount),
-    )
-    # get all user data 
+   # get all user data 
     user_list = helper.read_json()
     if user_list is None :
         user_list.append("864914211") #Placeholder value
     # add new json for new user
     if str(chat_id) not in user_list:
-        user_list[str(chat_id)] = {"data": [], "budget": {"overall": "0", "category": None}, "friends": []}
-    record = "{},{},{}, {}".format(date_str, category_str, amount_str, expense_currency)
-    # # Update friends list
-    # existing_friends = set(user_list[str(chat_id)]["friends"])
-    # new_friends = set(friends)
-    # user_list[str(chat_id)]["friends"] = list(existing_friends.union(new_friends))
+        user_list[str(chat_id)] = {"data": [], "budget": {"long-term": [],"short-term": []   }, "friends": []}
+    # write data
 
-    # write data 
-    user_list[str(chat_id)]["data"].append(record)
+    record = friends.strip()
+    print(friends)
+    user_list[str(chat_id)]["friends"].append(record)
     helper.write_json(user_list)
     return jsonify({'message': 'Expense record created successfully'}), 200
     

@@ -7,6 +7,7 @@ import { createMemoryHistory } from 'history';
 import { Provider } from './components/ui/provider';
 import Signin from './pages/Signin';
 import Home from './pages/Home';
+import SplitExpense from './pages/SplitExpense'
 
 const history = createMemoryHistory();
 function App() {
@@ -18,6 +19,7 @@ function App() {
           <Route path="/signup" element={<Signup />} />
           <Route path="/signin" element={<Signin />} />
           <Route path="/home" element={<Home />} />
+          <Route path="/split" element={<SplitExpense />} />
         </Routes>
       </Router>
     </Provider>
