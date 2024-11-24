@@ -2,6 +2,7 @@ from flask import Blueprint, request, jsonify
 import  endpoints.helper as helper
 from datetime import datetime
 import re
+from datetime import date
 
 def validate_display_request(user_id):
     if not user_id:
@@ -18,43 +19,62 @@ def add_alerts(category=None, year=None, month=None, user_id=None):
 
     """
     validate_display_request(user_id)
-    data = helper.getUserBudgetHistory(user_id)
-    #print(data)
-    resp=dict()
-    for goal_type in data:
-        for goals in data[goal_type]:
-            goals=goals.split(",")
-            if str(goal_type).strip()=="long-term" and category in goals and int(year) == int(goals[0][:4]):
-                resp["Long-Term"]=goals[3]
-            elif str(goal_type).strip()=="short-term" and category in goals and int(year) == int(goals[0][:4]) and int(month) == int(goals[0][5:7]):
-                print("Helooo")
-                resp["Short-Term"]=goals[3]
-    
-    data2= helper.getUserHistory(user_id)
-    total_expense=0
-    for expense in data2:
-        expense=expense.split(",")
-        if category in expense and re.search(year, expense[0]) and re.search(month, expense[0]):
-            total_expense = total_expense + int(expense[2])
-    resp["Expenditure"]=total_expense
-    print(resp)
-    print("Hi I have reached here", category)
+    notifications=[]
+    categories=["Food","Groceries","Utilities","Transport","Shopping","Miscellaneous","Entertainment"]
+    for category in categories:
+        data = helper.getUserHistoryByCategory(user_id, category)
+        today = date.today()
+        month = today.month
+        year = today.year
+        monthly_expense =0
+        yearly_expense=0
+        short_term_budget=0
+        long_term_budget=0
+        for record in data:
+            record=record.split(",")
+            if int(year) == int(record[0][:4]) and int(month) == int(record[0][5:7]):
+                monthly_expense = monthly_expense + int(record[2])
+            if int(year) == int(record[0][:4]):
+                yearly_expense = yearly_expense + int(record[2])
+        data2 = helper.getUserBudgetHistoryByCategory(user_id, category)
+        for record in data2:
+            record=record.split(",")
+            if int(year) == int(record[0][:4]) and int(month) == int(record[0][5:7]) and record[1]=="Short-Term":
+                short_term_budget = int(record[3])
 
-    long_term_budget=0
-    short_term_budget=0
+            elif int(year) == int(record[0][:4]) and record[1]=="Long-Term":
+                long_term_budget = int(record[3])
+        notes=[]
+        notes.append(monthly_expense)
+        notes.append(short_term_budget)
+        if (monthly_expense >= short_term_budget):
+            notes.append("Red")
+        elif (monthly_expense >= (0.9*short_term_budget)):
+            notes.append("Orange")
+        elif(monthly_expense !=0 and monthly_expense >= (0.8*short_term_budget)):
+            notes.append("Purple")
+        else:
+            notes.append("Green")
+        notes.append(yearly_expense)
+        notes.append(long_term_budget)
+        if (yearly_expense >= long_term_budget):
+            notes.append("Red")
+        elif (yearly_expense >= (0.9*long_term_budget)):
+            notes.append("Orange")
+        elif(yearly_expense!=0 and yearly_expense >= (0.65*long_term_budget)):
+            notes.append("Purple")
+        else:
+            notes.append("Green")  
 
-    for x in resp:
-        if x == "Short-Term":
-            short_term_budget = resp[x]
-        elif x == "Long-Term":
-            long_term_budget = resp[x]
-        
-    analytics_data = []
-    labels=["Expenditure", "Short-Term", "Long-Term"]
-    values = [total_expense, short_term_budget, long_term_budget]
-    analytics_data = {
-        "labels" : labels,
-        "values" : values
-    }
-    #category = request.args.get('category')
-    return jsonify(analytics_data)  
+
+
+        notifications.append({
+        "Category" : category,
+        "Monthly Expense": notes[0],
+        "Monthly Budget" : notes[1],
+        "color1" : notes[2],
+        "Yearly Expense" : notes[3],
+        "Yearly Budget" : notes[4],
+        "color2" : notes[5] 
+        })
+    return jsonify(notifications)
