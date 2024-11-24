@@ -1,6 +1,6 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect } from 'react';
 import { Container, Flex, Text, Link } from '@chakra-ui/react';
-import axios from "axios";
+import axios from 'axios';
 
 type NotificationsData = {
   Category: string;
@@ -96,9 +96,28 @@ const Alerts = () => {
           </Link>
         </Flex>
       </Container>
-      <h2 style={{fontSize: "30px", fontWeight:"bold", marginBottom:"20px"}}>Notifications</h2>
-      <p style={{fontSize: "20px", fontWeight:"bold", marginBottom:"20px"}}> Displaying Statistics for current Month and Year</p>
-      <table style={{ background: "White", border: "1px solid black", width: "100%", fontSize: "20px", fontWeight:"bold", borderBlockColor:"black", borderBlockStyle:"dotted", padding: "10px", alignContent:"center"}}>
+      <h2
+        style={{ fontSize: '30px', fontWeight: 'bold', marginBottom: '20px' }}
+      >
+        Notifications
+      </h2>
+      <p style={{ fontSize: '20px', fontWeight: 'bold', marginBottom: '20px' }}>
+        {' '}
+        Displaying Statistics for current Month and Year
+      </p>
+      <table
+        style={{
+          background: 'White',
+          border: '1px solid black',
+          width: '100%',
+          fontSize: '20px',
+          fontWeight: 'bold',
+          borderBlockColor: 'black',
+          borderBlockStyle: 'dotted',
+          padding: '10px',
+          alignContent: 'center',
+        }}
+      >
         <thead>
           <tr>
             <th style={{ border: '1px solid black' }}>Category</th>
