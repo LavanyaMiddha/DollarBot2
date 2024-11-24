@@ -2,7 +2,7 @@
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://github.com/LavanyaMiddha/DollarBot2/blob/main/LICENSE)
 [![Python application](https://github.com/LavanyaMiddha/DollarBot2/actions/workflows/python-app.yml/badge.svg)](https://github.com/LavanyaMiddha/DollarBot2/actions/workflows/python-app.yml)
 [![Format code](https://github.com/LavanyaMiddha/DollarBot2/actions/workflows/black.yml/badge.svg)](https://github.com/LavanyaMiddha/DollarBot2/actions/workflows/black.yml)
-[![pylint](https://img.shields.io/badge/PyLint-6.61-orange?logo=python&logoColor=white)]([https://github.com/LavanyaMiddha/DollarBot2/blob/main/.github/workflows/python-app.yml])
+[![pylint](https://img.shields.io/badge/PyLint-6.57-orange?logo=python&logoColor=white)]([https://github.com/LavanyaMiddha/DollarBot2/blob/main/.github/workflows/python-app.yml])
 [![Javascript Format Checker](https://github.com/LavanyaMiddha/DollarBot2/actions/workflows/format-typescript.yml/badge.svg)](https://github.com/LavanyaMiddha/DollarBot2/actions/workflows/format-typescript.yml)
 [![codecov](https://codecov.io/gh/LavanyaMiddha/DollarBot2/graph/badge.svg?token=EE8RIQLV3Y)](https://codecov.io/gh/LavanyaMiddha/DollarBot2)
 

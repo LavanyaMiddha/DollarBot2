@@ -146,6 +146,16 @@ def getUserHistory(chat_id):
         return data["data"]
     
     return None
+    
+def getUserBudgetHistory(chat_id):
+    """
+    getUserHistory(chat_id): Takes 1 argument chat_id and uses this to get the relevant user's historical data.
+    """
+    data = getUserData(chat_id)
+    if data is not None:
+        return data["budget"]
+    
+    return None
 
 def getUserHistoryByCategory(chat_id, category):
     data = getUserHistory(chat_id)

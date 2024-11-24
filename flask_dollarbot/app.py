@@ -5,6 +5,7 @@ import os
 from model.user import db
 from dotenv import load_dotenv
 from endpoints.add import add_bp
+from endpoints.add_budget import add_budget_bp
 from endpoints.edit import edit_bp
 from endpoints.delete import delete_bp
 from endpoints.display import display_bp
@@ -41,6 +42,7 @@ with app.app_context():
   
 # Register blueprints
 app.register_blueprint(add_bp, url_prefix='/add')
+app.register_blueprint(add_budget_bp, url_prefix='/add_budget')
 app.register_blueprint(edit_bp)
 app.register_blueprint(delete_bp)
 app.register_blueprint(display_bp, url_prefix='/display')
