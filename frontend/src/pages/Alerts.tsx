@@ -35,10 +35,10 @@ const Alerts = () => {
   }, []);
 
   const colorData = [
-    { category: "Over Budget", color: "red" },
-    { category: "High Expense", color: "orange" },
-    { category: "Moderate Expense", color: "purple" },
-    { category: "Low Expense", color: "green" },
+    { category: 'Over Budget', color: 'red' },
+    { category: 'High Expense', color: 'orange' },
+    { category: 'Moderate Expense', color: 'purple' },
+    { category: 'Low Expense', color: 'green' },
   ];
 
   return (
@@ -103,9 +103,40 @@ const Alerts = () => {
           </Link>
         </Flex>
       </Container>
-      <h2 style={{fontSize: "25px", fontWeight:"bold", marginBottom:"20px", color:"red"}}>Alerts</h2>
-      <p style={{fontSize: "20px", fontWeight:"Medium", marginBottom:"18px", fontStyle: "italic"}}> Displaying Statistics for current Month and Year</p>
-      <table style={{ background: "White", border: "1px solid black", width: "100%", fontSize: "20px", fontWeight:"bold", borderBlockColor:"black", borderBlockStyle:"dotted", padding: "10px", alignContent:"center"}}>
+      <h2
+        style={{
+          fontSize: '25px',
+          fontWeight: 'bold',
+          marginBottom: '20px',
+          color: 'red',
+        }}
+      >
+        Alerts
+      </h2>
+      <p
+        style={{
+          fontSize: '20px',
+          fontWeight: 'Medium',
+          marginBottom: '18px',
+          fontStyle: 'italic',
+        }}
+      >
+        {' '}
+        Displaying Statistics for current Month and Year
+      </p>
+      <table
+        style={{
+          background: 'White',
+          border: '1px solid black',
+          width: '100%',
+          fontSize: '20px',
+          fontWeight: 'bold',
+          borderBlockColor: 'black',
+          borderBlockStyle: 'dotted',
+          padding: '10px',
+          alignContent: 'center',
+        }}
+      >
         <thead>
           <tr>
             <th style={{ border: '1px solid black' }}>Category</th>
@@ -166,41 +197,45 @@ const Alerts = () => {
 
       <table
         style={{
-          borderCollapse: "collapse",
-          width: "40%",
-          margin: "10px 0",
-          border: "1px solid black",
-          background: "White",
-          position: "absolute",
-          bottom: "10px",
-          right: "10px",
-          fontSize: "18px"
+          borderCollapse: 'collapse',
+          width: '40%',
+          margin: '10px 0',
+          border: '1px solid black',
+          background: 'White',
+          position: 'absolute',
+          bottom: '10px',
+          right: '10px',
+          fontSize: '18px',
         }}
       >
         <thead>
           <tr>
-            <th style={{ border: "1px solid black", padding: "8px" }}>Category</th>
-            <th style={{ border: "1px solid black", padding: "8px" }}>Color</th>
+            <th style={{ border: '1px solid black', padding: '8px' }}>
+              Category
+            </th>
+            <th style={{ border: '1px solid black', padding: '8px' }}>Color</th>
           </tr>
         </thead>
         <tbody>
           {colorData.map((item, index) => (
             <tr key={index}>
-              <td style={{ border: "1px solid black", padding: "8px" }}>{item.category}</td>
+              <td style={{ border: '1px solid black', padding: '8px' }}>
+                {item.category}
+              </td>
               <td
                 style={{
-                  border: "1px solid black",
-                  padding: "8px",
-                  textAlign: "center",
+                  border: '1px solid black',
+                  padding: '8px',
+                  textAlign: 'center',
                 }}
               >
                 <div
                   style={{
-                    width: "20px",
-                    height: "20px",
+                    width: '20px',
+                    height: '20px',
                     backgroundColor: item.color,
-                    display: "inline-block",
-                    border: "1px solid #000",
+                    display: 'inline-block',
+                    border: '1px solid #000',
                   }}
                 ></div>
               </td>
