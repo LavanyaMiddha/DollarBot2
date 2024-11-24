@@ -7,7 +7,7 @@ import { createMemoryHistory } from 'history';
 import { Provider } from './components/ui/provider';
 import Signin from './pages/Signin';
 import Home from './pages/Home';
-import AddFriends from './pages/AddFriends'
+import AddFriends from './pages/AddFriends';
 
 const history = createMemoryHistory();
 function App() {
