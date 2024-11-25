@@ -51,7 +51,7 @@ def test_add_friends_success(client, mocker):
     mocker.patch('endpoints.helper.read_json', side_effect=MockHelper.read_json)
     mocker.patch('endpoints.helper.write_json', side_effect=MockHelper.write_json)
     mocker.patch('endpoints.helper.getUserFriends', side_effect=MockHelper.getUserFriends)
-    mocker.patch('model.user.User.query.filter_by').return_value.first.return_value = True
+    mocker.patch('endpoints.add_friends.User.query.filter_by').return_value.first.return_value = True
 
     response = client.post('/add_friends', json={
         "user_id": "864914211",
@@ -72,7 +72,7 @@ def test_add_friends_already_added(client, mocker):
 
 def test_add_friends_user_not_registered(client, mocker):
     mocker.patch('endpoints.helper.getUserFriends', return_value=[])
-    mocker.patch('model.user.User.query.filter_by').return_value.first.return_value = None
+    mocker.patch('endpoints.add_friends.User.query.filter_by').return_value.first.return_value = None
 
     response = client.post('/add_friends', json={
         "user_id": "864914211",
