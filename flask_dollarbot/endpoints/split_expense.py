@@ -1,4 +1,4 @@
-from model.user import User, db
+from model.user import User
 from flask import Blueprint, request, jsonify
 import  endpoints.helper as helper
 from datetime import datetime

@@ -1,6 +1,7 @@
 from flask import Blueprint, request, jsonify
 import  endpoints.helper as helper
 from datetime import datetime
+from model.user import User
 
 
 add_friends_bp = Blueprint('friends', __name__)
@@ -41,7 +42,13 @@ def add_friends():
     data = request.get_json()
     chat_id = data['user_id']
     friends = data['friends']
+
+    if friends in helper.getUserFriends(chat_id):
+        return jsonify({'error': 'Friend Already Added'}), 400
     
+    existing_user = User.query.filter_by(username=friends.strip()).first()
+    if not existing_user:
+        return jsonify({'error': 'Username not registered'}), 400
    # get all user data 
     user_list = helper.read_json()
     if user_list is None :
