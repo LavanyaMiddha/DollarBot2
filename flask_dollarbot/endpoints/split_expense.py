@@ -2,7 +2,7 @@ from model.user import User, db
 from flask import Blueprint, request, jsonify
 import  endpoints.helper as helper
 from datetime import datetime
-
+import re
 
 split_expense_bp = Blueprint('split_expense', __name__)
 
@@ -55,24 +55,38 @@ def add_expense():
         return jsonify({'error': 'Bad Request'}), 400
     
     friends_list = friends.split(",")
+    friends_usernames=[]
     for f in friends_list:
         existing_user = User.query.filter_by(username=f.strip()).first()
-        print(existing_user)
+        numbers = re.findall(r'\d+', str(existing_user))  # Find all sequences of digits
+        friend_id = numbers[0] if numbers else None 
+        if friend_id is None:
+            return jsonify({'error': f'Username ${f} not registered with us'}), 400
+        else:
+            friends_usernames.append(friend_id)
+
+
+    friends_usernames.append(chat_id)
+    print(friends_usernames)
+
+    expense_amount = int(expense_amount) / len(friends_usernames)
+    expense_amount = int(expense_amount)
     date_str, category_str, amount_str = (
         expense_date,
         str(expense_category),
         str(expense_amount),
     )
-    # get all user data 
-    #user_list = helper.read_json()
-    #if user_list is None :
-     #   user_list=dict()
-    # add new json for new user
-    #if str(chat_id) not in user_list:
-     #   user_list[str(chat_id)] = {"data": [], "budget": {"long-term": [],"short-term": []  }}
-    #record = "{},{},{}, {}".format(date_str, category_str, amount_str, expense_currency)
-    # write data 
-    #user_list[str(chat_id)]["data"].append(record)
-    #helper.write_json(user_list)
+    for user in friends_usernames:
+        #get user data
+        user_list = helper.read_json()
+        if user_list is None :
+            user_list=dict()
+            #add new json for new user
+        if str(chat_id) not in user_list:
+            user_list[str(user)] = {"data": [], "budget": {"long-term": [],"short-term": [] }, "friends":[]}
+        record = "{},{},{}, {}".format(date_str, category_str, amount_str, expense_currency)
+        # write data 
+        user_list[str(user)]["data"].append(record)
+        helper.write_json(user_list)
     return jsonify({'message': 'Expense record created successfully'}), 200
     
