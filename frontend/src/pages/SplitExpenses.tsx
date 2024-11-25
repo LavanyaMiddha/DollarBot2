@@ -1,75 +1,75 @@
 import {
-    Center,
-    Container,
-    createListCollection,
-    Flex,
-    Heading,
-    Icon,
-    Input,
-    Text,
-  } from '@chakra-ui/react';
-  import {
-    SelectContent,
-    SelectItem,
-    SelectLabel,
-    SelectRoot,
-    SelectTrigger,
-    SelectValueText,
-  } from '../components/ui/select';
-  import { FaDollarSign } from 'react-icons/fa';
+  Center,
+  Container,
+  createListCollection,
+  Flex,
+  Heading,
+  Icon,
+  Input,
+  Text,
+} from '@chakra-ui/react';
+import {
+  SelectContent,
+  SelectItem,
+  SelectLabel,
+  SelectRoot,
+  SelectTrigger,
+  SelectValueText,
+} from '../components/ui/select';
+import { FaDollarSign } from 'react-icons/fa';
 import { FaEuroSign } from 'react-icons/fa';
 import { FaIndianRupeeSign } from 'react-icons/fa6';
-  import {
-    NumberInputField,
-    NumberInputRoot,
-  } from '../components/ui/number-input';
+import {
+  NumberInputField,
+  NumberInputRoot,
+} from '../components/ui/number-input';
 import { Button } from '../components/ui/button';
- import { DatePicker, Space } from 'antd';
- import React, { useState } from 'react';
- import { useForm } from 'react-hook-form';
- import axios from 'axios';
+import { DatePicker, Space } from 'antd';
+import React, { useState } from 'react';
+import { useForm } from 'react-hook-form';
+import axios from 'axios';
 
 type Props = {
-    onSplitExpense?: (value: boolean) => void;
-  };
+  onSplitExpense?: (value: boolean) => void;
+};
 
-const SplitExpenses = ({ onSplitExpense }: Props) =>{
-    const {
-        handleSubmit,
-        register,
-        formState: { errors, isSubmitting },
-      } = useForm();
+const SplitExpenses = ({ onSplitExpense }: Props) => {
+  const {
+    handleSubmit,
+    register,
+    formState: { errors, isSubmitting },
+  } = useForm();
 
-    const [expDate, setExpDate] = useState('');
-    const [category, setCategory] = useState<string>('Food');
-    const [selectedCurrency, setSelectedCurrency] = useState('dollar');
+  const [expDate, setExpDate] = useState('');
+  const [category, setCategory] = useState<string>('Food');
+  const [selectedCurrency, setSelectedCurrency] = useState('dollar');
 
-    async function onSubmit(data: any) {
-        if (expDate != '') {
-          axios.post(
-            'http://127.0.0.1:5000/split_expense/add_expense',
-            {
-              // Global User ID is set during SignUp/SignIn
-              user_id: localStorage.getItem('globalUserId'),
-              amount: data.expenseValue,
-              date: expDate,
-              category: category,
-              currency: selectedCurrency,
-              friends: data.friends
-            },
-            {
-              headers: {
-                'Content-Type': 'application/json',
-              },
-            },
-          );
-        }
-        await new Promise((r) => setTimeout(r, 2000));
-        onSplitExpense?.(true);
-        window.location.reload();
-      }
-    return (
-        <Container background={'Black'}>
+  async function onSubmit(data: any) {
+    if (expDate != '') {
+      axios.post(
+        'http://127.0.0.1:5000/split_expense/add_expense',
+        {
+          // Global User ID is set during SignUp/SignIn
+          user_id: localStorage.getItem('globalUserId'),
+          amount: data.expenseValue,
+          date: expDate,
+          category: category,
+          currency: selectedCurrency,
+          friends: data.friends,
+        },
+        {
+          headers: {
+            'Content-Type': 'application/json',
+          },
+        },
+      );
+    }
+    await new Promise((r) => setTimeout(r, 2000));
+    onSplitExpense?.(true);
+    window.location.reload();
+  }
+  return (
+    <Container background={'Black'}>
       <Center>
         <Heading fontWeight="bold" marginBottom="8px" color="White">
           Add Expenses
@@ -123,8 +123,11 @@ const SplitExpenses = ({ onSplitExpense }: Props) =>{
           fontWeight="medium"
           marginBottom="15px"
           color="White"
-          marginTop={"10px"}
-          > Friends</Text>
+          marginTop={'10px'}
+        >
+          {' '}
+          Friends
+        </Text>
         <Input
           id="friends"
           background={'white'}
@@ -132,7 +135,7 @@ const SplitExpenses = ({ onSplitExpense }: Props) =>{
           marginBottom="10px"
           placeholder="Enter Comma Separated list of friends"
           {...register('friends', {
-            required: 'This is required'
+            required: 'This is required',
           })}
         />
         <Text
@@ -172,7 +175,7 @@ const SplitExpenses = ({ onSplitExpense }: Props) =>{
             marginBottom="10px"
             min={0}
             height="100%"
-            background={"white"}
+            background={'white'}
           >
             <NumberInputField
               {...register('expenseValue', {
@@ -184,38 +187,37 @@ const SplitExpenses = ({ onSplitExpense }: Props) =>{
         <Button mt={4} colorScheme="teal" loading={isSubmitting} type="submit">
           Add
         </Button>
-        </form>
-        </Container>
-    )
-}
-
+      </form>
+    </Container>
+  );
+};
 
 const currencies = createListCollection({
-    items: [
-      {
-        label: (
-          <Icon>
-            <FaDollarSign />
-          </Icon>
-        ),
-        value: 'dollar',
-      },
-      {
-        label: (
-          <Icon>
-            <FaEuroSign />
-          </Icon>
-        ),
-        value: 'euro',
-      },
-      {
-        label: (
-          <Icon>
-            <FaIndianRupeeSign />
-          </Icon>
-        ),
-        value: 'rupee',
-      },
-    ],
-  });
-export default SplitExpenses
+  items: [
+    {
+      label: (
+        <Icon>
+          <FaDollarSign />
+        </Icon>
+      ),
+      value: 'dollar',
+    },
+    {
+      label: (
+        <Icon>
+          <FaEuroSign />
+        </Icon>
+      ),
+      value: 'euro',
+    },
+    {
+      label: (
+        <Icon>
+          <FaIndianRupeeSign />
+        </Icon>
+      ),
+      value: 'rupee',
+    },
+  ],
+});
+export default SplitExpenses;
