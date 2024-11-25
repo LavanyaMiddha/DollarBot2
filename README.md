@@ -335,14 +335,10 @@ Our implementation has been tracked in a project board which can be viewed here 
 [DollarBot Developer board](https://trello.com/invite/b/671fd0fafd4e84cdbbfa766d/ATTIa26bcec13fe6a0003f593090967efb8bF6975E59/se-project2-tracker)
 
 Some possible future enhancements are as follows:
-1.  **Implement Additional Features and Visualization Tools:** Enhance functionality by leveraging ReactJS libraries to provide users with additional data visualization options, enable multiple bulk transactions at once, and explore methods to make the web app more user-friendly and seamless.
-2.  **Expense Sharing and Splitting:** Enable users to share expenses effortlessly with friends, family, or colleagues. Implement a feature that allows users to split bills and track shared expenses, making group financial management seamless.
-3.  **Budget Limits and Alerts:** Option to set daily/monthly reminders and alert the user by mailing them if they cross these limits.
-4.	**AI-Driven Financial Insights:** Integrate advanced generative AI algorithms to provide personalized financial insights and recommendations. Leverage machine learning to analyze spending patterns and offer proactive suggestions for optimizing expenses.
-5.	**Financial Goal Setting:** Set short-term and long-term financial goals. Track progress with visual indicators and celebratory notifications.
-6.	**Natural Language Processing (NLP) Integration:** Enhance DollarBot's user experience by implementing Natural Language Processing (NLP) capabilities. Enable the bot to respond to casual conversation, making interactions more intuitive and user-friendly. Users can engage with DollarBot in a more conversational manner, improving overall usability.
-7.  **Integration with Financial APIs:** Integrate with popular financial APIs to fetch real-time transaction data from bank accounts and credit cards. This enhancement provides users with up-to-the-minute financial information, ensuring accuracy and completeness in their spending records.
-9.  **Smart Notifications and Alerts:** Implement intelligent notification features to alert users about budget limits, unusual spending patterns, or upcoming bills. These proactive notifications will empower users to make informed financial decisions in real-time.
+1.	**AI-Driven Financial Insights:** Integrate advanced generative AI algorithms to provide personalized financial insights and recommendations. Leverage machine learning to analyze spending patterns and offer proactive suggestions for optimizing expenses.
+2.	**Natural Language Processing (NLP) Integration:** Enhance DollarBot's user experience by implementing Natural Language Processing (NLP) capabilities. Enable the bot to respond to casual conversation, making interactions more intuitive and user-friendly. Users can engage with DollarBot in a more conversational manner, improving overall usability.
+3.  **Integration with Financial APIs:** Integrate with popular financial APIs to fetch real-time transaction data from bank accounts and credit cards. This enhancement provides users with up-to-the-minute financial information, ensuring accuracy and completeness in their spending records.
+4.  **Smart Notifications and Alerts:** Implement intelligent notification features to alert users about budget limits, unusual spending patterns, or upcoming bills. These proactive notifications will empower users to make informed financial decisions in real-time.
 
 
 :heart: Acknowledgements
