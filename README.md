@@ -40,7 +40,7 @@ And the best part? DollarBot is your financial sidekick, available on any Web Br
 
 ## Scorecard
 
-[Score card - Group 9](https://docs.google.com/document/d/1HRIEcZEZftQMgsl30W4LBVF9Q4Kj-WhWMT_pbpFhiy0/edit?tab=t.0)
+[Score card - Group 43](https://docs.google.com/document/d/1n0Sd-WFwv0E74Dn06nr9b_SgncmhtsIqicAoaxLiTV0/edit?usp=sharing)
 
 ## Demo Video
 
