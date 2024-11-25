@@ -38,6 +38,7 @@ import ChartDataLabels from 'chartjs-plugin-datalabels';
 Chart.register(ArcElement, Legend);
 Chart.register(ChartDataLabels);
 Chart.register(CategoryScale, LinearScale, BarElement);
+
 Chart.defaults.set('plugins.datalabels', { color: '#000000' });
 Chart.defaults.plugins.legend.labels.color = 'white';
 
