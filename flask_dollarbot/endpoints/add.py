@@ -63,11 +63,6 @@ def add_single():
     if str(chat_id) not in user_list:
         user_list[str(chat_id)] = {"data": [], "budget": {"overall": "0", "category": None}, "friends": []}
     record = "{},{},{}, {}".format(date_str, category_str, amount_str, expense_currency)
-    # # Update friends list
-    # existing_friends = set(user_list[str(chat_id)]["friends"])
-    # new_friends = set(friends)
-    # user_list[str(chat_id)]["friends"] = list(existing_friends.union(new_friends))
-
     # write data 
     user_list[str(chat_id)]["data"].append(record)
     helper.write_json(user_list)

@@ -3,7 +3,7 @@ import  endpoints.helper as helper
 from datetime import datetime
 
 
-add_split_bp = Blueprint('split', __name__)
+add_friends_bp = Blueprint('friends', __name__)
 
 
 def validate_add_request(chat_id, expense_date, expense_amount, expense_category):
@@ -18,8 +18,8 @@ def validate_add_request(chat_id, expense_date, expense_amount, expense_category
         return False 
     return True 
 
-@add_split_bp.route('/add_single', methods=['POST'])
-def add_single(user_id=None, friends = None):
+@add_friends_bp.route('/add_friends', methods=['POST'])
+def add_friends(user_id=None, friends=None):
     """
     Add a single expense record. 
     

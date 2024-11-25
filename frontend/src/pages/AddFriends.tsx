@@ -17,23 +17,23 @@ const AddFriends = ({ onAddFriend }: Props) => {
   const [friends, setFriends] = useState<string>();
 
   async function onSubmit(data: any) {
-    const friendData = {
-      user_id: localStorage.getItem('globalUserId'),
-      friends: data.friends,
-    };
 
-    try {
-      await axios.post('http://127.0.0.1:5000/split/add_single', friendData, {
+    
+    axios.post(
+      'http://127.0.0.1:5000/friends/add_friends', 
+      {
+        user_id: localStorage.getItem('globalUserId'),
+        friends: data.friends
+      }, 
+      {
         headers: {
           'Content-Type': 'application/json',
-        },
-      });
+      },
+    });
 
       onAddFriend?.(true);
       setFriends(friends);
-    } catch (error) {
-      console.error('Error adding friends:', error);
-    }
+    
   }
 
   return (
