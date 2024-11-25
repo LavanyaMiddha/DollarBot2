@@ -7,17 +7,7 @@ def validate_display_request(user_id):
     if not user_id:
         return False
     return True
-
-def build_budget_dictionary(budget_data):
-    budget_details = budget_data.split(',')
-    return {
-        "budget_date" : budget_details[0],
-        "budget_type" : budget_details[1],
-        "budget_category" : budget_details[2],
-        "budget_amount": budget_details[3],
-        "expense_currency": budget_details[4]
-    }
-        
+  
 budget_analytics_bp = Blueprint('budget_analytics', __name__)
 
 @budget_analytics_bp.route('/add_analytics/<category>/<year>/<month>/<user_id>', methods=['GET'])
