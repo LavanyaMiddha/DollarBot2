@@ -61,7 +61,7 @@ def test_add_single(client, mocker):
         "category" : "Groceries",
         "currency" : "$"
     })
-    assert response.status_code == 500
+    assert response.status_code == 200
    # assert response.get_json() == {'message': 'Expense record created successfully'}
 
 def test_add_single_invalid_category(client, mocker):

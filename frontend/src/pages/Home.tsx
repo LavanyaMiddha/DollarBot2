@@ -9,9 +9,11 @@ import {
   Kbd,
   Box,
   ListCollection,
+  Heading,
+  AspectRatio,
 } from '@chakra-ui/react';
 import { Checkbox } from '../components/ui/checkbox';
-import { useState } from 'react';
+import { useState, useRef } from 'react';
 import {
   SelectContent,
   SelectItem,
@@ -27,7 +29,18 @@ import DeleteExpense from './DeleteExpense';
 import axios from 'axios';
 import { useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
-import AddFriends from './AddFriends';
+import { Pie, Bar } from 'react-chartjs-2';
+
+import { Chart, ArcElement, Legend } from 'chart.js';
+import { CategoryScale, LinearScale, BarElement } from 'chart.js';
+import ChartDataLabels from 'chartjs-plugin-datalabels';
+
+Chart.register(ArcElement, Legend);
+Chart.register(ChartDataLabels);
+Chart.register(CategoryScale, LinearScale, BarElement);
+
+Chart.defaults.set('plugins.datalabels', { color: '#000000' });
+Chart.defaults.plugins.legend.labels.color = 'white';
 
 function retCurrencySymbol(currency: string) {
   var result = '';
@@ -51,6 +64,35 @@ const Home = () => {
   const [selection, setSelection] = useState<string[]>([]);
   const [action, setAction] = useState<string>('add');
   const [expenses, setExpenses] = useState([{}]);
+  const [chartData, setChartData] = useState<any>({
+    labels: [],
+    datasets: [
+      {
+        label: 'User Expenses',
+        data: [],
+        backgroundColor: [
+          'rgb(229, 16, 16)',
+          'rgb(255, 102, 0)',
+          'rgb(252, 69, 137)',
+          'rgb(255, 252, 93)',
+          'rgb(74, 222, 175)',
+          'rgb(74, 222, 175)',
+          'rgb(74, 222, 175)',
+        ],
+        borderColor: [
+          'rgb(229, 16, 16)',
+          'rgb(255, 102, 0)',
+          'rgb(252, 69, 137)',
+          'rgb(255, 252, 93)',
+          'rgb(74, 222, 175)',
+          'rgb(74, 222, 175)',
+          'rgb(74, 222, 175)',
+        ],
+        borderWidth: 1,
+      },
+    ],
+  });
+
   let navigate = useNavigate();
 
   if (localStorage.getItem('globalUserId') === null) {
@@ -60,6 +102,7 @@ const Home = () => {
   const handleExpense = (value: boolean) => {
     if (value) {
       var newData: any[] = [];
+      console.log();
       axios
         .get(
           `http://127.0.0.1:5000/display/${localStorage.getItem(
@@ -84,6 +127,8 @@ const Home = () => {
 
   useEffect(() => {
     var newData: any[] = [];
+    var labels: any[] = [];
+    var expenses_1: any[] = [];
     axios
       .get(
         `http://127.0.0.1:5000/display/${localStorage.getItem('globalUserId')}`,
@@ -103,6 +148,81 @@ const Home = () => {
         setExpenses(newData);
       });
   }, [selection]);
+
+  useEffect(() => {
+    const labels: string[] = [];
+    const expenses_1: number[] = [];
+    axios
+      .get(
+        `http://127.0.0.1:5000/analytics/${localStorage.getItem('globalUserId')}`,
+      )
+      .then(function (resp) {
+        for (let i = 0; i < resp.data.length; i++) {
+          if (labels.includes(resp.data[i]['expense_category'])) {
+            let index = labels.indexOf(resp.data[i]['expense_category']);
+            expenses_1[index] += parseInt(resp.data[i]['expense_amount'], 10);
+          } else {
+            labels.push(resp.data[i]['expense_category']);
+            expenses_1.push(parseInt(resp.data[i]['expense_amount'], 10));
+          }
+        }
+        console.log('Labels:', labels);
+        console.log('Expenses:', expenses_1);
+        setChartData({
+          labels: labels,
+          datasets: [
+            {
+              label: 'User Expenses',
+              data: expenses_1,
+              backgroundColor: [
+                'rgb(229, 16, 16)',
+                'rgb(255, 102, 0)',
+                'rgb(252, 69, 137)',
+                'rgb(255, 252, 93)',
+                'rgb(74, 222, 175)',
+                'rgb(0, 178, 255)',
+                'rgb(66, 14, 135)',
+              ],
+              borderColor: [
+                'rgb(229, 16, 16)',
+                'rgb(255, 102, 0)',
+                'rgb(252, 69, 137)',
+                'rgb(255, 252, 93)',
+                'rgb(74, 222, 175)',
+                'rgb(0, 178, 255)',
+                'rgb(66, 14, 135)',
+              ],
+              borderWidth: 1,
+            },
+          ],
+        });
+      });
+  }, []);
+
+  const options = {
+    aspectRatio: 0.95,
+    plugins: {
+      legend: {
+        labels: {
+          font: {
+            family: 'Times New Roman' as const,
+            fontSize: 20 as const,
+            weight: 'bolder' as const,
+          },
+        },
+      },
+      datalabels: {
+        formatter: (value: number, context: { dataset: { data: any[] } }) => {
+          const total = context.dataset.data.reduce(
+            (sum: any, val: any) => sum + val,
+            0,
+          );
+          const percentage = ((value / total) * 100).toFixed(0);
+          return `${value}\n${percentage}%`;
+        },
+      },
+    },
+  };
 
   const hasSelection = selection.length > 0;
   const indeterminate = hasSelection && selection.length < expenses.length;
@@ -185,6 +305,33 @@ const Home = () => {
             }}
           >
             Log Out
+          </Link>
+          <Link
+            color="black"
+            textStyle="lg"
+            fontWeight="medium"
+            margin="18px 35px 0 0"
+            href="/Home"
+          >
+            Home
+          </Link>
+          <Link
+            color="black"
+            textStyle="lg"
+            fontWeight="medium"
+            margin="18px 35px 0 0"
+            href="/BudgetGoals"
+          >
+            Budget Goals
+          </Link>
+          <Link
+            color="Red"
+            textStyle="lg"
+            fontWeight="medium"
+            margin="18px 35px 0 0"
+            href="/Alerts"
+          >
+            Alerts
           </Link>
           <Link
             color="black"
@@ -288,6 +435,38 @@ const Home = () => {
             </Table.Header>
             <Table.Body>{rows}</Table.Body>
           </Table.Root>
+          {chartData.labels.length > 0 && chartData.datasets.length > 0 && (
+            <div style={{ padding: '10px', paddingTop: '100px' }}>
+              <Heading fontWeight="bold" marginBottom="8px" marginLeft="10px">
+                Expense Distribution Pie Chart
+              </Heading>
+              <Pie data={chartData} options={options} />
+            </div>
+          )}
+          {!chartData.labels.length && !chartData.datasets.length && (
+            <p>Loading Pie Chart Data...</p>
+          )}
+          {chartData.labels.length > 0 && chartData.datasets.length > 0 && (
+            <div style={{ padding: '10px', paddingTop: '100px' }}>
+              <Heading fontWeight="bold" marginBottom="8px" marginLeft="10px">
+                Expense Distribution Bar Chart
+              </Heading>
+              <Bar
+                data={chartData}
+                options={{
+                  aspectRatio: 1,
+                  plugins: {
+                    legend: {
+                      display: false,
+                    },
+                  },
+                }}
+              ></Bar>
+            </div>
+          )}
+          {!chartData.labels.length && !chartData.datasets.length && (
+            <p>Loading Bar Chart Data...</p>
+          )}
         </Flex>
       </AbsoluteCenter>
     </div>
