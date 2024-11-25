@@ -1,5 +1,19 @@
 import React, { useState } from 'react';
-import { Container, Flex, Heading, Input, Text } from '@chakra-ui/react';
+import {
+  Container,
+  AbsoluteCenter,
+  Flex,
+  Text,
+  Link,
+  Table,
+  createListCollection,
+  Kbd,
+  Box,
+  ListCollection,
+  Heading,
+  AspectRatio,
+  Input
+} from '@chakra-ui/react';
 import { Button } from '../components/ui/button';
 import { useForm } from 'react-hook-form';
 import axios from 'axios';
@@ -37,16 +51,81 @@ const AddFriends = ({ onAddFriend }: Props) => {
   
   return (
     <Container maxW="container.xl" py={10}>
-      <Heading as="h2" size="xl" mb={6}>
-        Add Friends
-      </Heading>
+       <Flex justifyContent="flex-start" color="black">
+          <Text
+            color="teal"
+            textStyle="3xl"
+            fontWeight="bold"
+            margin="12px 90px 0 0"
+          >
+            Dollar Bot
+          </Text>
+          <Link
+            color="black"
+            textStyle="lg"
+            href="/"
+            fontWeight="medium"
+            margin="18px 35px 0 0"
+            onClick={() => {
+              localStorage.clear();
+            }}
+          >
+            Log Out
+          </Link>
+          <Link
+            color="black"
+            textStyle="lg"
+            fontWeight="medium"
+            margin="18px 35px 0 0"
+            href="/Home"
+          >
+            Home
+          </Link>
+          <Link
+            color="black"
+            textStyle="lg"
+            fontWeight="medium"
+            margin="18px 35px 0 0"
+            href="/BudgetGoals"
+          >
+            Budget Goals
+          </Link>
+          <Link
+            color="Red"
+            textStyle="lg"
+            fontWeight="medium"
+            margin="18px 35px 0 0"
+            href="/Alerts"
+          >
+            Alerts
+          </Link>
+          <Link
+            color="black"
+            textStyle="lg"
+            fontWeight="medium"
+            margin="18px 35px 0 0"
+            href="https://github.com/SoftwareEngNoobs/DollarBot"
+          >
+            About
+          </Link>
+          <Link
+            color="black"
+            textStyle="lg"
+            fontWeight="medium"
+            margin="18px 35px 0 0"
+            href="https://github.com/SoftwareEngNoobs/DollarBot"
+          >
+            Help
+          </Link>
+        </Flex>
       <form onSubmit={handleSubmit(onSubmit)}>
         <Flex direction="column" gap={4}>
           <Text
-            fontSize="sm"
+            fontSize="20px"
             fontWeight="medium"
-            marginBottom="15px"
-            color="White"
+            marginBottom="5px"
+            color="Black"
+            marginTop="15px"
           >
             Add Friends
           </Text>

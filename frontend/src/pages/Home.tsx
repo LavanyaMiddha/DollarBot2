@@ -285,18 +285,6 @@ const Home = () => {
           <Link
             color="black"
             textStyle="lg"
-            href="/addFriends"
-            fontWeight="medium"
-            margin="18px 35px 0 0"
-            onClick={() => {
-              localStorage.clear();
-            }}
-          >
-            Add Friends
-          </Link>
-          <Link
-            color="black"
-            textStyle="lg"
             href="/"
             fontWeight="medium"
             margin="18px 35px 0 0"
@@ -314,6 +302,15 @@ const Home = () => {
             href="/Home"
           >
             Home
+          </Link>
+          <Link
+            color="black"
+            textStyle="lg"
+            fontWeight="medium"
+            margin="18px 35px 0 0"
+            href="/AddFriends"
+          >
+            Add Friends
           </Link>
           <Link
             color="black"
