@@ -17,23 +17,21 @@ const AddFriends = ({ onAddFriend }: Props) => {
   const [friends, setFriends] = useState<string>();
 
   async function onSubmit(data: any) {
-
-    
     axios.post(
-      'http://127.0.0.1:5000/friends/add_friends', 
+      'http://127.0.0.1:5000/friends/add_friends',
       {
         user_id: localStorage.getItem('globalUserId'),
-        friends: data.friends
-      }, 
+        friends: data.friends,
+      },
       {
         headers: {
           'Content-Type': 'application/json',
+        },
       },
-    });
+    );
 
-      onAddFriend?.(true);
-      setFriends(friends);
-    
+    onAddFriend?.(true);
+    setFriends(friends);
   }
 
   return (
