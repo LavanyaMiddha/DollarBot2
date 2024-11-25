@@ -34,6 +34,7 @@ const AddFriends = ({ onAddFriend }: Props) => {
     setFriends(friends);
   }
 
+  
   return (
     <Container maxW="container.xl" py={10}>
       <Heading as="h2" size="xl" mb={6}>

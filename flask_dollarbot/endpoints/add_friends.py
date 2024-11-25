@@ -19,7 +19,7 @@ def validate_add_request(chat_id, expense_date, expense_amount, expense_category
     return True 
 
 @add_friends_bp.route('/add_friends', methods=['POST'])
-def add_friends(user_id=None, friends=None):
+def add_friends():
     """
     Add a single expense record. 
     
@@ -45,7 +45,7 @@ def add_friends(user_id=None, friends=None):
    # get all user data 
     user_list = helper.read_json()
     if user_list is None :
-        user_list.append("864914211") #Placeholder value
+        user_list=dict() #Placeholder value
     # add new json for new user
     if str(chat_id) not in user_list:
         user_list[str(chat_id)] = {"data": [], "budget": {"long-term": [],"short-term": []   }, "friends": []}
