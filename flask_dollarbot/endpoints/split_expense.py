@@ -58,7 +58,7 @@ def add_expense():
     friends_usernames=[]
     for f in friends_list:
         existing_user = User.query.filter_by(username=f.strip()).first()
-        numbers = re.findall(r'\d+', str(existing_user))  # Find all sequences of digits
+        numbers = re.findall(r'\d+', str(existing_user))  
         friend_id = numbers[0] if numbers else None 
         if friend_id is None:
             return jsonify({'error': f'Username ${f} not registered with us'}), 400
