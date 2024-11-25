@@ -5,6 +5,17 @@ from calendar import monthrange
 
 add_budget_bp = Blueprint('add_budget', __name__)
 
+def validate_add_request(chat_id, expense_amount, expense_category, goal_type, expense_currency, goal_year, goal_month):
+    # validate input request 
+    if not chat_id or not expense_category or not expense_amount or not goal_type or not goal_month or not expense_currency or not goal_year:
+        return False
+    if expense_category not in helper.getSpendCategories():
+        return False
+    if helper.validate_entered_amount(expense_amount) == 0:
+        return False 
+    return True 
+
+
 @add_budget_bp.route('/add_single', methods=['POST'])
 def add_single():
     """
@@ -35,6 +46,9 @@ def add_single():
     goal_year = int(data["year"])
     goal_month = int(data["month"])
 
+    if not validate_add_request(chat_id, expense_amount, expense_category, goal_type, expense_currency, goal_year, goal_month):
+        return jsonify({'error': 'Bad Request'}), 400
+
     if goal_type.strip() == "Long-Term":
         goal_month=12
     last_day = monthrange(goal_year, goal_month)[1]
@@ -48,7 +62,7 @@ def add_single():
     # get all user data 
     user_list = helper.read_json()
     if user_list is None :
-        user_list.append("864914211") #Placeholder value
+        user_list=dict() #Placeholder value
     # add new json for new user
     if str(chat_id) not in user_list:
         user_list[str(chat_id)] = {"data": [], "budget": {"long-term": [],"short-term": []   }}

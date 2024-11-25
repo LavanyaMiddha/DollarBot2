@@ -56,7 +56,7 @@ def add_single():
     # get all user data 
     user_list = helper.read_json()
     if user_list is None :
-        user_list.append("864914211") #Placeholder value
+        user_list=dict()
     # add new json for new user
     if str(chat_id) not in user_list:
         user_list[str(chat_id)] = {"data": [], "budget": {"long-term": [],"short-term": []  }}
