@@ -10,8 +10,8 @@ import Home from './pages/Home';
 import BudgetGoals from './pages/BudgetGoals';
 import BudgetAnalytics from './pages/BudgetAnalytics';
 import Alerts from './pages/Alerts';
-import Friends from './pages/AddFriends'
-import SplitExpense from './pages/SplitExpenses'
+import Friends from './pages/AddFriends';
+import SplitExpense from './pages/SplitExpenses';
 
 const history = createMemoryHistory();
 function App() {
@@ -27,7 +27,7 @@ function App() {
           <Route path="/BudgetAnalytics" element={<BudgetAnalytics />} />
           <Route path="/Alerts" element={<Alerts />} />
           <Route path="/AddFriends" element={<Friends />} />
-          <Route path="/SplitExpense" element={<SplitExpense/>} />
+          <Route path="/SplitExpense" element={<SplitExpense />} />
         </Routes>
       </Router>
     </Provider>
