@@ -166,6 +166,16 @@ def getUserBudgetHistory(chat_id):
     
     return None
 
+def getUserFriends(chat_id):
+    """
+    getUserBudgetHistory(chat_id): Takes 1 argument chat_id and uses this to get the relevant user's friends list.
+    """
+    data = getUserData(chat_id)
+    if data is not None:
+        return data["friends"]
+    
+    return None
+
 def getUserBudgetHistoryByGoal(chat_id, goal_type):
     """
     getUserBudgetHistory(chat_id): Takes 1 argument chat_id and uses this to get the relevant user's historical budget data.
