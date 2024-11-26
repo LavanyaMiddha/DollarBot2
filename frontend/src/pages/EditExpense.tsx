@@ -205,6 +205,7 @@ const EditExpense = ({ onEditExpense, selectedExpense }: Props) => {
           marginBottom="10px"
           placeholder="Enter Category"
           value={expenseCategory}
+          background={'white'}
           onChange={(e: any) => {
             setExpenseCategory(String(e.target.value));
           }}
@@ -239,6 +240,7 @@ const EditExpense = ({ onEditExpense, selectedExpense }: Props) => {
             marginBottom="10px"
             min={0}
             height="100%"
+            background={'white'}
             onValueChange={({ value }) => {
               setExpenseValue(value);
             }}
