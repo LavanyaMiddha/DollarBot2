@@ -13,10 +13,8 @@ type NotificationsData = {
 };
 
 const Alerts = () => {
-  
   const [notifications, setNotifications] = useState<NotificationsData[]>([]);
 
-  
   const fetchNotifications = async () => {
     try {
       const response = await axios.get(
