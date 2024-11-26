@@ -43,7 +43,7 @@ def add_friends():
 
     print(friends)
     if friends in helper.getUserFriends(chat_id):
-        return jsonify({'error': 'Friend'}), 400
+        return jsonify({'error': 'Friend Already Added'}), 400
     
     existing_user = User.query.filter_by(username=friends.strip()).first()
     if not existing_user:

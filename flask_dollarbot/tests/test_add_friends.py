@@ -74,18 +74,18 @@ def test_add_friends_already_added(client, mocker):
 
     response = client.post('/add_friends', json={
         "user_id": "864914211",
-        "friends": ["Alice"]
+        "friends": "Alice"
     })
     assert response.status_code == 400
     assert response.get_json() == {'error': 'Friend Already Added'}
 
 # def test_add_friends_user_not_registered(client, mocker):
 #     mocker.patch('endpoints.helper.getUserFriends', return_value=[])
-#     mocker.patch('model.user.User.query.filter_by').return_value.first.return_value = None
+#     mocker.patch('model.user.User.query.filter_by').return_value.first.return_value = True
 
 #     response = client.post('/add_friends', json={
 #         "user_id": "864914211",
-#         "friends": ["NonExistentUser"]
+#         "friends": "NonExistentUser"
 #     })
 #     assert response.status_code == 400
 #     assert response.get_json() == {'error': 'Username not registered'}
