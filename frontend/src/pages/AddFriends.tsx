@@ -6,7 +6,7 @@ import {
   Link,
   Input,
   Box,
-  Heading
+  Heading,
 } from '@chakra-ui/react';
 import { Button } from '../components/ui/button';
 import { useForm } from 'react-hook-form';
@@ -28,7 +28,6 @@ const AddFriends = ({ onAddFriend }: Props) => {
 
   async function onSubmit(data: any) {
     try {
-      
       await axios.post(
         'http://127.0.0.1:5000/friends/add_friends',
         {
@@ -39,11 +38,11 @@ const AddFriends = ({ onAddFriend }: Props) => {
           headers: {
             'Content-Type': 'application/json',
           },
-        }
+        },
       );
 
       onAddFriend?.(true);
-      fetchFriends(); 
+      fetchFriends();
     } catch (err) {
       console.error('Error adding friends:', err);
       setError('User not registered with us or friend already added!');
@@ -52,18 +51,18 @@ const AddFriends = ({ onAddFriend }: Props) => {
 
   const fetchFriends = async () => {
     setIsLoading(true);
-    setError(null); 
+    setError(null);
     try {
       const userId = localStorage.getItem('globalUserId');
-      const response = await axios.get(`http://127.0.0.1:5000/display/${userId}/friends`);
+      const response = await axios.get(
+        `http://127.0.0.1:5000/display/${userId}/friends`,
+      );
 
       const data = response.data;
       if (Object.keys(data).length === 0) {
-        
         setFriendsNames([]);
       } else {
-        
-        setFriendsNames(Object.values(data)); 
+        setFriendsNames(Object.values(data));
       }
     } catch (err) {
       console.error('Error fetching friends:', err);
@@ -80,7 +79,12 @@ const AddFriends = ({ onAddFriend }: Props) => {
   return (
     <Container maxW="container.xl" py={10}>
       <Flex justifyContent="flex-start" color="black">
-        <Text color="teal" textStyle="3xl" fontWeight="bold" margin="12px 90px 0 0">
+        <Text
+          color="teal"
+          textStyle="3xl"
+          fontWeight="bold"
+          margin="12px 90px 0 0"
+        >
           Dollar Bot
         </Text>
         <Link
@@ -95,10 +99,22 @@ const AddFriends = ({ onAddFriend }: Props) => {
         >
           Log Out
         </Link>
-        <Link color="black" textStyle="lg" fontWeight="medium" margin="18px 35px 0 0" href="/Home">
+        <Link
+          color="black"
+          textStyle="lg"
+          fontWeight="medium"
+          margin="18px 35px 0 0"
+          href="/Home"
+        >
           Home
         </Link>
-        <Link color="black" textStyle="lg" fontWeight="medium" margin="18px 35px 0 0" href="/AddFriends">
+        <Link
+          color="black"
+          textStyle="lg"
+          fontWeight="medium"
+          margin="18px 35px 0 0"
+          href="/AddFriends"
+        >
           Add Friends
         </Link>
         <Link
@@ -119,7 +135,13 @@ const AddFriends = ({ onAddFriend }: Props) => {
         >
           Budget Goals
         </Link>
-        <Link color="Red" textStyle="lg" fontWeight="medium" margin="18px 35px 0 0" href="/Alerts">
+        <Link
+          color="Red"
+          textStyle="lg"
+          fontWeight="medium"
+          margin="18px 35px 0 0"
+          href="/Alerts"
+        >
           Alerts
         </Link>
         <Link
@@ -143,7 +165,13 @@ const AddFriends = ({ onAddFriend }: Props) => {
       </Flex>
       <form onSubmit={handleSubmit(onSubmit)}>
         <Flex direction="column" gap={4}>
-          <Text fontSize="20px" fontWeight="medium" marginBottom="5px" color="Black" marginTop="15px">
+          <Text
+            fontSize="20px"
+            fontWeight="medium"
+            marginBottom="5px"
+            color="Black"
+            marginTop="15px"
+          >
             Add Friends
           </Text>
           <Input
@@ -162,30 +190,30 @@ const AddFriends = ({ onAddFriend }: Props) => {
         </Flex>
       </form>
       <Box mt={8}>
-  {error && (
-    <Text color="red.500" mb={4}>
-      {error}
-    </Text>
-  )}
-  {isLoading ? (
-    <Text>Loading friends...</Text>
-  ) : friendsNames.length > 0 ? (
-    <>
-      <Heading as="h2" size="lg" mb={4} color="teal.500">
-        Friends List
-      </Heading>
-      <Box as="ul" pl={4} listStyle="disc">
-        {friendsNames.map((friend, index) => (
-          <Box as="li" key={index} fontSize="md" color="black">
-            {friend}
-          </Box>
-        ))}
+        {error && (
+          <Text color="red.500" mb={4}>
+            {error}
+          </Text>
+        )}
+        {isLoading ? (
+          <Text>Loading friends...</Text>
+        ) : friendsNames.length > 0 ? (
+          <>
+            <Heading as="h2" size="lg" mb={4} color="teal.500">
+              Friends List
+            </Heading>
+            <Box as="ul" pl={4} listStyle="disc">
+              {friendsNames.map((friend, index) => (
+                <Box as="li" key={index} fontSize="md" color="black">
+                  {friend}
+                </Box>
+              ))}
+            </Box>
+          </>
+        ) : (
+          <Text>No friends found. Add some to get started!</Text>
+        )}
       </Box>
-    </>
-  ) : (
-    <Text>No friends found. Add some to get started!</Text>
-  )}
-</Box>
     </Container>
   );
 };
