@@ -13,10 +13,8 @@ type NotificationsData = {
 };
 
 const Alerts = () => {
-  
   const [notifications, setNotifications] = useState<NotificationsData[]>([]);
 
-  
   const fetchNotifications = async () => {
     try {
       const response = await axios.get(
@@ -29,9 +27,8 @@ const Alerts = () => {
   };
 
   useEffect(() => {
-    
     const interval = setInterval(fetchNotifications, 5000);
-    return () => clearInterval(interval); 
+    return () => clearInterval(interval);
   }, []);
 
   const colorData = [
