@@ -27,9 +27,8 @@ const Alerts = () => {
   };
 
   useEffect(() => {
-    
     const interval = setInterval(fetchNotifications, 3000);
-    return () => clearInterval(interval); 
+    return () => clearInterval(interval);
   }, []);
 
   const colorData = [
