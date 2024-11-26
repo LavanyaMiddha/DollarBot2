@@ -3,9 +3,7 @@ import  endpoints.helper as helper
 from datetime import datetime
 from model.user import User
 
-
 add_friends_bp = Blueprint('friends', __name__)
-
 
 def validate_add_request(chat_id, expense_date, expense_amount, expense_category):
     # validate input request 
@@ -43,10 +41,9 @@ def add_friends():
     chat_id = data['user_id']
     friends = data['friends']
 
-    for friend in friends:
-        friend = friend.strip()
-        if friend.strip() in helper.getUserFriends(chat_id):
-            return jsonify({'error': 'Friend Already Added'}), 400
+    print(friends)
+    if friends in helper.getUserFriends(chat_id):
+        return jsonify({'error': 'Friend'}), 400
     
     existing_user = User.query.filter_by(username=friends.strip()).first()
     if not existing_user:
@@ -65,4 +62,3 @@ def add_friends():
     user_list[str(chat_id)]["friends"].append(record)
     helper.write_json(user_list)
     return jsonify({'message': 'Expense record created successfully'}), 200
-    

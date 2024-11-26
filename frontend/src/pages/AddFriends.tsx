@@ -12,7 +12,7 @@ import {
   ListCollection,
   Heading,
   AspectRatio,
-  Input,
+  Input
 } from '@chakra-ui/react';
 import { Button } from '../components/ui/button';
 import { useForm } from 'react-hook-form';
@@ -48,75 +48,76 @@ const AddFriends = ({ onAddFriend }: Props) => {
     setFriends(friends);
   }
 
+  
   return (
     <Container maxW="container.xl" py={10}>
-      <Flex justifyContent="flex-start" color="black">
-        <Text
-          color="teal"
-          textStyle="3xl"
-          fontWeight="bold"
-          margin="12px 90px 0 0"
-        >
-          Dollar Bot
-        </Text>
-        <Link
-          color="black"
-          textStyle="lg"
-          href="/"
-          fontWeight="medium"
-          margin="18px 35px 0 0"
-          onClick={() => {
-            localStorage.clear();
-          }}
-        >
-          Log Out
-        </Link>
-        <Link
-          color="black"
-          textStyle="lg"
-          fontWeight="medium"
-          margin="18px 35px 0 0"
-          href="/Home"
-        >
-          Home
-        </Link>
-        <Link
-          color="black"
-          textStyle="lg"
-          fontWeight="medium"
-          margin="18px 35px 0 0"
-          href="/BudgetGoals"
-        >
-          Budget Goals
-        </Link>
-        <Link
-          color="Red"
-          textStyle="lg"
-          fontWeight="medium"
-          margin="18px 35px 0 0"
-          href="/Alerts"
-        >
-          Alerts
-        </Link>
-        <Link
-          color="black"
-          textStyle="lg"
-          fontWeight="medium"
-          margin="18px 35px 0 0"
-          href="https://github.com/SoftwareEngNoobs/DollarBot"
-        >
-          About
-        </Link>
-        <Link
-          color="black"
-          textStyle="lg"
-          fontWeight="medium"
-          margin="18px 35px 0 0"
-          href="https://github.com/SoftwareEngNoobs/DollarBot"
-        >
-          Help
-        </Link>
-      </Flex>
+       <Flex justifyContent="flex-start" color="black">
+          <Text
+            color="teal"
+            textStyle="3xl"
+            fontWeight="bold"
+            margin="12px 90px 0 0"
+          >
+            Dollar Bot
+          </Text>
+          <Link
+            color="black"
+            textStyle="lg"
+            href="/"
+            fontWeight="medium"
+            margin="18px 35px 0 0"
+            onClick={() => {
+              localStorage.clear();
+            }}
+          >
+            Log Out
+          </Link>
+          <Link
+            color="black"
+            textStyle="lg"
+            fontWeight="medium"
+            margin="18px 35px 0 0"
+            href="/Home"
+          >
+            Home
+          </Link>
+          <Link
+            color="black"
+            textStyle="lg"
+            fontWeight="medium"
+            margin="18px 35px 0 0"
+            href="/BudgetGoals"
+          >
+            Budget Goals
+          </Link>
+          <Link
+            color="Red"
+            textStyle="lg"
+            fontWeight="medium"
+            margin="18px 35px 0 0"
+            href="/Alerts"
+          >
+            Alerts
+          </Link>
+          <Link
+            color="black"
+            textStyle="lg"
+            fontWeight="medium"
+            margin="18px 35px 0 0"
+            href="https://github.com/SoftwareEngNoobs/DollarBot"
+          >
+            About
+          </Link>
+          <Link
+            color="black"
+            textStyle="lg"
+            fontWeight="medium"
+            margin="18px 35px 0 0"
+            href="https://github.com/SoftwareEngNoobs/DollarBot"
+          >
+            Help
+          </Link>
+        </Flex>
       <form onSubmit={handleSubmit(onSubmit)}>
         <Flex direction="column" gap={4}>
           <Text
