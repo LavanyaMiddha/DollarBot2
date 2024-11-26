@@ -350,12 +350,15 @@ We would like to thank Dr. Timothy Menzies for helping us understand the process
 ---
 This project is licensed under the terms of the MIT license. Please check [LICENSE](https://github.com/tpanati/DollarBot/blob/main/LICENSE) for more details.
 
-## Contributors in The Extension of This Project
-1. Lavanya Middha
-2. Prathamesh Thakur
-3. Nayan Taori
+## Contributors (Group 43)
+1. Lavanya Middha(lmiddha)
+2. Prathamesh Thakur(pthakur)
+3. Nayan Taori(ntaori)
 
-## Contributors
+## Citation
+This project has been taken from [Group 9](https://github.com/SoftwareEngNoobs/DollarBot)
+
+## Credits
 1. Varun Kakkalameli(vkakkal)
 2. Krithika Ragothaman(kragoth)
 3. Mahim Dashora(mdashor)
