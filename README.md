@@ -356,7 +356,7 @@ This project is licensed under the terms of the MIT license. Please check [LICEN
 3. Nayan Taori(ntaori)
 
 ## Citation
-This project has been taken from [Group 9](https://github.com/SoftwareEngNoobs/DollarBot)
+This project has been taken from [Group 9](https://github.com/SoftwareEngNoobs/DollarBot/tree/release-1.0)
 
 ## Credits
 1. Varun Kakkalameli(vkakkal)
