@@ -211,7 +211,7 @@ Allows the user to SignUp for a new Account and allows them to import data from 
 
 ### Add Expenses
 Allows the user to add expenses seamlessly across different devices and also view a visualisation of the expenses that are being added!
-![Screenshot 2024-11-25 221939](https://github.com/user-attachments/assets/7903a34a-b346-4b1a-b2e5-94d6a1494bde)
+![IMG-20241126-WA0017 1](https://github.com/user-attachments/assets/950e33fc-a026-468f-92b7-ab98d12f79a4)
 
 
 ### Edit Expense
@@ -236,12 +236,12 @@ Allows users to add friends for splitting bills.
 
 ### Short and Long Term Budgets
 Allows users to set monthly budgets to monitor the expenses being made.
-![Screenshot 2024-11-25 222127](https://github.com/user-attachments/assets/037d7b0c-e215-42e2-bd43-abadfa538e0e)
+![IMG-20241126-WA0020 1](https://github.com/user-attachments/assets/cb594518-ffeb-45a3-aa03-cab4c7bfc238)
 
 
 ### Alerts
 Alerts the users if budgets have been allocated and whether the threshold has been reached.
-![Screenshot 2024-11-25 222127](https://github.com/user-attachments/assets/851f479f-4132-4df8-b3f7-4c6cc2504e03)
+![IMG-20241126-WA0018 1](https://github.com/user-attachments/assets/2ae5c30b-d92b-4c89-b478-0b680406791b)
 
 
 Here's a quick overview of how each of the commands work. Simply enter /<command_name> into the Telegram chat and watch as the magic happens! 
@@ -359,7 +359,7 @@ Some possible future enhancements are as follows:
 3.  **Integration with Financial APIs:** Integrate with popular financial APIs to fetch real-time transaction data from bank accounts and credit cards. This enhancement provides users with up-to-the-minute financial information, ensuring accuracy and completeness in their spending records.
 4.  **Email Monthly Statistics and Budget history:** The monthly report for the expenses made can be sent as a PDF via email consisting of the statistics of the monthly expensiture with charts included.
 5.  **Make Multiple Groups:** Users can create multiple groups to split multiple bills so that every time the user does not need to add all the friends in the same group.
-6.  **Beautification:** The interface can be beautified more to make it more user-friendly.
+6.  **Notifications:** Use SocketIo to enable React status notification.
 
 
 :heart: Acknowledgements
