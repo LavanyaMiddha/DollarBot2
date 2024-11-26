@@ -44,6 +44,7 @@ const AddExpense = ({ onAddExpense }: Props) => {
   } = useForm();
   const [expDate, setExpDate] = useState('');
   const [selectedCurrency, setSelectedCurrency] = useState('dollar');
+  const [category, setCategory] = useState<string>('Food');
 
   async function onSubmit(data: any) {
     if (expDate != '') {
@@ -54,7 +55,7 @@ const AddExpense = ({ onAddExpense }: Props) => {
           user_id: localStorage.getItem('globalUserId'),
           amount: data.expenseValue,
           date: expDate,
-          category: data.expense_category,
+          category: category,
           currency: selectedCurrency,
         },
         {
@@ -93,29 +94,39 @@ const AddExpense = ({ onAddExpense }: Props) => {
           }}
         />
         <Text
-          fontSize="sm"
-          fontWeight="medium"
-          marginBottom="15px"
+          fontSize="15px"
+          fontWeight="bold"
+          marginBottom="5px"
           color="White"
+          marginTop="20px"
         >
           Category
         </Text>
-        <Input
+        <select
           id="category"
-          background={'white'}
-          colorPalette="Black"
-          marginBottom="10px"
-          placeholder="Enter Category"
-          {...register('expense_category', {
-            required: 'This is required',
-            minLength: { value: 3, message: 'Minimum length should be 3' },
-          })}
-        />
+          value={category}
+          onChange={(e) => setCategory(e.target.value)}
+          style={{
+            marginTop: '5px',
+            marginBottom: '10px',
+            height: '40px',
+            width: '130px',
+          }}
+        >
+          <option value="Food">Food</option>
+          <option value="Groceries">Groceries</option>
+          <option value="Utilities">Utilities</option>
+          <option value="Transport">Transport</option>
+          <option value="Shopping">Shopping</option>
+          <option value="Miscellaneous">Miscellaneous</option>
+          <option value="Entertainment">Entertainment</option>
+        </select>
         <Text
-          fontSize="sm"
+          fontSize="15px"
           fontWeight="medium"
           marginBottom="15px"
           color="White"
+          marginTop="20px"
         >
           Expense Value
         </Text>
@@ -145,6 +156,7 @@ const AddExpense = ({ onAddExpense }: Props) => {
           <NumberInputRoot
             size="md"
             defaultValue="0"
+            background={'white'}
             marginBottom="10px"
             min={0}
             height="100%"

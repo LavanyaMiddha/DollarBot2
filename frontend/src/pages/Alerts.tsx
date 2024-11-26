@@ -13,25 +13,22 @@ type NotificationsData = {
 };
 
 const Alerts = () => {
-  // Initialize notifications state as an array of `NotificationsData`
   const [notifications, setNotifications] = useState<NotificationsData[]>([]);
 
-  // Fetch notifications from the API
   const fetchNotifications = async () => {
     try {
       const response = await axios.get(
         `http://127.0.0.1:5000/add_alerts/alerts/${localStorage.getItem('globalUserId')}`,
       );
-      setNotifications(response.data); // Assume response.data is an array of `NotificationsData`
+      setNotifications(response.data);
     } catch (error) {
       console.error('Error fetching notifications:', error);
     }
   };
 
   useEffect(() => {
-    // Fetch notifications every 5 seconds
-    const interval = setInterval(fetchNotifications, 5000);
-    return () => clearInterval(interval); // Cleanup the interval on unmount
+    const interval = setInterval(fetchNotifications, 3000);
+    return () => clearInterval(interval);
   }, []);
 
   const colorData = [
@@ -73,6 +70,24 @@ const Alerts = () => {
             href="/Home"
           >
             Home
+          </Link>
+          <Link
+            color="black"
+            textStyle="lg"
+            fontWeight="medium"
+            margin="18px 35px 0 0"
+            href="/AddFriends"
+          >
+            Add Friends
+          </Link>
+          <Link
+            color="black"
+            textStyle="lg"
+            fontWeight="medium"
+            margin="18px 35px 0 0"
+            href="/SplitExpense"
+          >
+            Split Expenses
           </Link>
           <Link
             color="black"

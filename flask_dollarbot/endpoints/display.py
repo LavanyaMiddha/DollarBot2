@@ -76,3 +76,23 @@ def display_user_budget_history(user_id=None):
             temp = [build_budget_dictionary(y) for y in history[budget_record]]
             result=result+temp
         return jsonify(result), 200
+    
+@display_bp.route('/<user_id>/friends', methods=['GET'])
+def display_user_friends(user_id=None):
+    """
+        Display all budget goals of a given user.
+
+
+    """
+    if not validate_display_request(user_id):
+        return jsonify({'error': 'Bad Request'}), 400
+    
+    helper.read_json()
+    chat_id = user_id
+    friends = helper.getUserFriends(chat_id)
+    print(friends)
+    if friends is None:
+        # no spending history for user
+        return jsonify({}), 200 
+    else:
+        return jsonify(friends), 200
