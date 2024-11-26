@@ -1,12 +1,13 @@
 import {
-  Center,
   Container,
-  createListCollection,
   Flex,
-  Heading,
-  Icon,
-  Input,
   Text,
+  Link,
+  createListCollection,
+  Heading,
+  Input,
+  Icon, 
+  Center
 } from '@chakra-ui/react';
 import {
   SelectContent,
@@ -69,7 +70,93 @@ const SplitExpenses = ({ onSplitExpense }: Props) => {
     window.location.reload();
   }
   return (
-    <Container background={'Black'}>
+    <Container>
+      <Flex justifyContent="flex-start" color="black">
+          <Text
+            color="teal"
+            textStyle="3xl"
+            fontWeight="bold"
+            margin="12px 90px 0 0"
+          >
+            Dollar Bot
+          </Text>
+          <Link
+            color="black"
+            textStyle="lg"
+            href="/"
+            fontWeight="medium"
+            margin="18px 35px 0 0"
+            onClick={() => {
+              localStorage.clear();
+            }}
+          >
+            Log Out
+          </Link>
+          <Link
+            color="black"
+            textStyle="lg"
+            fontWeight="medium"
+            margin="18px 35px 0 0"
+            href="/Home"
+          >
+            Home
+          </Link>
+          <Link
+            color="black"
+            textStyle="lg"
+            fontWeight="medium"
+            margin="18px 35px 0 0"
+            href="/AddFriends"
+          >
+            Add Friends
+          </Link>
+          <Link
+            color="black"
+            textStyle="lg"
+            fontWeight="medium"
+            margin="18px 35px 0 0"
+            href="/SplitExpense"
+          >
+            Split Expenses
+          </Link>
+          <Link
+            color="black"
+            textStyle="lg"
+            fontWeight="medium"
+            margin="18px 35px 0 0"
+            href="/BudgetGoals"
+          >
+            Budget Goals
+          </Link>
+          <Link
+            color="Red"
+            textStyle="lg"
+            fontWeight="medium"
+            margin="18px 35px 0 0"
+            href="/Alerts"
+          >
+            Alerts
+          </Link>
+          <Link
+            color="black"
+            textStyle="lg"
+            fontWeight="medium"
+            margin="18px 35px 0 0"
+            href="https://github.com/SoftwareEngNoobs/DollarBot"
+          >
+            About
+          </Link>
+          <Link
+            color="black"
+            textStyle="lg"
+            fontWeight="medium"
+            margin="18px 35px 0 0"
+            href="https://github.com/SoftwareEngNoobs/DollarBot"
+          >
+            Help
+          </Link>
+        </Flex>
+        <Container background={'Black'} marginTop={'50px'}>
       <Center>
         <Heading fontWeight="bold" marginBottom="8px" color="White">
           Add Expenses
@@ -188,6 +275,7 @@ const SplitExpenses = ({ onSplitExpense }: Props) => {
           Add
         </Button>
       </form>
+      </Container>
     </Container>
   );
 };

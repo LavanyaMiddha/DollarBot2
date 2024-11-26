@@ -79,6 +79,24 @@ const Alerts = () => {
             textStyle="lg"
             fontWeight="medium"
             margin="18px 35px 0 0"
+            href="/AddFriends"
+          >
+            Add Friends
+          </Link>
+          <Link
+            color="black"
+            textStyle="lg"
+            fontWeight="medium"
+            margin="18px 35px 0 0"
+            href="/SplitExpense"
+          >
+            Split Expenses
+          </Link>
+          <Link
+            color="black"
+            textStyle="lg"
+            fontWeight="medium"
+            margin="18px 35px 0 0"
             href="/BudgetGoals"
           >
             Budget Goals
