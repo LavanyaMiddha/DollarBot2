@@ -1,8 +1,8 @@
-import sys
-import os
+# import sys
+# import os
 
-cwd = os.getcwd()
-sys.path.append(cwd)
+# cwd = os.getcwd()
+# sys.path.append(cwd)
 import pytest
 from flask import Flask
 from endpoints.add_friends import add_friends_bp, validate_add_request

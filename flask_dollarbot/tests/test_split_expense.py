@@ -1,8 +1,8 @@
-import sys
-import os
+# import sys
+# import os
 
-cwd = os.getcwd()
-sys.path.append(cwd)
+# cwd = os.getcwd()
+# sys.path.append(cwd)
 import pytest
 from flask import Flask
 from endpoints.split_expense import split_expense_bp, validate_add_request
