@@ -13,25 +13,25 @@ type NotificationsData = {
 };
 
 const Alerts = () => {
-  // Initialize notifications state as an array of `NotificationsData`
+  
   const [notifications, setNotifications] = useState<NotificationsData[]>([]);
 
-  // Fetch notifications from the API
+  
   const fetchNotifications = async () => {
     try {
       const response = await axios.get(
         `http://127.0.0.1:5000/add_alerts/alerts/${localStorage.getItem('globalUserId')}`,
       );
-      setNotifications(response.data); // Assume response.data is an array of `NotificationsData`
+      setNotifications(response.data);
     } catch (error) {
       console.error('Error fetching notifications:', error);
     }
   };
 
   useEffect(() => {
-    // Fetch notifications every 5 seconds
+    
     const interval = setInterval(fetchNotifications, 5000);
-    return () => clearInterval(interval); // Cleanup the interval on unmount
+    return () => clearInterval(interval); 
   }, []);
 
   const colorData = [
