@@ -75,16 +75,10 @@ And the best part? DollarBot is your financial sidekick, available on any Web Br
 
 # :star: What's New?
 
-- **A brand new web app:** A new web application has been developed that extends the capabilities of the Telegram bot, enabling new users to access the bot's features without needing the hassle of installing Telegram. This web app allows users to effortlessly track expenses from their phones or desktops through an intuitive user interface. It also provides users with the ability to view more detailed information at a glance through interactive visualizations.
-- **User Account Management:** We've finally introduced the feature of user accounts! Allowing users to sign-in and sign-out their accounts and maintain separate expense accounts.
-- **Cross Platform Integration:** Users of the Telegram Dollar Bot can continue enjoying all its features and seamlessly switch between the Dollar Bot website and the bot itself.
-- **Visualization:** The visualization of the expenses being made graphically displays the users' expenditure in various categories of expenses like groceries, travel, etc. These make it easier for user to understand the division of expenses.
 - **Goal Setting:** Users will be able to set Long and Short term goals to keep a limit on their expenses.
 - **Alerts:** Once the amount set as target for a particular category is reached, the user is alerted regarding the reaching if budget set for that particular category of expense.
 - **Multi-Currency Support:** Log expenses in multiple currencies (USD, INR, EUR, etc.) and view all the data on one dashboard.
 - **Adding Friends And Splitting Bills:** With a Bill having multiple contributors, the users can add these contributors as friends and spli the bills showing how much each friend contributes.
-- **Bulk Actions:** The Web App allows users to perform bulk actions and edit specific expenses without going through the hassle of typing out multiple commands on Telegram.
-- **Database Support:** User Login Data has been stored securely on SQL-Lite.
 - **Bug Fixes and Improved Flow:** Addressed numerous bugs and issues to enhance the overall stability and user experience of the application. The latest updates include fixes to issues related to the previous flow of the application, ensuring a smoother and more reliable user interaction. The workflow has been improved so that the coverage of the code of the project is automated and it is easier to understand the code coverage of the project. Our commitment to quality assurance and user satisfaction is reflected in these improvements.
 
 Are you a developer? <a href="https://github.com/LavanyaMiddha/DollarBot2/blob/main/README.md">Click here: For Developers and Future Contributors</a>
