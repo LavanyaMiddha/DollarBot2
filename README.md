@@ -357,7 +357,9 @@ Some possible future enhancements are as follows:
 1.	**AI-Driven Financial Insights:** Integrate advanced generative AI algorithms to provide personalized financial insights and recommendations. Leverage machine learning to analyze spending patterns and offer proactive suggestions for optimizing expenses.
 2.	**Natural Language Processing (NLP) Integration:** Enhance DollarBot's user experience by implementing Natural Language Processing (NLP) capabilities. Enable the bot to respond to casual conversation, making interactions more intuitive and user-friendly. Users can engage with DollarBot in a more conversational manner, improving overall usability.
 3.  **Integration with Financial APIs:** Integrate with popular financial APIs to fetch real-time transaction data from bank accounts and credit cards. This enhancement provides users with up-to-the-minute financial information, ensuring accuracy and completeness in their spending records.
-4.  **Email Monthly Statistics and Budget history**
+4.  **Email Monthly Statistics and Budget history:** The monthly report for the expenses made can be sent as a PDF via email consisting of the statistics of the monthly expensiture with charts included.
+5.  **Make Multiple Groups:** Users can create multiple groups to split multiple bills so that every time the user does not need to add all the friends in the same group.
+6.  **Beautification:** The interface can be beautified more to make it more user-friendly.
 
 
 :heart: Acknowledgements
