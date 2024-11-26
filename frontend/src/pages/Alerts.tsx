@@ -30,7 +30,7 @@ const Alerts = () => {
 
   useEffect(() => {
     
-    const interval = setInterval(fetchNotifications, 5000);
+    const interval = setInterval(fetchNotifications, 3000);
     return () => clearInterval(interval); 
   }, []);
 
