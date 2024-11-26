@@ -46,6 +46,9 @@ And the best part? DollarBot is your financial sidekick, available on any Web Br
 
 <a href="https://go.ncsu.edu/hngmdx7">Demo Video</a>
 
+## Animated Video
+
+<a href="https://drive.google.com/file/d/139OzAw3liPoeyFlZdkr8bKIWGlqWF0Rb/view?usp=drive_link">Animated Video</a>
 
 ## :money_with_wings: About DollarBot
 
