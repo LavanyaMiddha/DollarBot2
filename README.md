@@ -206,8 +206,8 @@ Allows the user to SignUp for a new Account and allows them to import data from 
 
 
 ### Add Expenses
-Allows the user to add expenses seamlessly across different devices!
-![Screenshot 2024-11-01 at 11 35 02 PM](https://github.com/user-attachments/assets/096286a8-9bb4-4c5e-a7ba-127815346a5f)
+Allows the user to add expenses seamlessly across different devices and also view a visualisation of the expenses that are being added!
+![Screenshot 2024-11-25 221939](https://github.com/user-attachments/assets/7903a34a-b346-4b1a-b2e5-94d6a1494bde)
 
 
 ### Edit Expense
@@ -223,6 +223,21 @@ Allows users to perform bulk Delete Operation without the hassle of typing multi
 ### Multi-Currency Support
 Using a dropdown menu the user can select and log expenses in multiple currencies (USD, INR, EUR, etc.).
 ![Screenshot 2024-11-01 at 11 38 09 PM](https://github.com/user-attachments/assets/a3702f33-91ab-4d05-b954-9f0f50fe7d3e)
+
+
+### Adding a Friend
+Allows users to add friends for splitting bills.
+![Screenshot 2024-11-25 222043](https://github.com/user-attachments/assets/27aa23ae-6a76-420c-9f87-7ab8f33ac652)
+
+
+### Short and Long Term Budgets
+Allows users to set monthly budgets to monitor the expenses being made.
+![Screenshot 2024-11-25 222127](https://github.com/user-attachments/assets/037d7b0c-e215-42e2-bd43-abadfa538e0e)
+
+
+### Alerts
+Alerts the users if budgets have been allocated and whether the threshold has been reached.
+![Screenshot 2024-11-25 222127](https://github.com/user-attachments/assets/851f479f-4132-4df8-b3f7-4c6cc2504e03)
 
 
 Here's a quick overview of how each of the commands work. Simply enter /<command_name> into the Telegram chat and watch as the magic happens! 
