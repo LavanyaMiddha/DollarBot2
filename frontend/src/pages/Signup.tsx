@@ -83,21 +83,23 @@ const Signup = () => {
             Sign In
           </Link>
           <Link
-            color="black"
-            textStyle="lg"
-            fontWeight="medium"
-            margin="18px 35px 0 0"
-          >
-            About
-          </Link>
-          <Link
-            color="black"
-            textStyle="lg"
-            fontWeight="medium"
-            margin="18px 35px 0 0"
-          >
-            Help
-          </Link>
+          color="black"
+          textStyle="lg"
+          fontWeight="medium"
+          margin="18px 35px 0 0"
+          href="https://github.com/LavanyaMiddha/DollarBot2"
+        >
+          About
+        </Link>
+        <Link
+          color="black"
+          textStyle="lg"
+          fontWeight="medium"
+          margin="18px 35px 0 0"
+          href="https://github.com/LavanyaMiddha/DollarBot2"
+        >
+          Help
+        </Link>
         </Flex>
       </Container>
       <AbsoluteCenter alignContent="center" axis="both">

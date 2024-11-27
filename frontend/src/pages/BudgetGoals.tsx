@@ -127,23 +127,23 @@ const BudgetGoal = () => {
             Alerts
           </Link>
           <Link
-            color="black"
-            textStyle="lg"
-            fontWeight="medium"
-            margin="18px 35px 0 0"
-            href="https://github.com/SoftwareEngNoobs/DollarBot"
-          >
-            About
-          </Link>
-          <Link
-            color="black"
-            textStyle="lg"
-            fontWeight="medium"
-            margin="18px 35px 0 0"
-            href="https://github.com/SoftwareEngNoobs/DollarBot"
-          >
-            Help
-          </Link>
+          color="black"
+          textStyle="lg"
+          fontWeight="medium"
+          margin="18px 35px 0 0"
+          href="https://github.com/LavanyaMiddha/DollarBot2"
+        >
+          About
+        </Link>
+        <Link
+          color="black"
+          textStyle="lg"
+          fontWeight="medium"
+          margin="18px 35px 0 0"
+          href="https://github.com/LavanyaMiddha/DollarBot2"
+        >
+          Help
+        </Link>
         </Flex>
         <br />
         <br />
