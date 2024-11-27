@@ -40,12 +40,15 @@ And the best part? DollarBot is your financial sidekick, available on any Web Br
 
 ## Scorecard
 
-[Score card - Group 9](https://docs.google.com/document/d/1HRIEcZEZftQMgsl30W4LBVF9Q4Kj-WhWMT_pbpFhiy0/edit?tab=t.0)
+[Score card - Group 43](https://docs.google.com/document/d/1n0Sd-WFwv0E74Dn06nr9b_SgncmhtsIqicAoaxLiTV0/edit?usp=sharing)
 
 ## Demo Video
 
-<a href="https://youtu.be/6OvkZq3S3wc">https://youtu.be/6OvkZq3S3wc</a>
+<a href="https://go.ncsu.edu/hngmdx7">Demo Video</a>
 
+## Animated Video
+
+<a href="https://drive.google.com/file/d/139OzAw3liPoeyFlZdkr8bKIWGlqWF0Rb/view?usp=drive_link">Animated Video</a>
 
 ## :money_with_wings: About DollarBot
 
@@ -75,15 +78,15 @@ And the best part? DollarBot is your financial sidekick, available on any Web Br
 
 # :star: What's New?
 
-- **A brand new web app:** A new web application has been developed that extends the capabilities of the Telegram bot, enabling new users to access the bot's features without needing the hassle of installing Telegram. This web app allows users to effortlessly track expenses from their phones or desktops through an intuitive user interface. It also provides users with the ability to view more detailed information at a glance through interactive visualizations.
-- **User Account Management:** We've finally introduced the feature of user accounts! Allowing users to sign-in and sign-out their accounts and maintain separate expense accounts.
-- **Cross Platform Integration:** Users of the Telegram Dollar Bot can continue enjoying all its features and seamlessly switch between the Dollar Bot website and the bot itself.
+- **Goal Setting:** Users will be able to set Long and Short term goals to keep a limit on their expenses.
+- **Visualization:** Visualizations to depict user expenses per category and Visualizations to compare user’s long-term and short-term goals.
+- **Alerts:** Once the amount set as target for a particular category is reached, the user is alerted regarding the reaching if budget set for that particular category of expense.
 - **Multi-Currency Support:** Log expenses in multiple currencies (USD, INR, EUR, etc.) and view all the data on one dashboard.
-- **Bulk Actions:** The Web App allows users to perform bulk actions and edit specific expenses without going through the hassle of typing out multiple commands on Telegram.
-- **Database Support:** User Login Data has been stored securely on SQL-Lite.
-- **Bug Fixes and Improved Flow:** Addressed numerous bugs and issues to enhance the overall stability and user experience of the application. The latest updates include fixes to issues related to the previous flow of the application, ensuring a smoother and more reliable user interaction. Our commitment to quality assurance and user satisfaction is reflected in these improvements.
+- **Adding Friends And Splitting Bills:** With a Bill having multiple contributors, the users can add these contributors as friends and spli the bills showing how much each friend contributes.
+- **Automated Build Pipeline:** Integrated quality check tools such as Pylint, AutoPep8, EsLint, Prettier.
+- **Bug Fixes and Improved Flow:** Addressed numerous bugs and issues to enhance the overall stability and user experience of the application. The latest updates include fixes to issues related to the previous flow of the application, ensuring a smoother and more reliable user interaction. The workflow has been improved so that the coverage of the code of the project is automated and it is easier to understand the code coverage of the project. Our commitment to quality assurance and user satisfaction is reflected in these improvements.
 
-Are you a developer? <a href="https://github.com/SoftwareEngNoobs/DollarBot/blob/release-1.0/README.md">Click here: For Developers and Future Contributors</a>
+Are you a developer? <a href="https://github.com/LavanyaMiddha/DollarBot2/blob/main/README.md">Click here: For Developers and Future Contributors</a>
 
 # :rocket: Installation and Setup
 
@@ -206,8 +209,8 @@ Allows the user to SignUp for a new Account and allows them to import data from 
 
 
 ### Add Expenses
-Allows the user to add expenses seamlessly across different devices!
-![Screenshot 2024-11-01 at 11 35 02 PM](https://github.com/user-attachments/assets/096286a8-9bb4-4c5e-a7ba-127815346a5f)
+Allows the user to add expenses seamlessly across different devices and also view a visualisation of the expenses that are being added!
+![IMG-20241126-WA0017 1](https://github.com/user-attachments/assets/950e33fc-a026-468f-92b7-ab98d12f79a4)
 
 
 ### Edit Expense
@@ -223,6 +226,21 @@ Allows users to perform bulk Delete Operation without the hassle of typing multi
 ### Multi-Currency Support
 Using a dropdown menu the user can select and log expenses in multiple currencies (USD, INR, EUR, etc.).
 ![Screenshot 2024-11-01 at 11 38 09 PM](https://github.com/user-attachments/assets/a3702f33-91ab-4d05-b954-9f0f50fe7d3e)
+
+
+### Adding a Friend
+Allows users to add friends for splitting bills.
+![Screenshot 2024-11-25 222043](https://github.com/user-attachments/assets/27aa23ae-6a76-420c-9f87-7ab8f33ac652)
+
+
+### Short and Long Term Budgets
+Allows users to set monthly budgets to monitor the expenses being made.
+![IMG-20241126-WA0020 1](https://github.com/user-attachments/assets/cb594518-ffeb-45a3-aa03-cab4c7bfc238)
+
+
+### Alerts
+Alerts the users if budgets have been allocated and whether the threshold has been reached.
+![IMG-20241126-WA0018 1](https://github.com/user-attachments/assets/2ae5c30b-d92b-4c89-b478-0b680406791b)
 
 
 Here's a quick overview of how each of the commands work. Simply enter /<command_name> into the Telegram chat and watch as the magic happens! 
@@ -335,14 +353,12 @@ Our implementation has been tracked in a project board which can be viewed here 
 [DollarBot Developer board](https://trello.com/invite/b/671fd0fafd4e84cdbbfa766d/ATTIa26bcec13fe6a0003f593090967efb8bF6975E59/se-project2-tracker)
 
 Some possible future enhancements are as follows:
-1.  **Implement Additional Features and Visualization Tools:** Enhance functionality by leveraging ReactJS libraries to provide users with additional data visualization options, enable multiple bulk transactions at once, and explore methods to make the web app more user-friendly and seamless.
-2.  **Expense Sharing and Splitting:** Enable users to share expenses effortlessly with friends, family, or colleagues. Implement a feature that allows users to split bills and track shared expenses, making group financial management seamless.
-3.  **Budget Limits and Alerts:** Option to set daily/monthly reminders and alert the user by mailing them if they cross these limits.
-4.	**AI-Driven Financial Insights:** Integrate advanced generative AI algorithms to provide personalized financial insights and recommendations. Leverage machine learning to analyze spending patterns and offer proactive suggestions for optimizing expenses.
-5.	**Financial Goal Setting:** Set short-term and long-term financial goals. Track progress with visual indicators and celebratory notifications.
-6.	**Natural Language Processing (NLP) Integration:** Enhance DollarBot's user experience by implementing Natural Language Processing (NLP) capabilities. Enable the bot to respond to casual conversation, making interactions more intuitive and user-friendly. Users can engage with DollarBot in a more conversational manner, improving overall usability.
-7.  **Integration with Financial APIs:** Integrate with popular financial APIs to fetch real-time transaction data from bank accounts and credit cards. This enhancement provides users with up-to-the-minute financial information, ensuring accuracy and completeness in their spending records.
-9.  **Smart Notifications and Alerts:** Implement intelligent notification features to alert users about budget limits, unusual spending patterns, or upcoming bills. These proactive notifications will empower users to make informed financial decisions in real-time.
+1.	**AI-Driven Financial Insights:** Integrate advanced generative AI algorithms to provide personalized financial insights and recommendations. Leverage machine learning to analyze spending patterns and offer proactive suggestions for optimizing expenses.
+2.	**Natural Language Processing (NLP) Integration:** Enhance DollarBot's user experience by implementing Natural Language Processing (NLP) capabilities. Enable the bot to respond to casual conversation, making interactions more intuitive and user-friendly. Users can engage with DollarBot in a more conversational manner, improving overall usability.
+3.  **Integration with Financial APIs:** Integrate with popular financial APIs to fetch real-time transaction data from bank accounts and credit cards. This enhancement provides users with up-to-the-minute financial information, ensuring accuracy and completeness in their spending records.
+4.  **Email Monthly Statistics and Budget history:** The monthly report for the expenses made can be sent as a PDF via email consisting of the statistics of the monthly expensiture with charts included.
+5.  **Make Multiple Groups:** Users can create multiple groups to split multiple bills so that every time the user does not need to add all the friends in the same group.
+6.  **Notifications:** Use SocketIo to enable React status notification.
 
 
 :heart: Acknowledgements
@@ -354,11 +370,19 @@ We would like to thank Dr. Timothy Menzies for helping us understand the process
 ---
 This project is licensed under the terms of the MIT license. Please check [LICENSE](https://github.com/tpanati/DollarBot/blob/main/LICENSE) for more details.
 
-## Contributors
+## Contributors (Group 43)
+1. Lavanya Middha(lmiddha)
+2. Prathamesh Thakur(pthakur)
+3. Nayan Taori(ntaori)
+
+## Citation
+This project has been taken from [Group 9](https://github.com/SoftwareEngNoobs/DollarBot/tree/release-1.0)
+
+## Credits
 1. Varun Kakkalameli(vkakkal)
 2. Krithika Ragothaman(kragoth)
 3. Mahim Dashora(mdashor)
 
 # :calling: Support
 
-For any support, email us at `vkakkal@ncsu.edu`
+For any support, email us at `dbot7825@gmail.com`

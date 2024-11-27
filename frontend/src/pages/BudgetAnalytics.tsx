@@ -76,7 +76,7 @@ const BudgetAnalytics = () => {
             textStyle="lg"
             fontWeight="medium"
             margin="18px 35px 0 0"
-            href="https://github.com/SoftwareEngNoobs/DollarBot"
+            href="https://github.com/LavanyaMiddha/DollarBot2"
           >
             About
           </Link>
@@ -85,7 +85,7 @@ const BudgetAnalytics = () => {
             textStyle="lg"
             fontWeight="medium"
             margin="18px 35px 0 0"
-            href="https://github.com/SoftwareEngNoobs/DollarBot"
+            href="https://github.com/LavanyaMiddha/DollarBot2"
           >
             Help
           </Link>
