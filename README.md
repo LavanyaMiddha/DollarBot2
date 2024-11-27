@@ -385,4 +385,4 @@ This project has been taken from [Group 9](https://github.com/SoftwareEngNoobs/D
 
 # :calling: Support
 
-For any support, email us at `vkakkal@ncsu.edu`
+For any support, email us at `dbot7825@gmail.com`
