@@ -10,7 +10,7 @@
 ![GitHub](https://img.shields.io/github/languages/top/LavanyaMiddha/DollarBot2?color=red&label=Python&logo=Python&logoColor=yellow)
 ![GitHub](https://img.shields.io/badge/Language-Python-blue.svg)
 [![Platform](https://img.shields.io/badge/Platform-Telegram-blue)](https://desktop.telegram.org/)
-[![DOI](https://zenodo.org/badge/715323572.svg)](https://zenodo.org/doi/10.5281/zenodo.10146708)
+[![DOI](https://zenodo.org/badge/891202410.svg)](https://doi.org/10.5281/zenodo.14226966)
 
 ![GitHub contributors](https://img.shields.io/github/contributors/LavanyaMiddha/DollarBot2)
 ![GitHub forks](https://img.shields.io/github/forks/LavanyaMiddha/DollarBot2?style=social)
