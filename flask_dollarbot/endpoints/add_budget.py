@@ -65,7 +65,7 @@ def add_single():
         user_list=dict() #Placeholder value
     # add new json for new user
     if str(chat_id) not in user_list:
-        user_list[str(chat_id)] = {"data": [], "budget": {"long-term": [],"short-term": []   }}
+        user_list[str(chat_id)] = {"data": [], "budget": {"long-term": [],"short-term": []   }, "friends": []}
     # write data
     if goal_str.strip() == "Short-Term":
         record = "{},{},{},{},{}".format(date_str, goal_str, category_str, amount_str, expense_currency)

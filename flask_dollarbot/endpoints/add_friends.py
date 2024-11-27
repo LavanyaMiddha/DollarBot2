@@ -1,10 +1,9 @@
 from flask import Blueprint, request, jsonify
 import  endpoints.helper as helper
 from datetime import datetime
+from model.user import User
 
-
-add_bp = Blueprint('add', __name__)
-
+add_friends_bp = Blueprint('friends', __name__)
 
 def validate_add_request(chat_id, expense_date, expense_amount, expense_category):
     # validate input request 
@@ -18,8 +17,8 @@ def validate_add_request(chat_id, expense_date, expense_amount, expense_category
         return False 
     return True 
 
-@add_bp.route('/add_single', methods=['POST'])
-def add_single():
+@add_friends_bp.route('/add_friends', methods=['POST'])
+def add_friends():
     """
     Add a single expense record. 
     
@@ -40,31 +39,26 @@ def add_single():
     """
     data = request.get_json()
     chat_id = data['user_id']
-    expense_date = data['date']
-    expense_category = data['category']
-    expense_amount = data['amount']
-    expense_currency = str(data['currency'])
-    friends = data.get('friends', [])
+    friends = data['friends']
 
-    if not validate_add_request(chat_id, expense_date, expense_amount, expense_category):
-        return jsonify({'error': 'Bad Request'}), 400
+    print(friends)
+    if friends in helper.getUserFriends(chat_id):
+        return jsonify({'error': 'Friend Already Added'}), 400
     
-
-    date_str, category_str, amount_str = (
-        expense_date,
-        str(expense_category),
-        str(expense_amount),
-    )
-    # get all user data 
+    existing_user = User.query.filter_by(username=friends.strip()).first()
+    if not existing_user:
+        return jsonify({'error': 'Username not registered'}), 400
+   # get all user data 
     user_list = helper.read_json()
     if user_list is None :
-        user_list=dict()
+        user_list=dict() #Placeholder value
     # add new json for new user
     if str(chat_id) not in user_list:
-        user_list[str(chat_id)] = {"data": [], "budget": {"long-term": [],"short-term": [] }, "friends": []}
-    record = "{},{},{}, {}".format(date_str, category_str, amount_str, expense_currency)
-    # write data 
-    user_list[str(chat_id)]["data"].append(record)
+        user_list[str(chat_id)] = {"data": [], "budget": {"long-term": [],"short-term": []   }, "friends": []}
+    # write data
+
+    record = friends.strip()
+    print(friends)
+    user_list[str(chat_id)]["friends"].append(record)
     helper.write_json(user_list)
     return jsonify({'message': 'Expense record created successfully'}), 200
-    
